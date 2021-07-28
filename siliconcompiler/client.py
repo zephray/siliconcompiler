@@ -53,16 +53,20 @@ def remote_preprocess(chips):
 
 ###################################
 def client_decrypt(chip):
-    '''Helper method to decrypt project data before running a job on it.
+    '''Helper method to decrypt project data which has been encrypted at rest.
     '''
 
+    # Collect some basic values.
     root_dir = chip.get('dir')[-1]
     job_nameid = chip.get('jobname')[-1] + chip.get('jobid')[-1]
 
     # Create cipher for decryption.
     dk = base64.urlsafe_b64decode(chip.status['decrypt_key'])
-    decrypt_key = serialization.load_ssh_private_key(dk, None, backend=default_backend())
-    # Decrypt the block cipher key.
+    decrypt_key = serialization.load_ssh_private_key(dk,
+                                                     None,
+                                                     backend=default_backend())
+
+    # Decrypt the AES block cipher key with the user's private key.
     with open('%s/import.bin'%root_dir, 'rb') as f:
         aes_key = decrypt_key.decrypt(
             f.read(),
@@ -72,15 +76,18 @@ def client_decrypt(chip):
                 label=None,
             ))
 
-    # Read in the iv nonce.
+    # Read in the AES initialization vector nonce.
     with open('%s/%s.iv'%(root_dir, job_nameid), 'rb') as f:
         aes_iv = f.read()
 
-    # Decrypt .crypt file using the decrypted block cipher key.
+    # Create cipher and decryptor objects for the current AES scheme.
     job_crypt = '%s/%s.crypt'%(root_dir, job_nameid)
     cipher = Cipher(algorithms.AES(aes_key), modes.CTR(aes_iv))
     decryptor = cipher.decryptor()
-    # Same approach as encrypting: open both files, read/decrypt/write individual chunks.
+
+    # Decrypt the .crypt file using the generated decryptor object.
+    # Same approach as encrypting: open a file to write to, and
+    # read/decrypt/write individual chunks of the large .crypt file to disk.
     with open('%s/%s.zip'%(root_dir, job_nameid), 'wb') as wf:
         with open(job_crypt, 'rb') as rf:
             while True:
@@ -90,7 +97,8 @@ def client_decrypt(chip):
                 wf.write(decryptor.update(chunk))
         wf.write(decryptor.finalize())
 
-    # Unzip the decrypted file to prepare for running the job.
+    # Unzip the decrypted file, and place its data in the same build directory
+    # which would contain the results from a local run.
     subprocess.run(['mkdir',
                     '-p',
                     '%s/%s/%s'%(root_dir, chip.get('design')[-1], job_nameid)])
@@ -101,15 +109,22 @@ def client_decrypt(chip):
 
 ###################################
 def client_encrypt(chip):
-    '''Helper method to re-encrypt project data after processing.
+    '''Helper method to encrypt project before sending it to a remote server
+       for processing. This method expects that an AES block cipher key has
+       already been created and encrypted. Each permutation of a job run
+       will share an AES key, but a new IV nonce is generated for every job ID.
     '''
 
+    # Collect some basic values.
     root_dir = chip.get('dir')[-1]
     job_nameid = chip.get('jobname')[-1] + chip.get('jobid')[-1]
 
     # Create cipher for decryption.
     dk = base64.urlsafe_b64decode(chip.status['decrypt_key'])
-    decrypt_key = serialization.load_ssh_private_key(dk, None, backend=default_backend())
+    decrypt_key = serialization.load_ssh_private_key(dk,
+                                                     None,
+                                                     backend=default_backend())
+
     # Decrypt the block cipher key.
     with open('%s/import.bin'%root_dir, 'rb') as f:
         aes_key = decrypt_key.decrypt(
@@ -120,7 +135,7 @@ def client_encrypt(chip):
                 label=None,
             ))
 
-    # Zip the new job results.
+    # Zip the data to encrypt.
     subprocess.run(['zip',
                     '-r',
                     '-y',
@@ -128,16 +143,19 @@ def client_encrypt(chip):
                     '.'],
                    cwd='%s/%s/%s'%(root_dir, chip.get('design')[-1], job_nameid))
 
-    # Create a new initialization vector and write it to a file for future decryption.
-    # The iv does not need to be secret, but using the same iv and key to encrypt
-    # different data can provide an attack surface to potentially decrypt some data.
+    # Create a new initialization vector and write it to a file for future
+    # decryption. The IV does not need to be secret, but using the same IV
+    # and key to encrypt different data can be insecure in some circumstances.
     aes_iv  = os.urandom(16)
     with open('%s/%s.iv'%(root_dir, job_nameid), 'wb') as f:
         f.write(aes_iv)
 
-    # Encrypt the new zip file.
+    # Create cipher and encryptor objects for the current AES encryption scheme.
     cipher = Cipher(algorithms.AES(aes_key), modes.CTR(aes_iv))
     encryptor = cipher.encryptor()
+
+    # Encrypt the zipped data: open a .crypt file to write to, then stream
+    # the .zip file through the encryptor object and onto the disk in chunks.
     with open('%s/%s.crypt'%(root_dir, job_nameid), 'wb') as wf:
         with open('%s/%s/%s/%s.zip'%(root_dir, chip.get('design')[-1], job_nameid, job_nameid), 'rb') as rf:
             while True:
@@ -148,7 +166,7 @@ def client_encrypt(chip):
         # Write out any remaining data; CTR mode does not require padding.
         wf.write(encryptor.finalize())
 
-    # Delete decrypted data.
+    # Delete decrypted data from disk.
     shutil.rmtree('%s/%s/%s'%(root_dir, chip.get('design')[-1], job_nameid))
     os.remove('%s/%s.zip'%(root_dir, job_nameid))
 
