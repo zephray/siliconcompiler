@@ -37,8 +37,16 @@ def remote_preprocess(chips):
 
     # Run the local 'import' step if necessary.
     if chips[-1].status['local_import']:
-        importstep = chips[-1].get('steplist')[0]
-        chips[-1].run(start=importstep, stop=importstep)
+        # Start at the beginning of the step list.
+        import_start = chips[-1].get('steplist')[0]
+        # The 'stop' flag is inclusive, so we want to stop at the step
+        # before the desired 'remote_start' step.
+        import_stop = chips[-1].get('remote', 'start')[-1]
+        stop_index = chips[-1].get('steplist').index(import_stop)
+        import_stop = chips[-1].get('steplist')[stop_index - 1]
+
+        # Run the local import step(s).
+        chips[-1].run(start=import_start, stop=import_stop)
 
         # Clear the 'option' value, in case the import step is run again later.
         chips[-1].cfg['flow']['import']['option']['value'] = []
