@@ -21,13 +21,20 @@ import time
 def get_base_url(chip):
     '''Helper method to get the root URL for API calls, given a Chip object.
     '''
+
+    # Assemble a 'hostname:port' address.
     remote_host = chip.get('remote', 'addr')[-1]
     remote_port = chip.get('remote', 'port')[-1]
     remote_host += ':' + remote_port
+
+    # If the hostname doesn't specify an HTTP[S] protocol, infer it from the port.
+    # Currently, 443 = TLS-encrypted HTTPS, any other port = plaintext HTTP.
     if remote_host.startswith('http'):
         remote_protocol = ''
     else:
         remote_protocol = 'https://' if remote_port == '443' else 'http://'
+
+    # Return a fairly-qualified URL.
     return remote_protocol + remote_host
 
 ###################################
@@ -173,14 +180,14 @@ def client_encrypt(chip):
 ###################################
 async def remote_run(chip, stage):
     '''Helper method to run a job stage on a remote compute cluster.
+
     Note that files will not be copied to the remote stage; typically
     the source files will be copied into the cluster's storage before
-    calling this method.
-    If the "-remote" parameter was not passed in, this method
-    will print a warning and do nothing.
+    calling this method. This client script handles that process transparently.
+    For more details, refer to `cli.py` and the `remote_preprocess` method.
+
     This method assumes that the given stage should not be skipped,
     because it is called from within the `Chip.run(...)` method.
-
     '''
 
     # Time how long the process has been running for.
@@ -194,51 +201,67 @@ async def remote_run(chip, stage):
     # Check the job's progress periodically until it finishes.
     is_busy = True
     while is_busy:
+      # Log a status message every few seconds.
       chip.logger.info("%s stage running. (%d seconds)"%(
                        stage,
                        int(time.monotonic() - step_start)))
       await asyncio.sleep(3)
+
+      # Check whether the job stage is still running on the remote host.
       try:
           is_busy = await is_job_busy(chip, stage)
       except:
           # Sometimes an exception is raised if the request library cannot
-          # reach the server due to a transient network issue.
+          # reach the server due to a transient network issue, especially on
+          # connections which are low-bandwidth, metered, high-latency, etc.
           # Retrying ensures that jobs don't break off when the connection drops.
           is_busy = True
           chip.logger.info("Unknown network error encountered: retrying.")
+
+    # Once the job stage completes, log a status message and return.
     chip.logger.info("%s stage completed!"%stage)
 
 ###################################
 async def request_remote_run(chip, stage):
     '''Helper method to make an async request to start a job stage.
-
+       This async method is called by the 'remote_run' method when it wants
+       to make a network request which starts a job stage on the remote server.
     '''
+
+    # The `aiohttp` library uses Python's 'async/await' concurrency solution.
+    # Opening a ClientSession allows us to work with asynchronous network calls.
     async with aiohttp.ClientSession() as session:
-        # Set the request URL.
+        # Set the request URL to the remote server's `remote_run` API endpoint.
         remote_run_url = get_base_url(chip) + '/remote_run/'
 
-        # Use authentication if necessary.
-        post_params = {'chip_cfg': chip.cfg}
-        if (len(chip.get('remote', 'user')) > 0) and (len(chip.get('remote', 'key')) > 0):
-            # Read the key and encode it in base64 format.
-            with open(os.path.abspath(chip.cfg['remote']['key']['value'][-1]), 'rb') as f:
-                key = f.read()
+        # Initialize a 'POST parameters' dictionary (which will become JSON).
+        post_params = {
+            'chip_cfg': chip.cfg,
+            'params': {
+                'job_hash': chip.get('remote', 'hash')[-1],
+                'stage': stage,
+            }
+        }
+
+        # Add authentication options to the POST parameters if necessary.
+        if (len(chip.get('remote', 'user')) > 0) and \
+           (len(chip.get('remote', 'key')) > 0):
+            # Read the private key file.
+            pk_path = os.path.abspath(chip.cfg['remote']['key']['value'][-1])
+            with open(pk_path, 'rb') as keyfile:
+                key = keyfile.read()
+            # Base64-encode the key in a way that doesn't use reserved characters.
             b64_key = base64.urlsafe_b64encode(key).decode()
-            post_params['params'] = {
-                'username': chip.get('remote', 'user')[-1],
-                'key': b64_key,
-                'job_hash': chip.get('remote', 'hash')[-1],
-                'stage': stage,
-            }
-        else:
-            post_params['params'] = {
-                'job_hash': chip.get('remote', 'hash')[-1],
-                'stage': stage,
-            }
+
+            # Set the username and private key in the POST parameters dictionary.
+            post_params['params']['username'] = chip.get('remote', 'user')[-1]
+            post_params['params']['key'] = b64_key
 
         # Make the actual request.
-        # Redirected POST requests are translated to GETs. This is actually
-        # part of the HTTP spec, so we need to manually follow the trail.
+        # Redirected POST requests are translated to GETs, but we want to ensure
+        # that sensitive data is only sent in a POST request body. This
+        # verb-changing is actually part of the HTTP spec, so we need to
+        # catch redirects and manually follow the trail with POSTs.
         redirect_url = remote_run_url
         while redirect_url:
             async with session.post(redirect_url,
