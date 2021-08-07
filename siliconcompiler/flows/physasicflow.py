@@ -8,8 +8,6 @@ import siliconcompiler
 def setup_flow(chip, process):
     # A simple linear flow
     flowpipe = ['import',
-                'syn',
-                'floorplan',
                 'export',
                 # TODO: sta is currently broken, don't include in flow
                 # 'sta',
