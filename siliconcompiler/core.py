@@ -994,7 +994,7 @@ ss
         copyall = self.get('copyall')
         for key in allkeys:
             leaftype = self._search(self.cfg, *key, mode='get', field='type')
-            if leaftype == 'file':
+            if leaftype == '[file]':
                 copy = self._search(self.cfg, *key, mode='get', field='copy')
                 value = self._search(self.cfg, *key, mode='get', field='value')
                 if copyall | (copy == 'true'):
