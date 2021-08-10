@@ -17,7 +17,7 @@ def setup_tool(chip, step):
 
     # Standard Setup
     tool = 'morty'
-    chip.add('eda', tool, step, 'threads', '4')
+    chip.add('eda', tool, step, 'threads', 4)
     chip.add('eda', tool, step, 'format', 'cmdline')
     chip.add('eda', tool, step, 'copy', 'false')
     chip.add('eda', tool, step, 'exe', 'morty')
@@ -54,22 +54,22 @@ def post_process(chip, step):
 
     # detect top module
     modules = 0
-    if len(chip.cfg['design']['value']) < 1:
+    if chip.get('design') is None:
         with open("morty.v", "r") as open_file:
             for line in open_file:
                 modmatch = re.match(r'^module\s+(\w+)', line)
                 if modmatch:
                     modules = modules + 1
                     topmodule = modmatch.group(1)
-        if (modules > 1) & (chip.cfg['design']['value'] == ""):
+        if modules > 1:
             chip.logger.error('Multiple modules found during import, \
             but sc_design was not set')
             sys.exit()
         else:
             chip.logger.info('Setting design (topmodule) to %s', topmodule)
-            chip.cfg['design']['value'].append(topmodule)
+            chip.set('design', topmodule)
     else:
-        topmodule = chip.cfg['design']['value'][-1]
+        topmodule = chip.get('design')
 
     # Hand off `morty.v` and `undefined.morty` to the next step
     subprocess.run("cp morty.v " + "outputs/" + topmodule + ".v", shell=True)

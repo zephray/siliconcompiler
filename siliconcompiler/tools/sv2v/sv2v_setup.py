@@ -21,7 +21,7 @@ def setup_tool(chip, step):
 
     tool = 'sv2v'
 
-    chip.set('eda', tool, step, 'threads', '4')
+    chip.set('eda', tool, step, 'threads', 4)
     chip.set('eda', tool, step, 'format', 'cmdline')
     chip.set('eda', tool, step, 'copy', 'false')
     chip.set('eda', tool, step, 'exe', tool)
@@ -40,7 +40,7 @@ def setup_tool(chip, step):
     # since this step should run after import, the top design module should be
     # set and we can read the pickled Verilog without accessing the original
     # sources
-    topmodule = chip.cfg['design']['value'][-1]
+    topmodule = chip.get('design')
     chip.add('eda', tool, step, 'option', "inputs/" + topmodule + ".v")
     chip.add('eda', tool, step, 'option', "--write=outputs/" + topmodule + ".v")
 
