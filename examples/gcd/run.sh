@@ -1,13 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
-OPT=$1
+if [[ $# -ne 2 ]]; then
+   START="import"
+   STOP="export"
+else
+   START=$1
+   STOP=$2
+fi
+
 sc examples/gcd/gcd.v \
-   -target "freepdk45_asicflow" \
+   -target "skywater130_asicflow" \
    -constraint "examples/gcd/gcd.sdc" \
-   -asic_diesize "0 0 100.13 100.8" \
-   -asic_coresize "10.07 11.2 90.25 91" \
+   -asic_floorplan "examples/gcd/floorplan.py" \
    -loglevel "INFO" \
-   -stop "export" \
    -quiet \
    -relax \
-   -design gcd  $OPT
+   -start $START \
+   -stop $STOP \
+   -design gcd  
