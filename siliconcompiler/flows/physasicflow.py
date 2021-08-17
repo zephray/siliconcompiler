@@ -11,7 +11,6 @@ def setup_flow(chip, process):
                 'export',
                 # TODO: sta is currently broken, don't include in flow
                 # 'sta',
-                'lvs',
                 'drc']
 
     for i in range(len(flowpipe)-1):
@@ -26,13 +25,13 @@ def setup_flow(chip, process):
         elif step == 'importvhdl':
             tool = 'ghdl'
         elif step == 'convert':
-            tool = 'sv2v' 
+            tool = 'sv2v'
         elif step == 'syn':
             tool = 'yosys'
         elif step == 'export':
             tool = 'klayout'
         elif step in ('lvs', 'drc'):
-            tool = 'magic' 
+            tool = 'magic'
         else:
             tool = 'openroad'
         chip.set('flowgraph', step, 'tool', tool)

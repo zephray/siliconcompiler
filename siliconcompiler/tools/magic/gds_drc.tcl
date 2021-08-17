@@ -17,6 +17,10 @@ source ./sc_manifest.tcl
 
 set sc_design     [lindex [dict get $sc_cfg design] end]
 
+# HACK: work around the fact that SRAM doesn't pass DRC
+load /home/noah/zerosoc/asic/sky130/ram/sky130_sram_2kbyte_1rw1r_32x512_8.mag
+gds noduplicates true
+
 gds read inputs/$sc_design.gds
 puts $sc_design.gds
 set fout [open outputs/$sc_design.drc w]

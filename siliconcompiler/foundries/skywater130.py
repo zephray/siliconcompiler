@@ -26,13 +26,13 @@ def setup_platform(chip):
     hscribe = 0.1
     vscribe = 0.1
     edgemargin = 2
-    
+
     pdkdir = '/'.join(['third_party/foundry',
                        foundry,
                        process,
                        'pdk',
                        rev])
-    
+
 
     #if you are calling this file, you are in asic mode
     chip.set('mode','asic')
@@ -107,7 +107,7 @@ def setup_platform(chip):
 # Library Setup
 ####################################################
 def setup_libs(chip, vendor=None):
- 
+
     foundry = 'skywater'
     process = 'skywater130'
     rev = 'v0_0_2'
@@ -126,9 +126,9 @@ def setup_libs(chip, vendor=None):
                        'libs',
                        libname,
                        rev])
-    
+
     # rev
-    chip.set('stdcell',libname,'rev',rev)    
+    chip.set('stdcell',libname,'rev',rev)
 
     # timing
     chip.set('stdcell',libname, 'model', corner, 'nldm', 'lib',
@@ -170,8 +170,118 @@ def setup_libs(chip, vendor=None):
     chip.add('stdcell',libname,'cells','endcap', 'sky130_fd_sc_hd__decap_4')
 
     chip.add('stdcell',libname,'cells','ignore', [
-        'sky130_fd_sc_hd__probe_p_8',
-        'sky130_fd_sc_hd__probec_p_8',
+        'sky130_fd_sc_hd__a2111o_1',
+        'sky130_fd_sc_hd__a2111oi_0',
+        'sky130_fd_sc_hd__a2111oi_1',
+        'sky130_fd_sc_hd__a211o_1',
+        'sky130_fd_sc_hd__a211oi_1',
+        'sky130_fd_sc_hd__a21bo_1',
+        'sky130_fd_sc_hd__a21boi_0',
+        'sky130_fd_sc_hd__a21boi_1',
+        'sky130_fd_sc_hd__a21o_1',
+        'sky130_fd_sc_hd__a21oi_1',
+        'sky130_fd_sc_hd__a221o_1',
+        'sky130_fd_sc_hd__a221oi_1',
+        'sky130_fd_sc_hd__a222oi_1',
+        'sky130_fd_sc_hd__a22o_1',
+        'sky130_fd_sc_hd__a22oi_1',
+        'sky130_fd_sc_hd__a2bb2o_1',
+        'sky130_fd_sc_hd__a2bb2oi_1',
+        'sky130_fd_sc_hd__a311o_1',
+        'sky130_fd_sc_hd__a311oi_1',
+        'sky130_fd_sc_hd__a31o_1',
+        'sky130_fd_sc_hd__a31oi_1',
+        'sky130_fd_sc_hd__a32o_1',
+        'sky130_fd_sc_hd__a32oi_1',
+        'sky130_fd_sc_hd__a41o_1',
+        'sky130_fd_sc_hd__a41oi_1',
+        'sky130_fd_sc_hd__and2_0',
+        'sky130_fd_sc_hd__and2_1',
+        'sky130_fd_sc_hd__and2b_1',
+        'sky130_fd_sc_hd__and3_1',
+        'sky130_fd_sc_hd__and3b_1',
+        'sky130_fd_sc_hd__and4_1',
+        'sky130_fd_sc_hd__and4b_1',
+        'sky130_fd_sc_hd__and4bb_1',
+        'sky130_fd_sc_hd__buf_16',
+        'sky130_fd_sc_hd__clkbuf_1',
+        'sky130_fd_sc_hd__clkbuf_16',
+        'sky130_fd_sc_hd__clkbuf_2',
+        'sky130_fd_sc_hd__clkbuf_4',
+        'sky130_fd_sc_hd__clkbuf_8',
+        'sky130_fd_sc_hd__clkdlybuf4s15_1',
+        'sky130_fd_sc_hd__clkdlybuf4s15_2',
+        'sky130_fd_sc_hd__clkdlybuf4s18_1',
+        'sky130_fd_sc_hd__clkdlybuf4s18_2',
+        'sky130_fd_sc_hd__clkdlybuf4s25_1',
+        'sky130_fd_sc_hd__clkdlybuf4s25_2',
+        'sky130_fd_sc_hd__clkdlybuf4s50_1',
+        'sky130_fd_sc_hd__clkdlybuf4s50_2',
+        'sky130_fd_sc_hd__clkinv_1',
+        'sky130_fd_sc_hd__clkinv_16',
+        'sky130_fd_sc_hd__clkinv_2',
+        'sky130_fd_sc_hd__clkinv_4',
+        'sky130_fd_sc_hd__clkinv_8',
+        'sky130_fd_sc_hd__clkinvlp_2',
+        'sky130_fd_sc_hd__clkinvlp_4',
+        'sky130_fd_sc_hd__decap_12',
+        'sky130_fd_sc_hd__decap_3',
+        'sky130_fd_sc_hd__decap_4',
+        'sky130_fd_sc_hd__decap_6',
+        'sky130_fd_sc_hd__decap_8',
+        'sky130_fd_sc_hd__dfbbn_1',
+        'sky130_fd_sc_hd__dfbbp_1',
+        'sky130_fd_sc_hd__dfrbp_1',
+        'sky130_fd_sc_hd__dfrtn_1',
+        'sky130_fd_sc_hd__dfrtp_1',
+        'sky130_fd_sc_hd__dfrtp_4',
+        'sky130_fd_sc_hd__dfsbp_1',
+        'sky130_fd_sc_hd__dfstp_1',
+        'sky130_fd_sc_hd__dfxbp_1',
+        'sky130_fd_sc_hd__dfxtp_1',
+        'sky130_fd_sc_hd__diode_2',
+        'sky130_fd_sc_hd__dlclkp_1',
+        'sky130_fd_sc_hd__dlclkp_2',
+        'sky130_fd_sc_hd__dlclkp_4',
+        'sky130_fd_sc_hd__dlrbn_1',
+        'sky130_fd_sc_hd__dlrbn_2',
+        'sky130_fd_sc_hd__dlrbp_1',
+        'sky130_fd_sc_hd__dlrbp_2',
+        'sky130_fd_sc_hd__dlrtn_1',
+        'sky130_fd_sc_hd__dlrtn_2',
+        'sky130_fd_sc_hd__dlrtn_4',
+        'sky130_fd_sc_hd__dlrtp_1',
+        'sky130_fd_sc_hd__dlrtp_2',
+        'sky130_fd_sc_hd__dlrtp_4',
+        'sky130_fd_sc_hd__dlxbn_1',
+        'sky130_fd_sc_hd__dlxbn_2',
+        'sky130_fd_sc_hd__dlxbp_1',
+        'sky130_fd_sc_hd__dlygate4sd1_1',
+        'sky130_fd_sc_hd__dlygate4sd2_1',
+        'sky130_fd_sc_hd__dlygate4sd3_1',
+        'sky130_fd_sc_hd__dlymetal6s2s_1',
+        'sky130_fd_sc_hd__dlymetal6s4s_1',
+        'sky130_fd_sc_hd__dlymetal6s6s_1',
+        'sky130_fd_sc_hd__ebufn_1',
+        'sky130_fd_sc_hd__edfxbp_1',
+        'sky130_fd_sc_hd__edfxtp_1',
+        'sky130_fd_sc_hd__einvn_0',
+        'sky130_fd_sc_hd__einvn_1',
+        'sky130_fd_sc_hd__einvn_2',
+        'sky130_fd_sc_hd__einvn_4',
+        'sky130_fd_sc_hd__einvn_8',
+        'sky130_fd_sc_hd__einvp_1',
+        'sky130_fd_sc_hd__einvp_2',
+        'sky130_fd_sc_hd__einvp_4',
+        'sky130_fd_sc_hd__einvp_8',
+        'sky130_fd_sc_hd__fa_4',
+        'sky130_fd_sc_hd__fah_1',
+        'sky130_fd_sc_hd__fahcin_1',
+        'sky130_fd_sc_hd__fahcon_1',
+        'sky130_fd_sc_hd__ha_1',
+        'sky130_fd_sc_hd__ha_2',
+        'sky130_fd_sc_hd__ha_4',
+        'sky130_fd_sc_hd__inv_1',
         'sky130_fd_sc_hd__lpflow_bleeder_1',
         'sky130_fd_sc_hd__lpflow_clkbufkapwr_1',
         'sky130_fd_sc_hd__lpflow_clkbufkapwr_16',
@@ -205,7 +315,99 @@ def setup_libs(chip, vendor=None):
         'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4',
         'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1',
         'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2',
-        'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4'
+        'sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4',
+        'sky130_fd_sc_hd__macro_sparecell',
+        'sky130_fd_sc_hd__maj3_1',
+        'sky130_fd_sc_hd__maj3_2',
+        'sky130_fd_sc_hd__maj3_4',
+        'sky130_fd_sc_hd__mux2i_1',
+        'sky130_fd_sc_hd__mux2i_2',
+        'sky130_fd_sc_hd__mux2i_4',
+        'sky130_fd_sc_hd__mux4_2',
+        'sky130_fd_sc_hd__mux4_4',
+        'sky130_fd_sc_hd__nand2_1',
+        'sky130_fd_sc_hd__nand2b_1',
+        'sky130_fd_sc_hd__nand3_1',
+        'sky130_fd_sc_hd__nand3b_1',
+        'sky130_fd_sc_hd__nand4_1',
+        'sky130_fd_sc_hd__nand4b_1',
+        'sky130_fd_sc_hd__nand4bb_1',
+        'sky130_fd_sc_hd__nor2_1',
+        'sky130_fd_sc_hd__nor2b_1',
+        'sky130_fd_sc_hd__nor3_1',
+        'sky130_fd_sc_hd__nor3b_1',
+        'sky130_fd_sc_hd__nor4_1',
+        'sky130_fd_sc_hd__nor4b_1',
+        'sky130_fd_sc_hd__nor4bb_1',
+        'sky130_fd_sc_hd__o2111a_1',
+        'sky130_fd_sc_hd__o2111ai_1',
+        'sky130_fd_sc_hd__o211a_1',
+        'sky130_fd_sc_hd__o211ai_1',
+        'sky130_fd_sc_hd__o21a_1',
+        'sky130_fd_sc_hd__o21ai_0',
+        'sky130_fd_sc_hd__o21ai_1',
+        'sky130_fd_sc_hd__o21ba_1',
+        'sky130_fd_sc_hd__o21bai_1',
+        'sky130_fd_sc_hd__o221a_1',
+        'sky130_fd_sc_hd__o221ai_1',
+        'sky130_fd_sc_hd__o22a_1',
+        'sky130_fd_sc_hd__o22ai_1',
+        'sky130_fd_sc_hd__o2bb2a_1',
+        'sky130_fd_sc_hd__o2bb2ai_1',
+        'sky130_fd_sc_hd__o311a_1',
+        'sky130_fd_sc_hd__o311ai_0',
+        'sky130_fd_sc_hd__o311ai_1',
+        'sky130_fd_sc_hd__o31a_1',
+        'sky130_fd_sc_hd__o31ai_1',
+        'sky130_fd_sc_hd__o32a_1',
+        'sky130_fd_sc_hd__o32ai_1',
+        'sky130_fd_sc_hd__o41a_1',
+        'sky130_fd_sc_hd__o41ai_1',
+        'sky130_fd_sc_hd__or2_0',
+        'sky130_fd_sc_hd__or2_1',
+        'sky130_fd_sc_hd__or2b_1',
+        'sky130_fd_sc_hd__or3_1',
+        'sky130_fd_sc_hd__or3b_1',
+        'sky130_fd_sc_hd__or4_1',
+        'sky130_fd_sc_hd__or4b_1',
+        'sky130_fd_sc_hd__or4bb_1',
+        'sky130_fd_sc_hd__probe_p_8',
+        'sky130_fd_sc_hd__probec_p_8',
+        'sky130_fd_sc_hd__sdfbbn_1',
+        'sky130_fd_sc_hd__sdfbbn_2',
+        'sky130_fd_sc_hd__sdfbbp_1',
+        'sky130_fd_sc_hd__sdfrbp_1',
+        'sky130_fd_sc_hd__sdfrbp_2',
+        'sky130_fd_sc_hd__sdfrtn_1',
+        'sky130_fd_sc_hd__sdfrtp_1',
+        'sky130_fd_sc_hd__sdfrtp_2',
+        'sky130_fd_sc_hd__sdfrtp_4',
+        'sky130_fd_sc_hd__sdfsbp_1',
+        'sky130_fd_sc_hd__sdfsbp_2',
+        'sky130_fd_sc_hd__sdfstp_1',
+        'sky130_fd_sc_hd__sdfstp_2',
+        'sky130_fd_sc_hd__sdfstp_4',
+        'sky130_fd_sc_hd__sdfxbp_1',
+        'sky130_fd_sc_hd__sdfxbp_2',
+        'sky130_fd_sc_hd__sdfxtp_1',
+        'sky130_fd_sc_hd__sdfxtp_2',
+        'sky130_fd_sc_hd__sdfxtp_4',
+        'sky130_fd_sc_hd__sdlclkp_1',
+        'sky130_fd_sc_hd__sdlclkp_2',
+        'sky130_fd_sc_hd__sdlclkp_4',
+        'sky130_fd_sc_hd__sedfxbp_1',
+        'sky130_fd_sc_hd__sedfxbp_2',
+        'sky130_fd_sc_hd__sedfxtp_1',
+        'sky130_fd_sc_hd__sedfxtp_2',
+        'sky130_fd_sc_hd__sedfxtp_4',
+        'sky130_fd_sc_hd__xnor2_1',
+        'sky130_fd_sc_hd__xnor3_1',
+        'sky130_fd_sc_hd__xnor3_2',
+        'sky130_fd_sc_hd__xnor3_4',
+        'sky130_fd_sc_hd__xor2_1',
+        'sky130_fd_sc_hd__xor3_1',
+        'sky130_fd_sc_hd__xor3_2',
+        'sky130_fd_sc_hd__xor3_4'
     ])
 
     # TODO: should probably fill these in, but they're currently unused by
@@ -242,9 +444,9 @@ def setup_design(chip):
     chip.set('mcmm','worst','pexcorner', corner)
     chip.set('mcmm','worst','mode', 'func')
     chip.set('mcmm','worst','check', ['setup','hold'])
-    
+
 #########################
-if __name__ == "__main__":    
+if __name__ == "__main__":
 
     # File being executed
     prefix = os.path.splitext(os.path.basename(__file__))[0]
@@ -258,4 +460,4 @@ if __name__ == "__main__":
     # write out result
     chip.writecfg(output)
 
-   
+
