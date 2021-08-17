@@ -409,8 +409,8 @@ class Floorplan:
                 # ensure that? (I think that's in terms of DEF scale)
                 'width': wire_width,
                 'shape': shape,
-                'start': start,
-                'end': end
+                'start': (x, y),
+                'end': (x + width, y + height)
             }
 
             if net_name in self.nets:

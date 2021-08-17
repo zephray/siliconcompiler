@@ -51,17 +51,22 @@ PINS {{ fp.pins | length }} ;
 {% endfor %}
 END PINS
 
+BLOCKAGES {{ fp.blockages | length }} ;
+    {% for blockage in fp.blockages %}
+        {% if blockage.layer %}
+        - LAYER {{ blockage.layer }}
+        {% else %}
+        - PLACEMENT
+        {% endif %}
+            RECT {{ blockage.start | scale | render_tuple }} {{blockage.end | scale | render_tuple }} ;
+    {% endfor %}
+END BLOCKAGES
+
 SPECIALNETS {{ fp.nets | length }} ;
 {% for name, net in fp.nets.items() %}
     - {{ name }} ( * {{ net.pin_name }} ) + USE {{ net.use }}
     {% for wire in net.wires %}
-        {% if loop.first %}
-        + ROUTED
-        {% else %}
-        NEW
-        {% endif %}
-        {{ wire.layer }} {{ wire.width | scale }} + SHAPE {{ wire.shape }}
-        {{ wire.start | scale | render_tuple }} {{ wire.end | scale | render_tuple }}
+        + RECT {{ wire.layer }} {{ wire.start | scale | render_tuple }} {{ wire.end | scale | render_tuple }}
     {% endfor %}
     {% for via in net.vias %}
         {% if loop.first %}
