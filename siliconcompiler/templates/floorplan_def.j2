@@ -64,12 +64,17 @@ END BLOCKAGES
 
 SPECIALNETS {{ fp.nets | length }} ;
 {% for name, net in fp.nets.items() %}
-    - {{ name }} ( * {{ net.pin_name }} ) + USE {{ net.use }}
+    - {{ name }} {% for pin in net.pins %} ( * {{ pin }} ) {% endfor %} + USE {{ net.use }}
     {% for wire in net.wires %}
-        + RECT {{ wire.layer }} {{ wire.start | scale | render_tuple }} {{ wire.end | scale | render_tuple }}
+        {% if loop.first %}
+        + ROUTED
+        {% else %}
+        NEW
+        {% endif %}
+        {{ wire.layer }} {{ wire.width | scale }} + SHAPE {{ wire.shape | upper }} {{ wire.start | scale | render_tuple }} {{ wire.end | scale | render_tuple }}
     {% endfor %}
     {% for via in net.vias %}
-        {% if loop.first %}
+        {% if loop.first and net.wires | length == 0 %}
         + ROUTED
         {% else %}
         NEW
