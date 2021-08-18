@@ -16,9 +16,20 @@
 source ./sc_manifest.tcl
 
 set sc_design     [lindex [dict get $sc_cfg design] end]
+set sc_macrolibs [dict get $sc_cfg asic macrolib]
 
-# HACK: work around the fact that SRAM doesn't pass DRC
-load /home/noah/zerosoc/asic/sky130/ram/sky130_sram_2kbyte_1rw1r_32x512_8.mag
+# HACK: work around the fact that some foundry-provided modules doesn't pass DRC
+# (i.e. SRAM)
+
+# Macrolibs
+foreach lib $sc_macrolibs {
+    # TODO: check tool option to determine if we want to black-box the macro in
+    # question
+    if {$lib != "core"} {
+        lef read [dict get $sc_cfg macro $lib lef]
+    }
+}
+
 gds noduplicates true
 
 gds read inputs/$sc_design.gds
