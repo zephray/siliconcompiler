@@ -8,9 +8,11 @@ import siliconcompiler
 def setup_flow(chip, process):
     # A simple linear flow
     flowpipe = ['import',
+                'syn',
                 'export',
                 # TODO: sta is currently broken, don't include in flow
                 # 'sta',
+                'lvs',
                 'drc']
 
     for i in range(len(flowpipe)-1):

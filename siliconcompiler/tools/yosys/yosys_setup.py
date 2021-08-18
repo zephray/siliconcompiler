@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 import sys
 import defusedxml.ElementTree as ET
 
@@ -71,6 +72,16 @@ def post_process(chip, step):
                 chip.set('metric', step, 'real', 'cells', int(cells.group(1)))
             elif warnings:
                 chip.set('metric', step, 'real', 'warnings', int(warnings.group(1)))
+
+    design = chip.get('design')
+    indef = f'inputs/{design}.def'
+    outdef = f'outputs/{design}.def'
+    if os.path.isfile(indef):
+        shutil.copy(indef, outdef)
+    insdc = f'inputs/{design}.sdc'
+    outsdc = f'outputs/{design}.sdc'
+    if os.path.isfile(insdc):
+        shutil.copy(insdc, outsdc)
 
     #Return 0 if successful
     return 0
