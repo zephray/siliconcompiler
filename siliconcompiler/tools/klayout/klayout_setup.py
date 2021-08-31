@@ -101,13 +101,22 @@ def check_version(chip, step, index, version):
     #insert code for parsing the funtion based on some tool specific
     #semantics.
     #syntax for version is string, >=string
-    
+
     return 0
+
+def pre_process(chip, step, index):
+     in_def = 'inputs/' + chip.get('design') + '.def'
+     if not os.path.isfile(in_def):
+          if chip.get('asic', 'def'):
+               shutil.copy(schema_path(chip.get('asic', 'def')[0]), in_def)
+          else:
+               chip.logger.error('export: no DEF found!')
+               os.sys.exit(1)
 
 ################################
 # Post_process (post executable)
 ################################
-        
+
 def post_process(chip, step, index):
     ''' Tool specific function to run after step execution
     '''
@@ -116,7 +125,6 @@ def post_process(chip, step, index):
 
     #TODO: Fix fur multi (this will be moved to run step)
     shutil.copy(f'inputs/{design}.def', f'outputs/{design}.def')
-    shutil.copy(f'inputs/{design}.sdc', f'outputs/{design}.sdc')
     shutil.copy(f'inputs/{design}.v', f'outputs/{design}.v')
 
     return 0
