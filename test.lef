@@ -1,0 +1,7 @@
+MACRO test
+SIZE 5 BY 5 ;
+PIN a
+    PORT
+    END PORT
+END PIN
+END test

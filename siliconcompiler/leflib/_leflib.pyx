@@ -12,6 +12,7 @@ cimport _leflib
 # TODO: we could maybe make things a bit cleaner by encapsulating this into a
 # class, but probably no need for the additional complexity.
 _data = {}
+_cur_macro = None
 
 cdef int units_cb(lefrCallbackType_e t, lefiUnits* unitsptr, lefiUserData data):
     if 'units' not in _data:
@@ -48,11 +49,11 @@ cdef int layer_cb(lefrCallbackType_e cb_type, lefiLayer* layer_ptr, void* data):
         _data['layers'] = {}
 
     cdef lefiLayer layer = deref(layer_ptr)
-    name = layer.name().decode('ascii')
+    name = layer.name().decode()
     _data['layers'][name] = {}
     
     if layer.hasType():
-        _data['layers'][name]['type'] = layer.type().decode('ascii')
+        _data['layers'][name]['type'] = layer.type().decode()
     if layer.hasPitch():
         _data['layers'][name]['pitch'] = layer.pitch()
     if layer.hasXYPitch():
@@ -70,16 +71,77 @@ cdef int layer_cb(lefrCallbackType_e cb_type, lefiLayer* layer_ptr, void* data):
 
     return 0
 
+cdef int pin_cb(lefrCallbackType_e cb_type, lefiPin* p, void* data):
+    global _data
+    
+    if 'pins' not in _data['macros'][_cur_macro]:
+        _data['macros'][_cur_macro]['pins'] = {}
+
+    ports = []
+
+    # Loop through each port associated with this pin
+    for i in range(deref(p).numPorts()):
+        port = deref(p).port(i)
+
+        port_data = {'geometries': []} # store port data so far
+        geometry = {} # store geometry we're currently working on
+
+        # Loop through each entry of PORT
+        for j in range(deref(port).numItems()):
+            geom_type = deref(port).itemType(j)
+            if geom_type == lefiGeomLayerE:
+                layer = deref(port).getLayer(j)
+
+                # Geometries start with LAYER statements. If we already have a 
+                # geometry actively being worked on, we append it to the list 
+                # and start a new one.
+                if geometry != {}:
+                    port_data['geometries'].append(geometry)
+                    geometry = {}
+
+                geometry['layer'] = layer.decode()
+                geometry['shapes'] = []
+            elif geom_type == lefiGeomRectE:
+                rect = deref(port).getRect(j)
+                geometry['shapes'].append({'rect': (deref(rect).xl, deref(rect).yl, deref(rect).xh, deref(rect).yh)})
+            elif geom_type == lefiGeomClassE:
+                # CLASS isn't associated with a particular geometry, but rather the port itself
+                port_data['class'] = deref(port).getClass(j).decode()
+
+        # add last geometry-in-progress
+        if geometry != {}:
+            port_data['geometries'].append(geometry)
+
+        if port_data != {}:
+            ports.append(port_data)
+
+    name = deref(p).name().decode()
+    _data['macros'][_cur_macro]['pins'][name] = {
+        'ports': ports
+    }
+
+    return 0
+
+cdef int string_cb(lefrCallbackType_e cb_type, const char* string, void* data):
+    global _data
+    global _cur_macro
+    if cb_type == lefrMacroBeginCbkType:
+        _cur_macro = string.decode()
+        if 'macros' not in _data:
+            _data['macros'] = {}
+        _data['macros'][_cur_macro] = {}
+    elif cb_type == lefrMacroEndCbkType:
+        # TODO: check string matches _cur_macro
+        _cur_macro = None
+
 cdef int macro_cb(lefrCallbackType_e cb_type, lefiMacro* m, void* data):
     # TODO: for some reason assigning deref(m) with a cdef results in double
     # free() error, so we have to just call functions directly on deref'd one.
 
     global _data
-    if 'macros' not in _data:
-        _data['macros'] = {}
 
-    name = deref(m).name().decode('ascii')
-    _data['macros'][name] = {}
+    name = deref(m).name().decode()
+    # TODO: check _cur_name matches name
    
     if deref(m).hasSize():
         _data['macros'][name]['size'] = {
@@ -99,7 +161,10 @@ def parse(path):
     lefrSetUnitsCbk(units_cb)
     lefrSetVersionCbk(version_cb)
     lefrSetLayerCbk(layer_cb)
+    lefrSetMacroBeginCbk(string_cb)
+    lefrSetPinCbk(pin_cb)
     lefrSetMacroCbk(macro_cb)
+    lefrSetMacroEndCbk(string_cb)
 
     # Use this to pass path to C++ functions
     path_bytes = path.encode('ascii')

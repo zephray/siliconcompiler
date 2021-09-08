@@ -72,10 +72,10 @@ ctypedef int (*lefrMacroCbkFnType) (lefrCallbackType_e,
                                    lefiMacro* l, 
                                    lefiUserData);
  
-# # A declaration of the signature of all callbacks that return a lefiPin. 
-# ctypedef int (*lefrPinCbkFnType) (lefrCallbackType_e, 
-                                 # lefiPin* l, 
-                                 # lefiUserData);
+# A declaration of the signature of all callbacks that return a lefiPin. 
+ctypedef int (*lefrPinCbkFnType) (lefrCallbackType_e, 
+                                 lefiPin* l, 
+                                 lefiUserData);
  
 # # A declaration of the signature of all callbacks that return a lefiObstruction. 
 # ctypedef int (*lefrObstructionCbkFnType) (lefrCallbackType_e, 
@@ -167,8 +167,8 @@ cdef extern from "lefrReader.hpp":
     # void lefrSetMinFeatureCbk(lefrMinFeatureCbkFnType)
     # void lefrSetNonDefaultCbk(lefrNonDefaultCbkFnType)
     # void lefrSetSiteCbk(lefrSiteCbkFnType)
-    # void lefrSetMacroBeginCbk(lefrStringCbkFnType)
-    # void lefrSetPinCbk(lefrPinCbkFnType)
+    void lefrSetMacroBeginCbk(lefrStringCbkFnType)
+    void lefrSetPinCbk(lefrPinCbkFnType)
     # void lefrSetObstructionCbk(lefrObstructionCbkFnType)
     # void lefrSetArrayCbk(lefrArrayCbkFnType)
     void lefrSetMacroCbk(lefrMacroCbkFnType)
@@ -202,7 +202,7 @@ cdef extern from "lefrReader.hpp":
     # void lefrSetMacroForeignCbk(lefrMacroForeignCbkFnType)
     # void lefrSetMacroSizeCbk(lefrMacroNumCbkFnType)
     # void lefrSetMacroFixedMaskCbk(lefrIntegerCbkFnType)
-    # void lefrSetMacroEndCbk(lefrStringCbkFnType)
+    void lefrSetMacroEndCbk(lefrStringCbkFnType)
     # void lefrSetMaxStackViaCbk(lefrMaxStackViaCbkFnType)
     # void lefrSetExtensionCbk(lefrStringCbkFnType)
     # void lefrSetDensityCbk(lefrDensityCbkFnType)
@@ -269,6 +269,24 @@ cdef extern from "lefrReader.hpp":
        lefrMacroForeignCbkType,
        lefrLibraryEndCbkType
 
+    cdef enum lefiGeomEnum:
+        lefiGeomUnknown,
+        lefiGeomLayerE,
+        lefiGeomLayerExceptPgNetE,
+        lefiGeomLayerMinSpacingE,
+        lefiGeomLayerRuleWidthE,
+        lefiGeomWidthE,
+        lefiGeomPathE,
+        lefiGeomPathIterE,
+        lefiGeomRectE,
+        lefiGeomRectIterE,
+        lefiGeomPolygonE,
+        lefiGeomPolygonIterE,
+        lefiGeomViaE,
+        lefiGeomViaIterE,
+        lefiGeomClassE,
+        lefiGeomEnd
+
     cdef cppclass lefiUnits:
         int hasDatabase()
         int hasCapacitance()
@@ -317,6 +335,26 @@ cdef extern from "lefrReader.hpp":
         const char* name()
         double sizeX()
         double sizeY()
+
+    cdef cppclass lefiPin:
+        const char* name()
+        int numPorts()
+        lefiGeometries* port(int index)
+
+    cdef cppclass lefiGeometries:
+        int numItems()
+        lefiGeomEnum itemType(int index)
+        lefiGeomRect* getRect(int index)
+        int hasLayerExceptPgNet(int index)
+        const char* getLayer(int index)
+        const char* getClass(int index)
+
+    cdef struct lefiGeomRect:
+        double xl
+        double yl
+        double xh
+        double yh
+        int colorMask
 
     cdef cppclass lefiDensity:
         int numLayer()
