@@ -1116,12 +1116,16 @@ class Floorplan:
             # this particular via
             self.place_vias([net], x, y, 0, 0, layer, vianame)
 
-    def insert_vias(self):
+    def insert_vias(self, pairs=[]):
         '''Automatically insert vias.
 
         Automatically inserts vias between common specialnets that intersect on
         different metal layers. Via geometries are generated based on VIARULE
         GENERATE statements found in the tech LEF.
+
+        Args:
+            pairs (list of tuple): list of pairs of layers to connect with vias.
+                If empty, connect all layers.
         '''
 
         for net in self.nets:
@@ -1131,6 +1135,11 @@ class Floorplan:
                 for wire_top in wires[i:]:
                     bottom_layer = wire_bottom['sclayer']
                     top_layer = wire_top['sclayer']
+
+                    if pairs and (bottom_layer, top_layer) not in pairs:
+                        # TODO: can probably make routine more efficient by only
+                        # iterating through specified pairs in the first place.
+                        continue
 
                     if bottom_layer == top_layer:
                         continue
