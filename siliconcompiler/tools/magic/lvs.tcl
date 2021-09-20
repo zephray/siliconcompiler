@@ -25,15 +25,6 @@ cif istyle sky130(vendor)
 gds noduplicates true
 gds read inputs/$sc_design.gds
 
-load $sc_design -dereference;
-select top cell;
-
-# Abstract every cell under top level
-foreach cell [cellname list children] {
-    load $cell -dereference;
-    property LEFview TRUE;
-};
-
 # Extract layout to Spice netlist
 load $sc_design -dereference
 select top cell;

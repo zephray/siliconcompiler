@@ -124,7 +124,7 @@ foreach lib $sc_macrolibs {
 }
 
 # Floorplan reads synthesis verilog, others read def
-if {$sc_step == "floorplan"} {
+if {$sc_step == "floorplan" || $sc_step == "netlist"} {
     read_verilog "inputs/$sc_design.v"
     link_design $sc_design
     foreach sdc $sc_constraint {

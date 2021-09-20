@@ -156,6 +156,10 @@ def check_version(chip, step, index, version):
 def post_process(chip, step, index):
      ''' Tool specific function to run after step execution
      '''
+     if step == 'netlist':
+        with open('../../../../asic_core.v', 'r') as infile, \
+             open('outputs/asic_top.v', 'a') as outfile:
+            outfile.write(infile.read())
 
      #Check log file for errors and statistics
      tool = 'openroad'

@@ -49,7 +49,7 @@ def setup_tool(chip, step, index, mode="batch"):
     config_file = '%s/setup/klayout/fill.json'%(foundry_path)
 
     #TODO: Fix, currenly only accepts one GDS file, need to loop
-    if step == 'export':
+    if step.startswith('export'):
         options = []
         options.append('-rd')
         options.append('design_name=%s'%(chip.get('design')))
@@ -105,13 +105,17 @@ def check_version(chip, step, index, version):
     return 0
 
 def pre_process(chip, step, index):
-     in_def = 'inputs/' + chip.get('design') + '.def'
-     if not os.path.isfile(in_def):
-          if chip.get('asic', 'def'):
-               shutil.copy(schema_path(chip.get('asic', 'def')[0]), in_def)
-          else:
-               chip.logger.error('export: no DEF found!')
-               os.sys.exit(1)
+    if step == 'export_hack':
+        in_def = 'inputs/' + chip.get('design') + '.def'
+        if chip.get('asic', 'def'):
+            shutil.copy(schema_path(chip.get('asic', 'def')[0]), in_def)
+
+    #  if not os.path.isfile(in_def):
+    #       if chip.get('asic', 'def'):
+    #            shutil.copy(schema_path(chip.get('asic', 'def')[0]), in_def)
+    #       else:
+    #            chip.logger.error('export: no DEF found!')
+    #            os.sys.exit(1)
 
 ################################
 # Post_process (post executable)
