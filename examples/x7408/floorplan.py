@@ -63,7 +63,7 @@ def core_floorplan(fp, chip):
     # Setup power nets and pins
     fp.add_net('_vdd', ['VPWR'], 'power')
     fp.add_net('_vss', ['VGND'], 'ground')
-    fp.place_pins(['_vdd', '_vss', '_vdd', '_vss'], margin_left + gpio_w, core_h - margin_bottom, gpio_w*2, 0, gpio_w, gpio_h, 'm5', direction='inout')
+    fp.place_pins(['_vdd0', '_vss0', '_vdd1', '_vss1'], margin_left + gpio_w, core_h - margin_bottom, gpio_w*2, 0, gpio_w, gpio_h, 'm5', direction='inout')
 
     '''
     # PDN

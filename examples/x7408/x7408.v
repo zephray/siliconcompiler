@@ -24,9 +24,18 @@ module x7408
   output wire Y2,
   output wire Y3,
   output wire Y4,
-  inout _vss,
-  inout _vdd
+  inout _vss0,
+  inout _vdd0,
+  inout _vss1,
+  inout _vdd1
 );
+  // Power pad connections.
+  wire _vdd;
+  wire _vss;
+  assign _vss0 = _vss;
+  assign _vss1 = _vss;
+  assign _vdd0 = _vdd;
+  assign _vdd1 = _vdd;
   // Instantiate 4 AND2 gates with the top module's signals.
   and_2in and1(A1, B1, Y1);
   and_2in and2(A2, B2, Y2);
