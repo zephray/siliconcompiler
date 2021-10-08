@@ -30,14 +30,27 @@ def calculate_even_spacing(fp, pads, distance, start):
 def core_floorplan(fp, chip):
     place_w = 240 * fp.stdcell_width
     place_h = 40 * fp.stdcell_height
-    margin_left = 24 * fp.stdcell_width
-    margin_bottom = 4 * fp.stdcell_height
+    #place_w = 3840 * fp.stdcell_width
+    #place_h = 640 * fp.stdcell_height
+    gpio_w = 24 * fp.stdcell_width
+    gpio_h = 4 * fp.stdcell_height
+    #gpio_w = fp.available_cells[GPIO].width
+    #gpio_h = fp.available_cells[GPIO].height
+    print('Cell W: {fp.stdcell_width}')
+    print('Cell H: {fp.stdcell_height}')
+    #margin_left = 24 * fp.stdcell_width
+    #margin_bottom = 4 * fp.stdcell_height
+    #margin_left = 1440 * fp.stdcell_width
+    #margin_bottom = 320 * fp.stdcell_height
+    margin_left = math.ceil(gpio_h/fp.stdcell_width)*fp.stdcell_width
+    margin_bottom = math.ceil(gpio_h/fp.stdcell_height)*fp.stdcell_height
     core_w = place_w + (2 * margin_left)
     core_h = place_h + (2 * margin_bottom)
 
-    #gpio_h = fp.available_cells[GPIO].height
-    gpio_w = margin_left
-    gpio_h = margin_bottom
+    print(f'GPIO H (stdcell): {fp.available_cells[GPIO].height} ({fp.available_cells[GPIO].height/fp.stdcell_height} cells)')
+    print(f'GPIO W (stdcell): {fp.available_cells[GPIO].width} ({fp.available_cells[GPIO].width/fp.stdcell_width} cells)')
+    print(f'GPIO W: {gpio_w}')
+    print(f'GPIO H: {gpio_h}')
 
     top_w = math.ceil(core_w + 2 * gpio_h)
     top_h = math.ceil(core_h + 2 * gpio_h)
@@ -52,18 +65,36 @@ def core_floorplan(fp, chip):
 
     gpio_Lb = margin_left + gpio_h/2
     gpio_Bb = margin_bottom + gpio_h
-    chip.logger.info(f'DIE  X: 0 Y: 0 W: {core_w} H: {core_h}')
-    chip.logger.info(f'CORE X: {margin_left} Y: {margin_bottom} W: {place_w} H: {place_h}')
-    chip.logger.info(f'X: {gpio_Lb} Y: {gpio_Bb} W: {gpio_h} H: {gpio_h}')
 
-    fp.place_pins(['A1', 'B1', 'A2', 'B2'], 0, margin_bottom + gpio_h, 0, gpio_h*2, gpio_w, gpio_h, 'm5', direction='input')
-    fp.place_pins(['A3', 'B3', 'A4', 'B4'], core_w - margin_left, margin_bottom + gpio_h, 0, gpio_h*2, gpio_w, gpio_h, 'm5', direction='input')
-    fp.place_pins(['Y1', 'Y2', 'Y3', 'Y4'], margin_left + gpio_w, 0, gpio_w*2, 0, gpio_w, gpio_h, 'm5', direction='output')
-
-    # Setup power nets and pins
+    # Setup special power nets.
     fp.add_net('_vdd', ['VPWR'], 'power')
     fp.add_net('_vss', ['VGND'], 'ground')
-    fp.place_pins(['_vdd0', '_vss0', '_vdd1', '_vss1'], margin_left + gpio_w, core_h - margin_bottom, gpio_w*2, 0, gpio_w, gpio_h, 'm5', direction='inout')
+
+    # Pin layout: (Quad AND, so Yn[out] = An[in] & Bn[in])
+    # No tri-states, but power supplies are marked as 'inout'.
+    #   /_V-_Y1_B1_A1_\
+    # V+|             |A2
+    # Y4|             |B2
+    # B4|             |Y2
+    # A4|             |V+
+    #   \_A3_B3_Y3_V-_/
+    gap = 2
+    # West
+    fp.place_pins(['_vdd0'], 0, margin_bottom + gpio_w + (gpio_w*3*gap), 0, 0, gpio_h, gpio_w, 'm5', direction='inout')
+    fp.place_pins(['Y4'], 0, margin_bottom + gpio_w + (gpio_w*2*gap), 0, 0, gpio_h, gpio_w, 'm5', direction='output')
+    fp.place_pins(['A4', 'B4'], 0, margin_bottom + gpio_w, 0, gpio_w*gap, gpio_h, gpio_w, 'm5', direction='input')
+    # North
+    fp.place_pins(['_vss0'], margin_left + gpio_w, core_h - margin_bottom, 0, 0, gpio_w, gpio_h, 'm5', direction='inout')
+    fp.place_pins(['Y1'], margin_left + gpio_w + gpio_w*gap, core_h - margin_bottom, 0, 0, gpio_w, gpio_h, 'm5', direction='output')
+    fp.place_pins(['B1', 'A1'], margin_left + gpio_w + (gpio_w*2*gap), core_h - margin_bottom, gpio_w*gap, 0, gpio_w, gpio_h, 'm5', direction='input')
+    # East
+    fp.place_pins(['_vdd1'], core_w - margin_left, margin_bottom + gpio_w, 0, 0, gpio_h, gpio_w, 'm5', direction='inout')
+    fp.place_pins(['Y2'], core_w - margin_left, margin_bottom + gpio_w + gpio_w*gap, 0, 0, gpio_h, gpio_w, 'm5', direction='output')
+    fp.place_pins(['B2', 'A2'], core_w - margin_left, margin_bottom + gpio_w + (gpio_w*2*gap), 0, gpio_w*gap, gpio_h, gpio_w, 'm5', direction='input')
+    # South
+    fp.place_pins(['_vss1'], margin_left + gpio_w + (gpio_w*3*gap), 0, 0, 0, gpio_w, gpio_h, 'm5', direction='inout')
+    fp.place_pins(['Y3'], margin_left + gpio_w + (gpio_w*2*gap), 0, 0, 0, gpio_w, gpio_h, 'm5', direction='output')
+    fp.place_pins(['A3', 'B3'], margin_left + gpio_w, 0, gpio_w*gap, 0, gpio_w, gpio_h, 'm5', direction='input')
 
     '''
     # PDN

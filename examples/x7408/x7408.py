@@ -21,8 +21,21 @@ def build_core():
     Helper method to build the core design, without a top-level padring.
     '''
 
+    #chip = siliconcompiler.Chip(design='x7408_top', loglevel='INFO')
     chip = siliconcompiler.Chip(design='x7408', loglevel='INFO')
     chip.add('source', 'x7408.v')
+    chip.add('source', 'oh/padring/hdl/oh_padring.v')
+    chip.add('source', 'oh/padring/hdl/oh_pads_domain.v')
+    chip.add('source', 'oh/padring/hdl/oh_pads_corner.v')
+    chip.add('source', 'asic/sky130/io/asic_iobuf.v')
+    chip.add('source', 'asic/sky130/io/asic_iovdd.v')
+    chip.add('source', 'asic/sky130/io/asic_iovddio.v')
+    chip.add('source', 'asic/sky130/io/asic_iovss.v')
+    chip.add('source', 'asic/sky130/io/asic_iovssio.v')
+    chip.add('source', 'asic/sky130/io/asic_iocorner.v')
+    chip.add('source', 'asic/sky130/io/asic_iopoc.v')
+    chip.add('source', 'asic/sky130/io/asic_iocut.v')
+    chip.add('source', 'asic/sky130/io/sky130_io.blackbox.v')
     chip.add('constraint', "x7408.sdc")
     chip.set('relax', True)
     #chip.set('quiet', True)
