@@ -131,9 +131,12 @@ def setup_flow(chip):
             fanout = int(chip.get('flowarg', param)[0])
         for index in range(fanout):
             for metric in chip.getkeys('metric', 'default', 'default'):
-                if metric in ('errors','warnings','drvs','holdwns','setupwns','holdtns','setuptns'):
+                if metric in ('errors', 'drvs'):
                     chip.set('flowgraph', step, str(index), 'weight', metric, 0)
-                    chip.set('metric', step, str(index), metric, 'goal', 0)
+                    chip.set('metric', step, str(index), metric, 'maxgoal', 0)
+                elif metric in ('holdwns','setupwns','holdtns','setuptns'):
+                    chip.set('flowgraph', step, str(index), 'weight', metric, 0)
+                    chip.set('metric', step, str(index), metric, 'mingoal', 0)
                 elif metric in ('cellarea', 'peakpower', 'standbypower'):
                     chip.set('flowgraph', step, str(index), 'weight', metric, 1.0)
                 elif metric not in ('dsps', 'brams', 'luts'):

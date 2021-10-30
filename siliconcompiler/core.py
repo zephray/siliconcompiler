@@ -2178,7 +2178,6 @@ class Chip:
 
         # Keeping track of the steps/indexes that have goals met
         failed = {}
-        goals_met = False
         for stepindex in steplist:
             match = re.match(r'(\w+)(\d+)$', stepindex)
             step = match.group(1)
@@ -2189,13 +2188,21 @@ class Chip:
                 else:
                     failed[step][index] = False
                     for metric in self.getkeys('metric', step, index):
-                        if 'goal' in self.getkeys('metric', step, index, metric):
-                            goal = self.get('metric', step, index, metric, 'goal')
-                            real = self.get('metric', step, index, metric, 'real')
-                            if bool(real > goal):
-                                failed[step][index] = True
-                if not failed[step][index]:
-                    goals_met = True
+                        real = self.get('metric', step, index, metric, 'real')
+                        goal_met = True
+                        if 'maxgoal' in self.getkeys('metric', step, index, metric):
+                            goal = self.get('metric', step, index, metric, 'maxgoal')
+                            if real > goal:
+                                goal_met = False
+                        if 'mingoal' in self.getkeys('metric', step, index, metric):
+                            goal = self.get('metric', step, index, metric, 'mingoal')
+                            if real < goal:
+                                goal_met = False
+                        if not goal_met:
+                            self.logger.warning(f"Step {step}{index} failed "
+                                f"because it didn't meet goals for '{metric}' "
+                                "metric.")
+                            failed[step][index] = True
 
         # Calculate max/min values for each metric
         max_val = {}
@@ -2223,6 +2230,9 @@ class Chip:
             step = match.group(1)
             #TODO: why not run for all stepindex inputs?
             for index in self.getkeys('flowgraph', step):
+                if failed[step][index]:
+                    continue
+
                 if not self.get('flowstatus', step, index, 'error'):
                     score = 0.0
                     for metric in self.getkeys('flowgraph', step, index, 'weight'):
@@ -2238,7 +2248,7 @@ class Chip:
                             scaled = max_val[step][metric]
                         score = score + scaled * weight
 
-                    if (score < min_score) & (not (failed[step][index] & goals_met)):
+                    if score < min_score:
                         min_score = score
                         winner = [step+index]
 
