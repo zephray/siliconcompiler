@@ -65,10 +65,13 @@ def runtime_options(chip):
     if partname == 'ice40up5k-sg48':
         options.append('--up5k --package sg48')
 
-    pcf_file = None
-    for constraint_file in chip.find_files('constraint'):
-        if os.path.splitext(constraint_file)[-1] == '.pcf':
-            options.append('--pcf ' + constraint_file)
+    constraint_files = chip.find_files('constraint')
+    if len(constraint_files) == 0:
+        options.append('--pcf-allow-unconstrained')
+    else:
+        for constraint_file in constraint_files:
+            if os.path.splitext(constraint_file)[-1] == '.pcf':
+                options.append('--pcf ' + constraint_file)
 
     return options
 

@@ -1,0 +1,8 @@
+# 12 MHz clock
+set_io -nowarn clk        35
+set_frequency  clk        12
+
+# button
+set_io -nowarn nreset     10
+# LED
+set_io -nowarn out        11
