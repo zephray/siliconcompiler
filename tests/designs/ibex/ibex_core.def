@@ -1,0 +1,3843 @@
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN ibex_core ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 908500 911200 ) ;
+
+ROW ROW_0 unithd 10120 10880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_1 unithd 10120 13600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_2 unithd 10120 16320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_3 unithd 10120 19040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_4 unithd 10120 21760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_5 unithd 10120 24480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_6 unithd 10120 27200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_7 unithd 10120 29920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_8 unithd 10120 32640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_9 unithd 10120 35360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_10 unithd 10120 38080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_11 unithd 10120 40800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_12 unithd 10120 43520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_13 unithd 10120 46240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_14 unithd 10120 48960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_15 unithd 10120 51680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_16 unithd 10120 54400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_17 unithd 10120 57120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_18 unithd 10120 59840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_19 unithd 10120 62560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_20 unithd 10120 65280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_21 unithd 10120 68000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_22 unithd 10120 70720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_23 unithd 10120 73440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_24 unithd 10120 76160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_25 unithd 10120 78880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_26 unithd 10120 81600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_27 unithd 10120 84320 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_28 unithd 10120 87040 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_29 unithd 10120 89760 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_30 unithd 10120 92480 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_31 unithd 10120 95200 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_32 unithd 10120 97920 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_33 unithd 10120 100640 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_34 unithd 10120 103360 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_35 unithd 10120 106080 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_36 unithd 10120 108800 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_37 unithd 10120 111520 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_38 unithd 10120 114240 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_39 unithd 10120 116960 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_40 unithd 10120 119680 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_41 unithd 10120 122400 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_42 unithd 10120 125120 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_43 unithd 10120 127840 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_44 unithd 10120 130560 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_45 unithd 10120 133280 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_46 unithd 10120 136000 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_47 unithd 10120 138720 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_48 unithd 10120 141440 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_49 unithd 10120 144160 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_50 unithd 10120 146880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_51 unithd 10120 149600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_52 unithd 10120 152320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_53 unithd 10120 155040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_54 unithd 10120 157760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_55 unithd 10120 160480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_56 unithd 10120 163200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_57 unithd 10120 165920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_58 unithd 10120 168640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_59 unithd 10120 171360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_60 unithd 10120 174080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_61 unithd 10120 176800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_62 unithd 10120 179520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_63 unithd 10120 182240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_64 unithd 10120 184960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_65 unithd 10120 187680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_66 unithd 10120 190400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_67 unithd 10120 193120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_68 unithd 10120 195840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_69 unithd 10120 198560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_70 unithd 10120 201280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_71 unithd 10120 204000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_72 unithd 10120 206720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_73 unithd 10120 209440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_74 unithd 10120 212160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_75 unithd 10120 214880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_76 unithd 10120 217600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_77 unithd 10120 220320 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_78 unithd 10120 223040 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_79 unithd 10120 225760 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_80 unithd 10120 228480 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_81 unithd 10120 231200 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_82 unithd 10120 233920 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_83 unithd 10120 236640 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_84 unithd 10120 239360 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_85 unithd 10120 242080 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_86 unithd 10120 244800 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_87 unithd 10120 247520 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_88 unithd 10120 250240 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_89 unithd 10120 252960 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_90 unithd 10120 255680 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_91 unithd 10120 258400 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_92 unithd 10120 261120 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_93 unithd 10120 263840 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_94 unithd 10120 266560 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_95 unithd 10120 269280 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_96 unithd 10120 272000 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_97 unithd 10120 274720 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_98 unithd 10120 277440 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_99 unithd 10120 280160 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_100 unithd 10120 282880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_101 unithd 10120 285600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_102 unithd 10120 288320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_103 unithd 10120 291040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_104 unithd 10120 293760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_105 unithd 10120 296480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_106 unithd 10120 299200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_107 unithd 10120 301920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_108 unithd 10120 304640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_109 unithd 10120 307360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_110 unithd 10120 310080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_111 unithd 10120 312800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_112 unithd 10120 315520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_113 unithd 10120 318240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_114 unithd 10120 320960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_115 unithd 10120 323680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_116 unithd 10120 326400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_117 unithd 10120 329120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_118 unithd 10120 331840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_119 unithd 10120 334560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_120 unithd 10120 337280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_121 unithd 10120 340000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_122 unithd 10120 342720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_123 unithd 10120 345440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_124 unithd 10120 348160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_125 unithd 10120 350880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_126 unithd 10120 353600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_127 unithd 10120 356320 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_128 unithd 10120 359040 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_129 unithd 10120 361760 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_130 unithd 10120 364480 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_131 unithd 10120 367200 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_132 unithd 10120 369920 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_133 unithd 10120 372640 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_134 unithd 10120 375360 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_135 unithd 10120 378080 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_136 unithd 10120 380800 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_137 unithd 10120 383520 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_138 unithd 10120 386240 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_139 unithd 10120 388960 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_140 unithd 10120 391680 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_141 unithd 10120 394400 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_142 unithd 10120 397120 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_143 unithd 10120 399840 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_144 unithd 10120 402560 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_145 unithd 10120 405280 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_146 unithd 10120 408000 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_147 unithd 10120 410720 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_148 unithd 10120 413440 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_149 unithd 10120 416160 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_150 unithd 10120 418880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_151 unithd 10120 421600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_152 unithd 10120 424320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_153 unithd 10120 427040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_154 unithd 10120 429760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_155 unithd 10120 432480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_156 unithd 10120 435200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_157 unithd 10120 437920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_158 unithd 10120 440640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_159 unithd 10120 443360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_160 unithd 10120 446080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_161 unithd 10120 448800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_162 unithd 10120 451520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_163 unithd 10120 454240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_164 unithd 10120 456960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_165 unithd 10120 459680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_166 unithd 10120 462400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_167 unithd 10120 465120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_168 unithd 10120 467840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_169 unithd 10120 470560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_170 unithd 10120 473280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_171 unithd 10120 476000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_172 unithd 10120 478720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_173 unithd 10120 481440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_174 unithd 10120 484160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_175 unithd 10120 486880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_176 unithd 10120 489600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_177 unithd 10120 492320 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_178 unithd 10120 495040 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_179 unithd 10120 497760 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_180 unithd 10120 500480 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_181 unithd 10120 503200 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_182 unithd 10120 505920 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_183 unithd 10120 508640 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_184 unithd 10120 511360 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_185 unithd 10120 514080 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_186 unithd 10120 516800 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_187 unithd 10120 519520 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_188 unithd 10120 522240 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_189 unithd 10120 524960 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_190 unithd 10120 527680 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_191 unithd 10120 530400 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_192 unithd 10120 533120 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_193 unithd 10120 535840 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_194 unithd 10120 538560 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_195 unithd 10120 541280 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_196 unithd 10120 544000 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_197 unithd 10120 546720 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_198 unithd 10120 549440 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_199 unithd 10120 552160 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_200 unithd 10120 554880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_201 unithd 10120 557600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_202 unithd 10120 560320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_203 unithd 10120 563040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_204 unithd 10120 565760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_205 unithd 10120 568480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_206 unithd 10120 571200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_207 unithd 10120 573920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_208 unithd 10120 576640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_209 unithd 10120 579360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_210 unithd 10120 582080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_211 unithd 10120 584800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_212 unithd 10120 587520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_213 unithd 10120 590240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_214 unithd 10120 592960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_215 unithd 10120 595680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_216 unithd 10120 598400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_217 unithd 10120 601120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_218 unithd 10120 603840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_219 unithd 10120 606560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_220 unithd 10120 609280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_221 unithd 10120 612000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_222 unithd 10120 614720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_223 unithd 10120 617440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_224 unithd 10120 620160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_225 unithd 10120 622880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_226 unithd 10120 625600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_227 unithd 10120 628320 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_228 unithd 10120 631040 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_229 unithd 10120 633760 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_230 unithd 10120 636480 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_231 unithd 10120 639200 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_232 unithd 10120 641920 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_233 unithd 10120 644640 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_234 unithd 10120 647360 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_235 unithd 10120 650080 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_236 unithd 10120 652800 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_237 unithd 10120 655520 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_238 unithd 10120 658240 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_239 unithd 10120 660960 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_240 unithd 10120 663680 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_241 unithd 10120 666400 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_242 unithd 10120 669120 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_243 unithd 10120 671840 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_244 unithd 10120 674560 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_245 unithd 10120 677280 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_246 unithd 10120 680000 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_247 unithd 10120 682720 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_248 unithd 10120 685440 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_249 unithd 10120 688160 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_250 unithd 10120 690880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_251 unithd 10120 693600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_252 unithd 10120 696320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_253 unithd 10120 699040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_254 unithd 10120 701760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_255 unithd 10120 704480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_256 unithd 10120 707200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_257 unithd 10120 709920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_258 unithd 10120 712640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_259 unithd 10120 715360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_260 unithd 10120 718080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_261 unithd 10120 720800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_262 unithd 10120 723520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_263 unithd 10120 726240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_264 unithd 10120 728960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_265 unithd 10120 731680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_266 unithd 10120 734400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_267 unithd 10120 737120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_268 unithd 10120 739840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_269 unithd 10120 742560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_270 unithd 10120 745280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_271 unithd 10120 748000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_272 unithd 10120 750720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_273 unithd 10120 753440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_274 unithd 10120 756160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_275 unithd 10120 758880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_276 unithd 10120 761600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_277 unithd 10120 764320 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_278 unithd 10120 767040 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_279 unithd 10120 769760 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_280 unithd 10120 772480 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_281 unithd 10120 775200 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_282 unithd 10120 777920 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_283 unithd 10120 780640 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_284 unithd 10120 783360 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_285 unithd 10120 786080 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_286 unithd 10120 788800 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_287 unithd 10120 791520 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_288 unithd 10120 794240 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_289 unithd 10120 796960 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_290 unithd 10120 799680 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_291 unithd 10120 802400 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_292 unithd 10120 805120 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_293 unithd 10120 807840 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_294 unithd 10120 810560 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_295 unithd 10120 813280 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_296 unithd 10120 816000 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_297 unithd 10120 818720 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_298 unithd 10120 821440 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_299 unithd 10120 824160 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_300 unithd 10120 826880 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_301 unithd 10120 829600 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_302 unithd 10120 832320 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_303 unithd 10120 835040 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_304 unithd 10120 837760 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_305 unithd 10120 840480 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_306 unithd 10120 843200 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_307 unithd 10120 845920 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_308 unithd 10120 848640 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_309 unithd 10120 851360 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_310 unithd 10120 854080 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_311 unithd 10120 856800 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_312 unithd 10120 859520 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_313 unithd 10120 862240 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_314 unithd 10120 864960 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_315 unithd 10120 867680 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_316 unithd 10120 870400 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_317 unithd 10120 873120 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_318 unithd 10120 875840 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_319 unithd 10120 878560 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_320 unithd 10120 881280 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_321 unithd 10120 884000 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_322 unithd 10120 886720 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_323 unithd 10120 889440 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_324 unithd 10120 892160 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_325 unithd 10120 894880 N
+    DO 1930.0 BY 1 STEP 460 0 ;
+ROW ROW_326 unithd 10120 897600 FS
+    DO 1930.0 BY 1 STEP 460 0 ;
+
+TRACKS X 230 DO 1975 STEP 460
+    LAYER li1 ;
+TRACKS Y 170 DO 2680 STEP 340
+    LAYER li1 ;
+TRACKS X 170 DO 2672 STEP 340
+    LAYER met1 ;
+TRACKS Y 170 DO 2680 STEP 340
+    LAYER met1 ;
+TRACKS X 230 DO 1975 STEP 460
+    LAYER met2 ;
+TRACKS Y 230 DO 1981 STEP 460
+    LAYER met2 ;
+TRACKS X 340 DO 1336 STEP 680
+    LAYER met3 ;
+TRACKS Y 340 DO 1340 STEP 680
+    LAYER met3 ;
+TRACKS X 460 DO 987 STEP 920
+    LAYER met4 ;
+TRACKS Y 460 DO 990 STEP 920
+    LAYER met4 ;
+TRACKS X 1700 DO 267 STEP 3400
+    LAYER met5 ;
+TRACKS Y 1700 DO 268 STEP 3400
+    LAYER met5 ;
+
+VIAS 0 ;
+END VIAS
+
+COMPONENTS 0 ;
+END COMPONENTS
+
+PINS 785 ;
+    - clk_i + NET clk_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 2380 ) N ;
+    - rst_ni + NET rst_ni + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 4420 ) N ;
+    - hart_id_i[0] + NET hart_id_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 6460 ) N ;
+    - hart_id_i[1] + NET hart_id_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 9180 ) N ;
+    - hart_id_i[2] + NET hart_id_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 11220 ) N ;
+    - hart_id_i[3] + NET hart_id_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 13940 ) N ;
+    - hart_id_i[4] + NET hart_id_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 15980 ) N ;
+    - hart_id_i[5] + NET hart_id_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 18020 ) N ;
+    - hart_id_i[6] + NET hart_id_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 20740 ) N ;
+    - hart_id_i[7] + NET hart_id_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 22780 ) N ;
+    - hart_id_i[8] + NET hart_id_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 25500 ) N ;
+    - hart_id_i[9] + NET hart_id_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 27540 ) N ;
+    - hart_id_i[10] + NET hart_id_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 30260 ) N ;
+    - hart_id_i[11] + NET hart_id_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 32300 ) N ;
+    - hart_id_i[12] + NET hart_id_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 34340 ) N ;
+    - hart_id_i[13] + NET hart_id_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 37060 ) N ;
+    - hart_id_i[14] + NET hart_id_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 39100 ) N ;
+    - hart_id_i[15] + NET hart_id_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 41820 ) N ;
+    - hart_id_i[16] + NET hart_id_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 43860 ) N ;
+    - hart_id_i[17] + NET hart_id_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 45900 ) N ;
+    - hart_id_i[18] + NET hart_id_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 48620 ) N ;
+    - hart_id_i[19] + NET hart_id_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 50660 ) N ;
+    - hart_id_i[20] + NET hart_id_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 53380 ) N ;
+    - hart_id_i[21] + NET hart_id_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 55420 ) N ;
+    - hart_id_i[22] + NET hart_id_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 57460 ) N ;
+    - hart_id_i[23] + NET hart_id_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 60180 ) N ;
+    - hart_id_i[24] + NET hart_id_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 62220 ) N ;
+    - hart_id_i[25] + NET hart_id_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 64940 ) N ;
+    - hart_id_i[26] + NET hart_id_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 66980 ) N ;
+    - hart_id_i[27] + NET hart_id_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 69020 ) N ;
+    - hart_id_i[28] + NET hart_id_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 71740 ) N ;
+    - hart_id_i[29] + NET hart_id_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 73780 ) N ;
+    - hart_id_i[30] + NET hart_id_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 76500 ) N ;
+    - hart_id_i[31] + NET hart_id_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 78540 ) N ;
+    - boot_addr_i[0] + NET boot_addr_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 80580 ) N ;
+    - boot_addr_i[1] + NET boot_addr_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 83300 ) N ;
+    - boot_addr_i[2] + NET boot_addr_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 85340 ) N ;
+    - boot_addr_i[3] + NET boot_addr_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 88060 ) N ;
+    - boot_addr_i[4] + NET boot_addr_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 90100 ) N ;
+    - boot_addr_i[5] + NET boot_addr_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 92140 ) N ;
+    - boot_addr_i[6] + NET boot_addr_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 94860 ) N ;
+    - boot_addr_i[7] + NET boot_addr_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 96900 ) N ;
+    - boot_addr_i[8] + NET boot_addr_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 99620 ) N ;
+    - boot_addr_i[9] + NET boot_addr_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 101660 ) N ;
+    - boot_addr_i[10] + NET boot_addr_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 103700 ) N ;
+    - boot_addr_i[11] + NET boot_addr_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 106420 ) N ;
+    - boot_addr_i[12] + NET boot_addr_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 108460 ) N ;
+    - boot_addr_i[13] + NET boot_addr_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 111180 ) N ;
+    - boot_addr_i[14] + NET boot_addr_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 113220 ) N ;
+    - boot_addr_i[15] + NET boot_addr_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 115260 ) N ;
+    - boot_addr_i[16] + NET boot_addr_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 117980 ) N ;
+    - boot_addr_i[17] + NET boot_addr_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 120020 ) N ;
+    - boot_addr_i[18] + NET boot_addr_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 122740 ) N ;
+    - boot_addr_i[19] + NET boot_addr_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 124780 ) N ;
+    - boot_addr_i[20] + NET boot_addr_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 126820 ) N ;
+    - boot_addr_i[21] + NET boot_addr_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 129540 ) N ;
+    - boot_addr_i[22] + NET boot_addr_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 131580 ) N ;
+    - boot_addr_i[23] + NET boot_addr_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 134300 ) N ;
+    - boot_addr_i[24] + NET boot_addr_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 136340 ) N ;
+    - boot_addr_i[25] + NET boot_addr_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 138380 ) N ;
+    - boot_addr_i[26] + NET boot_addr_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 141100 ) N ;
+    - boot_addr_i[27] + NET boot_addr_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 143140 ) N ;
+    - boot_addr_i[28] + NET boot_addr_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 145860 ) N ;
+    - boot_addr_i[29] + NET boot_addr_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 147900 ) N ;
+    - boot_addr_i[30] + NET boot_addr_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 149940 ) N ;
+    - boot_addr_i[31] + NET boot_addr_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 152660 ) N ;
+    - instr_gnt_i + NET instr_gnt_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 154700 ) N ;
+    - instr_rvalid_i + NET instr_rvalid_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 157420 ) N ;
+    - instr_rdata_i[0] + NET instr_rdata_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 159460 ) N ;
+    - instr_rdata_i[1] + NET instr_rdata_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 161500 ) N ;
+    - instr_rdata_i[2] + NET instr_rdata_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 164220 ) N ;
+    - instr_rdata_i[3] + NET instr_rdata_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 166260 ) N ;
+    - instr_rdata_i[4] + NET instr_rdata_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 168980 ) N ;
+    - instr_rdata_i[5] + NET instr_rdata_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 171020 ) N ;
+    - instr_rdata_i[6] + NET instr_rdata_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 173060 ) N ;
+    - instr_rdata_i[7] + NET instr_rdata_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 175780 ) N ;
+    - instr_rdata_i[8] + NET instr_rdata_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 177820 ) N ;
+    - instr_rdata_i[9] + NET instr_rdata_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 180540 ) N ;
+    - instr_rdata_i[10] + NET instr_rdata_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 182580 ) N ;
+    - instr_rdata_i[11] + NET instr_rdata_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 184620 ) N ;
+    - instr_rdata_i[12] + NET instr_rdata_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 187340 ) N ;
+    - instr_rdata_i[13] + NET instr_rdata_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 189380 ) N ;
+    - instr_rdata_i[14] + NET instr_rdata_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 192100 ) N ;
+    - instr_rdata_i[15] + NET instr_rdata_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 194140 ) N ;
+    - instr_rdata_i[16] + NET instr_rdata_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 196180 ) N ;
+    - instr_rdata_i[17] + NET instr_rdata_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 198900 ) N ;
+    - instr_rdata_i[18] + NET instr_rdata_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 200940 ) N ;
+    - instr_rdata_i[19] + NET instr_rdata_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 203660 ) N ;
+    - instr_rdata_i[20] + NET instr_rdata_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 205700 ) N ;
+    - instr_rdata_i[21] + NET instr_rdata_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 207740 ) N ;
+    - instr_rdata_i[22] + NET instr_rdata_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 210460 ) N ;
+    - instr_rdata_i[23] + NET instr_rdata_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 212500 ) N ;
+    - instr_rdata_i[24] + NET instr_rdata_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 215220 ) N ;
+    - instr_rdata_i[25] + NET instr_rdata_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 217260 ) N ;
+    - instr_rdata_i[26] + NET instr_rdata_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 219300 ) N ;
+    - instr_rdata_i[27] + NET instr_rdata_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 222020 ) N ;
+    - instr_rdata_i[28] + NET instr_rdata_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 224060 ) N ;
+    - instr_rdata_i[29] + NET instr_rdata_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 226780 ) N ;
+    - instr_rdata_i[30] + NET instr_rdata_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 228820 ) N ;
+    - instr_rdata_i[31] + NET instr_rdata_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 230860 ) N ;
+    - instr_err_i + NET instr_err_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 233580 ) N ;
+    - data_gnt_i + NET data_gnt_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 235620 ) N ;
+    - data_rvalid_i + NET data_rvalid_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 238340 ) N ;
+    - data_rdata_i[0] + NET data_rdata_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 240380 ) N ;
+    - data_rdata_i[1] + NET data_rdata_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 243100 ) N ;
+    - data_rdata_i[2] + NET data_rdata_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 245140 ) N ;
+    - data_rdata_i[3] + NET data_rdata_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 247180 ) N ;
+    - data_rdata_i[4] + NET data_rdata_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 249900 ) N ;
+    - data_rdata_i[5] + NET data_rdata_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 251940 ) N ;
+    - data_rdata_i[6] + NET data_rdata_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 254660 ) N ;
+    - data_rdata_i[7] + NET data_rdata_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 256700 ) N ;
+    - data_rdata_i[8] + NET data_rdata_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 258740 ) N ;
+    - data_rdata_i[9] + NET data_rdata_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 261460 ) N ;
+    - data_rdata_i[10] + NET data_rdata_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 263500 ) N ;
+    - data_rdata_i[11] + NET data_rdata_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 266220 ) N ;
+    - data_rdata_i[12] + NET data_rdata_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 268260 ) N ;
+    - data_rdata_i[13] + NET data_rdata_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 270300 ) N ;
+    - data_rdata_i[14] + NET data_rdata_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 273020 ) N ;
+    - data_rdata_i[15] + NET data_rdata_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 275060 ) N ;
+    - data_rdata_i[16] + NET data_rdata_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 277780 ) N ;
+    - data_rdata_i[17] + NET data_rdata_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 279820 ) N ;
+    - data_rdata_i[18] + NET data_rdata_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 281860 ) N ;
+    - data_rdata_i[19] + NET data_rdata_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 284580 ) N ;
+    - data_rdata_i[20] + NET data_rdata_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 286620 ) N ;
+    - data_rdata_i[21] + NET data_rdata_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 289340 ) N ;
+    - data_rdata_i[22] + NET data_rdata_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 291380 ) N ;
+    - data_rdata_i[23] + NET data_rdata_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 293420 ) N ;
+    - data_rdata_i[24] + NET data_rdata_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 296140 ) N ;
+    - data_rdata_i[25] + NET data_rdata_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 298180 ) N ;
+    - data_rdata_i[26] + NET data_rdata_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 300900 ) N ;
+    - data_rdata_i[27] + NET data_rdata_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 302940 ) N ;
+    - data_rdata_i[28] + NET data_rdata_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 304980 ) N ;
+    - data_rdata_i[29] + NET data_rdata_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 307700 ) N ;
+    - data_rdata_i[30] + NET data_rdata_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 309740 ) N ;
+    - data_rdata_i[31] + NET data_rdata_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 312460 ) N ;
+    - data_err_i + NET data_err_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 314500 ) N ;
+    - rf_rdata_a_ecc_i[0] + NET rf_rdata_a_ecc_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 316540 ) N ;
+    - rf_rdata_a_ecc_i[1] + NET rf_rdata_a_ecc_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 319260 ) N ;
+    - rf_rdata_a_ecc_i[2] + NET rf_rdata_a_ecc_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 321300 ) N ;
+    - rf_rdata_a_ecc_i[3] + NET rf_rdata_a_ecc_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 324020 ) N ;
+    - rf_rdata_a_ecc_i[4] + NET rf_rdata_a_ecc_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 326060 ) N ;
+    - rf_rdata_a_ecc_i[5] + NET rf_rdata_a_ecc_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 328100 ) N ;
+    - rf_rdata_a_ecc_i[6] + NET rf_rdata_a_ecc_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 330820 ) N ;
+    - rf_rdata_a_ecc_i[7] + NET rf_rdata_a_ecc_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 332860 ) N ;
+    - rf_rdata_a_ecc_i[8] + NET rf_rdata_a_ecc_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 335580 ) N ;
+    - rf_rdata_a_ecc_i[9] + NET rf_rdata_a_ecc_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 337620 ) N ;
+    - rf_rdata_a_ecc_i[10] + NET rf_rdata_a_ecc_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 339660 ) N ;
+    - rf_rdata_a_ecc_i[11] + NET rf_rdata_a_ecc_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 342380 ) N ;
+    - rf_rdata_a_ecc_i[12] + NET rf_rdata_a_ecc_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 344420 ) N ;
+    - rf_rdata_a_ecc_i[13] + NET rf_rdata_a_ecc_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 347140 ) N ;
+    - rf_rdata_a_ecc_i[14] + NET rf_rdata_a_ecc_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 349180 ) N ;
+    - rf_rdata_a_ecc_i[15] + NET rf_rdata_a_ecc_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 351220 ) N ;
+    - rf_rdata_a_ecc_i[16] + NET rf_rdata_a_ecc_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 353940 ) N ;
+    - rf_rdata_a_ecc_i[17] + NET rf_rdata_a_ecc_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 355980 ) N ;
+    - rf_rdata_a_ecc_i[18] + NET rf_rdata_a_ecc_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 358700 ) N ;
+    - rf_rdata_a_ecc_i[19] + NET rf_rdata_a_ecc_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 360740 ) N ;
+    - rf_rdata_a_ecc_i[20] + NET rf_rdata_a_ecc_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 362780 ) N ;
+    - rf_rdata_a_ecc_i[21] + NET rf_rdata_a_ecc_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 365500 ) N ;
+    - rf_rdata_a_ecc_i[22] + NET rf_rdata_a_ecc_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 367540 ) N ;
+    - rf_rdata_a_ecc_i[23] + NET rf_rdata_a_ecc_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 370260 ) N ;
+    - rf_rdata_a_ecc_i[24] + NET rf_rdata_a_ecc_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 372300 ) N ;
+    - rf_rdata_a_ecc_i[25] + NET rf_rdata_a_ecc_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 374340 ) N ;
+    - rf_rdata_a_ecc_i[26] + NET rf_rdata_a_ecc_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 377060 ) N ;
+    - rf_rdata_a_ecc_i[27] + NET rf_rdata_a_ecc_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 379100 ) N ;
+    - rf_rdata_a_ecc_i[28] + NET rf_rdata_a_ecc_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 381820 ) N ;
+    - rf_rdata_a_ecc_i[29] + NET rf_rdata_a_ecc_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 383860 ) N ;
+    - rf_rdata_a_ecc_i[30] + NET rf_rdata_a_ecc_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 385900 ) N ;
+    - rf_rdata_a_ecc_i[31] + NET rf_rdata_a_ecc_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 388620 ) N ;
+    - rf_rdata_b_ecc_i[0] + NET rf_rdata_b_ecc_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 390660 ) N ;
+    - rf_rdata_b_ecc_i[1] + NET rf_rdata_b_ecc_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 393380 ) N ;
+    - rf_rdata_b_ecc_i[2] + NET rf_rdata_b_ecc_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 395420 ) N ;
+    - rf_rdata_b_ecc_i[3] + NET rf_rdata_b_ecc_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 397460 ) N ;
+    - rf_rdata_b_ecc_i[4] + NET rf_rdata_b_ecc_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 400180 ) N ;
+    - rf_rdata_b_ecc_i[5] + NET rf_rdata_b_ecc_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 402220 ) N ;
+    - rf_rdata_b_ecc_i[6] + NET rf_rdata_b_ecc_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 404940 ) N ;
+    - rf_rdata_b_ecc_i[7] + NET rf_rdata_b_ecc_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 406980 ) N ;
+    - rf_rdata_b_ecc_i[8] + NET rf_rdata_b_ecc_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 409020 ) N ;
+    - rf_rdata_b_ecc_i[9] + NET rf_rdata_b_ecc_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 411740 ) N ;
+    - rf_rdata_b_ecc_i[10] + NET rf_rdata_b_ecc_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 413780 ) N ;
+    - rf_rdata_b_ecc_i[11] + NET rf_rdata_b_ecc_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 416500 ) N ;
+    - rf_rdata_b_ecc_i[12] + NET rf_rdata_b_ecc_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 418540 ) N ;
+    - rf_rdata_b_ecc_i[13] + NET rf_rdata_b_ecc_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 420580 ) N ;
+    - rf_rdata_b_ecc_i[14] + NET rf_rdata_b_ecc_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 423300 ) N ;
+    - rf_rdata_b_ecc_i[15] + NET rf_rdata_b_ecc_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 425340 ) N ;
+    - rf_rdata_b_ecc_i[16] + NET rf_rdata_b_ecc_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 428060 ) N ;
+    - rf_rdata_b_ecc_i[17] + NET rf_rdata_b_ecc_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 430100 ) N ;
+    - rf_rdata_b_ecc_i[18] + NET rf_rdata_b_ecc_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 432140 ) N ;
+    - rf_rdata_b_ecc_i[19] + NET rf_rdata_b_ecc_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 434860 ) N ;
+    - rf_rdata_b_ecc_i[20] + NET rf_rdata_b_ecc_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 436900 ) N ;
+    - rf_rdata_b_ecc_i[21] + NET rf_rdata_b_ecc_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 439620 ) N ;
+    - rf_rdata_b_ecc_i[22] + NET rf_rdata_b_ecc_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 441660 ) N ;
+    - rf_rdata_b_ecc_i[23] + NET rf_rdata_b_ecc_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 443700 ) N ;
+    - rf_rdata_b_ecc_i[24] + NET rf_rdata_b_ecc_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 446420 ) N ;
+    - rf_rdata_b_ecc_i[25] + NET rf_rdata_b_ecc_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 448460 ) N ;
+    - rf_rdata_b_ecc_i[26] + NET rf_rdata_b_ecc_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 451180 ) N ;
+    - rf_rdata_b_ecc_i[27] + NET rf_rdata_b_ecc_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 453220 ) N ;
+    - rf_rdata_b_ecc_i[28] + NET rf_rdata_b_ecc_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 455260 ) N ;
+    - rf_rdata_b_ecc_i[29] + NET rf_rdata_b_ecc_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 457980 ) N ;
+    - rf_rdata_b_ecc_i[30] + NET rf_rdata_b_ecc_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 460020 ) N ;
+    - rf_rdata_b_ecc_i[31] + NET rf_rdata_b_ecc_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 462740 ) N ;
+    - ic_tag_rdata_i[0] + NET ic_tag_rdata_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 464780 ) N ;
+    - ic_tag_rdata_i[1] + NET ic_tag_rdata_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 467500 ) N ;
+    - ic_tag_rdata_i[2] + NET ic_tag_rdata_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 469540 ) N ;
+    - ic_tag_rdata_i[3] + NET ic_tag_rdata_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 471580 ) N ;
+    - ic_tag_rdata_i[4] + NET ic_tag_rdata_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 474300 ) N ;
+    - ic_tag_rdata_i[5] + NET ic_tag_rdata_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 476340 ) N ;
+    - ic_tag_rdata_i[6] + NET ic_tag_rdata_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 479060 ) N ;
+    - ic_tag_rdata_i[7] + NET ic_tag_rdata_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 481100 ) N ;
+    - ic_tag_rdata_i[8] + NET ic_tag_rdata_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 483140 ) N ;
+    - ic_tag_rdata_i[9] + NET ic_tag_rdata_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 485860 ) N ;
+    - ic_tag_rdata_i[10] + NET ic_tag_rdata_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 487900 ) N ;
+    - ic_tag_rdata_i[11] + NET ic_tag_rdata_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 490620 ) N ;
+    - ic_tag_rdata_i[12] + NET ic_tag_rdata_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 492660 ) N ;
+    - ic_tag_rdata_i[13] + NET ic_tag_rdata_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 494700 ) N ;
+    - ic_tag_rdata_i[14] + NET ic_tag_rdata_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 497420 ) N ;
+    - ic_tag_rdata_i[15] + NET ic_tag_rdata_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 499460 ) N ;
+    - ic_tag_rdata_i[16] + NET ic_tag_rdata_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 502180 ) N ;
+    - ic_tag_rdata_i[17] + NET ic_tag_rdata_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 504220 ) N ;
+    - ic_tag_rdata_i[18] + NET ic_tag_rdata_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 506260 ) N ;
+    - ic_tag_rdata_i[19] + NET ic_tag_rdata_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 508980 ) N ;
+    - ic_tag_rdata_i[20] + NET ic_tag_rdata_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 511020 ) N ;
+    - ic_tag_rdata_i[21] + NET ic_tag_rdata_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 513740 ) N ;
+    - ic_tag_rdata_i[22] + NET ic_tag_rdata_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 515780 ) N ;
+    - ic_tag_rdata_i[23] + NET ic_tag_rdata_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 517820 ) N ;
+    - ic_tag_rdata_i[24] + NET ic_tag_rdata_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 520540 ) N ;
+    - ic_tag_rdata_i[25] + NET ic_tag_rdata_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 522580 ) N ;
+    - ic_tag_rdata_i[26] + NET ic_tag_rdata_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 525300 ) N ;
+    - ic_tag_rdata_i[27] + NET ic_tag_rdata_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 527340 ) N ;
+    - ic_tag_rdata_i[28] + NET ic_tag_rdata_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 529380 ) N ;
+    - ic_tag_rdata_i[29] + NET ic_tag_rdata_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 532100 ) N ;
+    - ic_tag_rdata_i[30] + NET ic_tag_rdata_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 534140 ) N ;
+    - ic_tag_rdata_i[31] + NET ic_tag_rdata_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 536860 ) N ;
+    - ic_tag_rdata_i[32] + NET ic_tag_rdata_i[32] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 538900 ) N ;
+    - ic_tag_rdata_i[33] + NET ic_tag_rdata_i[33] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 540940 ) N ;
+    - ic_tag_rdata_i[34] + NET ic_tag_rdata_i[34] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 543660 ) N ;
+    - ic_tag_rdata_i[35] + NET ic_tag_rdata_i[35] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 545700 ) N ;
+    - ic_tag_rdata_i[36] + NET ic_tag_rdata_i[36] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 548420 ) N ;
+    - ic_tag_rdata_i[37] + NET ic_tag_rdata_i[37] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 550460 ) N ;
+    - ic_tag_rdata_i[38] + NET ic_tag_rdata_i[38] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 552500 ) N ;
+    - ic_tag_rdata_i[39] + NET ic_tag_rdata_i[39] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 555220 ) N ;
+    - ic_tag_rdata_i[40] + NET ic_tag_rdata_i[40] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 557260 ) N ;
+    - ic_tag_rdata_i[41] + NET ic_tag_rdata_i[41] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 559980 ) N ;
+    - ic_tag_rdata_i[42] + NET ic_tag_rdata_i[42] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 562020 ) N ;
+    - ic_tag_rdata_i[43] + NET ic_tag_rdata_i[43] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 564060 ) N ;
+    - ic_data_rdata_i[0] + NET ic_data_rdata_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 566780 ) N ;
+    - ic_data_rdata_i[1] + NET ic_data_rdata_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 568820 ) N ;
+    - ic_data_rdata_i[2] + NET ic_data_rdata_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 571540 ) N ;
+    - ic_data_rdata_i[3] + NET ic_data_rdata_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 573580 ) N ;
+    - ic_data_rdata_i[4] + NET ic_data_rdata_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 575620 ) N ;
+    - ic_data_rdata_i[5] + NET ic_data_rdata_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 578340 ) N ;
+    - ic_data_rdata_i[6] + NET ic_data_rdata_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 580380 ) N ;
+    - ic_data_rdata_i[7] + NET ic_data_rdata_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 583100 ) N ;
+    - ic_data_rdata_i[8] + NET ic_data_rdata_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 585140 ) N ;
+    - ic_data_rdata_i[9] + NET ic_data_rdata_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 587180 ) N ;
+    - ic_data_rdata_i[10] + NET ic_data_rdata_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 589900 ) N ;
+    - ic_data_rdata_i[11] + NET ic_data_rdata_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 591940 ) N ;
+    - ic_data_rdata_i[12] + NET ic_data_rdata_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 594660 ) N ;
+    - ic_data_rdata_i[13] + NET ic_data_rdata_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 596700 ) N ;
+    - ic_data_rdata_i[14] + NET ic_data_rdata_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 598740 ) N ;
+    - ic_data_rdata_i[15] + NET ic_data_rdata_i[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 601460 ) N ;
+    - ic_data_rdata_i[16] + NET ic_data_rdata_i[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 603500 ) N ;
+    - ic_data_rdata_i[17] + NET ic_data_rdata_i[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 606220 ) N ;
+    - ic_data_rdata_i[18] + NET ic_data_rdata_i[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 608260 ) N ;
+    - ic_data_rdata_i[19] + NET ic_data_rdata_i[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 610300 ) N ;
+    - ic_data_rdata_i[20] + NET ic_data_rdata_i[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 613020 ) N ;
+    - ic_data_rdata_i[21] + NET ic_data_rdata_i[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 615060 ) N ;
+    - ic_data_rdata_i[22] + NET ic_data_rdata_i[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 617780 ) N ;
+    - ic_data_rdata_i[23] + NET ic_data_rdata_i[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 619820 ) N ;
+    - ic_data_rdata_i[24] + NET ic_data_rdata_i[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 621860 ) N ;
+    - ic_data_rdata_i[25] + NET ic_data_rdata_i[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 624580 ) N ;
+    - ic_data_rdata_i[26] + NET ic_data_rdata_i[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 626620 ) N ;
+    - ic_data_rdata_i[27] + NET ic_data_rdata_i[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 629340 ) N ;
+    - ic_data_rdata_i[28] + NET ic_data_rdata_i[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 631380 ) N ;
+    - ic_data_rdata_i[29] + NET ic_data_rdata_i[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 633420 ) N ;
+    - ic_data_rdata_i[30] + NET ic_data_rdata_i[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 636140 ) N ;
+    - ic_data_rdata_i[31] + NET ic_data_rdata_i[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 638180 ) N ;
+    - ic_data_rdata_i[32] + NET ic_data_rdata_i[32] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 640900 ) N ;
+    - ic_data_rdata_i[33] + NET ic_data_rdata_i[33] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 642940 ) N ;
+    - ic_data_rdata_i[34] + NET ic_data_rdata_i[34] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 644980 ) N ;
+    - ic_data_rdata_i[35] + NET ic_data_rdata_i[35] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 647700 ) N ;
+    - ic_data_rdata_i[36] + NET ic_data_rdata_i[36] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 649740 ) N ;
+    - ic_data_rdata_i[37] + NET ic_data_rdata_i[37] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 652460 ) N ;
+    - ic_data_rdata_i[38] + NET ic_data_rdata_i[38] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 654500 ) N ;
+    - ic_data_rdata_i[39] + NET ic_data_rdata_i[39] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 656540 ) N ;
+    - ic_data_rdata_i[40] + NET ic_data_rdata_i[40] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 659260 ) N ;
+    - ic_data_rdata_i[41] + NET ic_data_rdata_i[41] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 661300 ) N ;
+    - ic_data_rdata_i[42] + NET ic_data_rdata_i[42] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 664020 ) N ;
+    - ic_data_rdata_i[43] + NET ic_data_rdata_i[43] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 666060 ) N ;
+    - ic_data_rdata_i[44] + NET ic_data_rdata_i[44] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 668100 ) N ;
+    - ic_data_rdata_i[45] + NET ic_data_rdata_i[45] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 670820 ) N ;
+    - ic_data_rdata_i[46] + NET ic_data_rdata_i[46] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 672860 ) N ;
+    - ic_data_rdata_i[47] + NET ic_data_rdata_i[47] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 675580 ) N ;
+    - ic_data_rdata_i[48] + NET ic_data_rdata_i[48] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 677620 ) N ;
+    - ic_data_rdata_i[49] + NET ic_data_rdata_i[49] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 680340 ) N ;
+    - ic_data_rdata_i[50] + NET ic_data_rdata_i[50] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 682380 ) N ;
+    - ic_data_rdata_i[51] + NET ic_data_rdata_i[51] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 684420 ) N ;
+    - ic_data_rdata_i[52] + NET ic_data_rdata_i[52] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 687140 ) N ;
+    - ic_data_rdata_i[53] + NET ic_data_rdata_i[53] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 689180 ) N ;
+    - ic_data_rdata_i[54] + NET ic_data_rdata_i[54] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 691900 ) N ;
+    - ic_data_rdata_i[55] + NET ic_data_rdata_i[55] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 693940 ) N ;
+    - ic_data_rdata_i[56] + NET ic_data_rdata_i[56] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 695980 ) N ;
+    - ic_data_rdata_i[57] + NET ic_data_rdata_i[57] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 698700 ) N ;
+    - ic_data_rdata_i[58] + NET ic_data_rdata_i[58] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 700740 ) N ;
+    - ic_data_rdata_i[59] + NET ic_data_rdata_i[59] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 703460 ) N ;
+    - ic_data_rdata_i[60] + NET ic_data_rdata_i[60] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 705500 ) N ;
+    - ic_data_rdata_i[61] + NET ic_data_rdata_i[61] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 707540 ) N ;
+    - ic_data_rdata_i[62] + NET ic_data_rdata_i[62] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 710260 ) N ;
+    - ic_data_rdata_i[63] + NET ic_data_rdata_i[63] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 712300 ) N ;
+    - ic_data_rdata_i[64] + NET ic_data_rdata_i[64] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 715020 ) N ;
+    - ic_data_rdata_i[65] + NET ic_data_rdata_i[65] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 717060 ) N ;
+    - ic_data_rdata_i[66] + NET ic_data_rdata_i[66] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 719100 ) N ;
+    - ic_data_rdata_i[67] + NET ic_data_rdata_i[67] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 721820 ) N ;
+    - ic_data_rdata_i[68] + NET ic_data_rdata_i[68] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 723860 ) N ;
+    - ic_data_rdata_i[69] + NET ic_data_rdata_i[69] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 726580 ) N ;
+    - ic_data_rdata_i[70] + NET ic_data_rdata_i[70] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 728620 ) N ;
+    - ic_data_rdata_i[71] + NET ic_data_rdata_i[71] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 730660 ) N ;
+    - ic_data_rdata_i[72] + NET ic_data_rdata_i[72] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 733380 ) N ;
+    - ic_data_rdata_i[73] + NET ic_data_rdata_i[73] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 735420 ) N ;
+    - ic_data_rdata_i[74] + NET ic_data_rdata_i[74] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 738140 ) N ;
+    - ic_data_rdata_i[75] + NET ic_data_rdata_i[75] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 740180 ) N ;
+    - ic_data_rdata_i[76] + NET ic_data_rdata_i[76] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 742220 ) N ;
+    - ic_data_rdata_i[77] + NET ic_data_rdata_i[77] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 744940 ) N ;
+    - ic_data_rdata_i[78] + NET ic_data_rdata_i[78] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 746980 ) N ;
+    - ic_data_rdata_i[79] + NET ic_data_rdata_i[79] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 749700 ) N ;
+    - ic_data_rdata_i[80] + NET ic_data_rdata_i[80] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 751740 ) N ;
+    - ic_data_rdata_i[81] + NET ic_data_rdata_i[81] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 753780 ) N ;
+    - ic_data_rdata_i[82] + NET ic_data_rdata_i[82] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 756500 ) N ;
+    - ic_data_rdata_i[83] + NET ic_data_rdata_i[83] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 758540 ) N ;
+    - ic_data_rdata_i[84] + NET ic_data_rdata_i[84] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 761260 ) N ;
+    - ic_data_rdata_i[85] + NET ic_data_rdata_i[85] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 763300 ) N ;
+    - ic_data_rdata_i[86] + NET ic_data_rdata_i[86] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 765340 ) N ;
+    - ic_data_rdata_i[87] + NET ic_data_rdata_i[87] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 768060 ) N ;
+    - ic_data_rdata_i[88] + NET ic_data_rdata_i[88] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 770100 ) N ;
+    - ic_data_rdata_i[89] + NET ic_data_rdata_i[89] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 772820 ) N ;
+    - ic_data_rdata_i[90] + NET ic_data_rdata_i[90] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 774860 ) N ;
+    - ic_data_rdata_i[91] + NET ic_data_rdata_i[91] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 776900 ) N ;
+    - ic_data_rdata_i[92] + NET ic_data_rdata_i[92] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 779620 ) N ;
+    - ic_data_rdata_i[93] + NET ic_data_rdata_i[93] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 781660 ) N ;
+    - ic_data_rdata_i[94] + NET ic_data_rdata_i[94] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 784380 ) N ;
+    - ic_data_rdata_i[95] + NET ic_data_rdata_i[95] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 786420 ) N ;
+    - ic_data_rdata_i[96] + NET ic_data_rdata_i[96] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 788460 ) N ;
+    - ic_data_rdata_i[97] + NET ic_data_rdata_i[97] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 791180 ) N ;
+    - ic_data_rdata_i[98] + NET ic_data_rdata_i[98] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 793220 ) N ;
+    - ic_data_rdata_i[99] + NET ic_data_rdata_i[99] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 795940 ) N ;
+    - ic_data_rdata_i[100] + NET ic_data_rdata_i[100] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 797980 ) N ;
+    - ic_data_rdata_i[101] + NET ic_data_rdata_i[101] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 800020 ) N ;
+    - ic_data_rdata_i[102] + NET ic_data_rdata_i[102] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 802740 ) N ;
+    - ic_data_rdata_i[103] + NET ic_data_rdata_i[103] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 804780 ) N ;
+    - ic_data_rdata_i[104] + NET ic_data_rdata_i[104] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 807500 ) N ;
+    - ic_data_rdata_i[105] + NET ic_data_rdata_i[105] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 809540 ) N ;
+    - ic_data_rdata_i[106] + NET ic_data_rdata_i[106] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 811580 ) N ;
+    - ic_data_rdata_i[107] + NET ic_data_rdata_i[107] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 814300 ) N ;
+    - ic_data_rdata_i[108] + NET ic_data_rdata_i[108] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 816340 ) N ;
+    - ic_data_rdata_i[109] + NET ic_data_rdata_i[109] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 819060 ) N ;
+    - ic_data_rdata_i[110] + NET ic_data_rdata_i[110] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 821100 ) N ;
+    - ic_data_rdata_i[111] + NET ic_data_rdata_i[111] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 823140 ) N ;
+    - ic_data_rdata_i[112] + NET ic_data_rdata_i[112] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 825860 ) N ;
+    - ic_data_rdata_i[113] + NET ic_data_rdata_i[113] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 827900 ) N ;
+    - ic_data_rdata_i[114] + NET ic_data_rdata_i[114] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 830620 ) N ;
+    - ic_data_rdata_i[115] + NET ic_data_rdata_i[115] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 832660 ) N ;
+    - ic_data_rdata_i[116] + NET ic_data_rdata_i[116] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 834700 ) N ;
+    - ic_data_rdata_i[117] + NET ic_data_rdata_i[117] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 837420 ) N ;
+    - ic_data_rdata_i[118] + NET ic_data_rdata_i[118] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 839460 ) N ;
+    - ic_data_rdata_i[119] + NET ic_data_rdata_i[119] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 842180 ) N ;
+    - ic_data_rdata_i[120] + NET ic_data_rdata_i[120] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 844220 ) N ;
+    - ic_data_rdata_i[121] + NET ic_data_rdata_i[121] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 846260 ) N ;
+    - ic_data_rdata_i[122] + NET ic_data_rdata_i[122] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 848980 ) N ;
+    - ic_data_rdata_i[123] + NET ic_data_rdata_i[123] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 851020 ) N ;
+    - ic_data_rdata_i[124] + NET ic_data_rdata_i[124] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 853740 ) N ;
+    - ic_data_rdata_i[125] + NET ic_data_rdata_i[125] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 855780 ) N ;
+    - ic_data_rdata_i[126] + NET ic_data_rdata_i[126] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 857820 ) N ;
+    - ic_data_rdata_i[127] + NET ic_data_rdata_i[127] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 860540 ) N ;
+    - irq_software_i + NET irq_software_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 862580 ) N ;
+    - irq_timer_i + NET irq_timer_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 865300 ) N ;
+    - irq_external_i + NET irq_external_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 867340 ) N ;
+    - irq_fast_i[0] + NET irq_fast_i[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 869380 ) N ;
+    - irq_fast_i[1] + NET irq_fast_i[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 872100 ) N ;
+    - irq_fast_i[2] + NET irq_fast_i[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 874140 ) N ;
+    - irq_fast_i[3] + NET irq_fast_i[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 876860 ) N ;
+    - irq_fast_i[4] + NET irq_fast_i[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 878900 ) N ;
+    - irq_fast_i[5] + NET irq_fast_i[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 880940 ) N ;
+    - irq_fast_i[6] + NET irq_fast_i[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 883660 ) N ;
+    - irq_fast_i[7] + NET irq_fast_i[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 885700 ) N ;
+    - irq_fast_i[8] + NET irq_fast_i[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 888420 ) N ;
+    - irq_fast_i[9] + NET irq_fast_i[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 890460 ) N ;
+    - irq_fast_i[10] + NET irq_fast_i[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 893180 ) N ;
+    - irq_fast_i[11] + NET irq_fast_i[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 895220 ) N ;
+    - irq_fast_i[12] + NET irq_fast_i[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 897260 ) N ;
+    - irq_fast_i[13] + NET irq_fast_i[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 899980 ) N ;
+    - irq_fast_i[14] + NET irq_fast_i[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 902020 ) N ;
+    - irq_nm_i + NET irq_nm_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 904740 ) N ;
+    - debug_req_i + NET debug_req_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 906780 ) N ;
+    - fetch_enable_i + NET fetch_enable_i + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 450 908820 ) N ;
+    - instr_req_o + NET instr_req_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 2380 ) N ;
+    - instr_addr_o[0] + NET instr_addr_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 4420 ) N ;
+    - instr_addr_o[1] + NET instr_addr_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 7140 ) N ;
+    - instr_addr_o[2] + NET instr_addr_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 9180 ) N ;
+    - instr_addr_o[3] + NET instr_addr_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 11220 ) N ;
+    - instr_addr_o[4] + NET instr_addr_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 13940 ) N ;
+    - instr_addr_o[5] + NET instr_addr_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 15980 ) N ;
+    - instr_addr_o[6] + NET instr_addr_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 18700 ) N ;
+    - instr_addr_o[7] + NET instr_addr_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 20740 ) N ;
+    - instr_addr_o[8] + NET instr_addr_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 22780 ) N ;
+    - instr_addr_o[9] + NET instr_addr_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 25500 ) N ;
+    - instr_addr_o[10] + NET instr_addr_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 27540 ) N ;
+    - instr_addr_o[11] + NET instr_addr_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 30260 ) N ;
+    - instr_addr_o[12] + NET instr_addr_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 32300 ) N ;
+    - instr_addr_o[13] + NET instr_addr_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 34340 ) N ;
+    - instr_addr_o[14] + NET instr_addr_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 37060 ) N ;
+    - instr_addr_o[15] + NET instr_addr_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 39100 ) N ;
+    - instr_addr_o[16] + NET instr_addr_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 41820 ) N ;
+    - instr_addr_o[17] + NET instr_addr_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 43860 ) N ;
+    - instr_addr_o[18] + NET instr_addr_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 45900 ) N ;
+    - instr_addr_o[19] + NET instr_addr_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 48620 ) N ;
+    - instr_addr_o[20] + NET instr_addr_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 50660 ) N ;
+    - instr_addr_o[21] + NET instr_addr_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 53380 ) N ;
+    - instr_addr_o[22] + NET instr_addr_o[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 55420 ) N ;
+    - instr_addr_o[23] + NET instr_addr_o[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 58140 ) N ;
+    - instr_addr_o[24] + NET instr_addr_o[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 60180 ) N ;
+    - instr_addr_o[25] + NET instr_addr_o[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 62220 ) N ;
+    - instr_addr_o[26] + NET instr_addr_o[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 64940 ) N ;
+    - instr_addr_o[27] + NET instr_addr_o[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 66980 ) N ;
+    - instr_addr_o[28] + NET instr_addr_o[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 69700 ) N ;
+    - instr_addr_o[29] + NET instr_addr_o[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 71740 ) N ;
+    - instr_addr_o[30] + NET instr_addr_o[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 73780 ) N ;
+    - instr_addr_o[31] + NET instr_addr_o[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 76500 ) N ;
+    - data_req_o + NET data_req_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 78540 ) N ;
+    - data_we_o + NET data_we_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 81260 ) N ;
+    - data_be_o[0] + NET data_be_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 83300 ) N ;
+    - data_be_o[1] + NET data_be_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 85340 ) N ;
+    - data_be_o[2] + NET data_be_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 88060 ) N ;
+    - data_be_o[3] + NET data_be_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 90100 ) N ;
+    - data_addr_o[0] + NET data_addr_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 92820 ) N ;
+    - data_addr_o[1] + NET data_addr_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 94860 ) N ;
+    - data_addr_o[2] + NET data_addr_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 97580 ) N ;
+    - data_addr_o[3] + NET data_addr_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 99620 ) N ;
+    - data_addr_o[4] + NET data_addr_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 101660 ) N ;
+    - data_addr_o[5] + NET data_addr_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 104380 ) N ;
+    - data_addr_o[6] + NET data_addr_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 106420 ) N ;
+    - data_addr_o[7] + NET data_addr_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 109140 ) N ;
+    - data_addr_o[8] + NET data_addr_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 111180 ) N ;
+    - data_addr_o[9] + NET data_addr_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 113220 ) N ;
+    - data_addr_o[10] + NET data_addr_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 115940 ) N ;
+    - data_addr_o[11] + NET data_addr_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 117980 ) N ;
+    - data_addr_o[12] + NET data_addr_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 120700 ) N ;
+    - data_addr_o[13] + NET data_addr_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 122740 ) N ;
+    - data_addr_o[14] + NET data_addr_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 124780 ) N ;
+    - data_addr_o[15] + NET data_addr_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 127500 ) N ;
+    - data_addr_o[16] + NET data_addr_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 129540 ) N ;
+    - data_addr_o[17] + NET data_addr_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 132260 ) N ;
+    - data_addr_o[18] + NET data_addr_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 134300 ) N ;
+    - data_addr_o[19] + NET data_addr_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 137020 ) N ;
+    - data_addr_o[20] + NET data_addr_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 139060 ) N ;
+    - data_addr_o[21] + NET data_addr_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 141100 ) N ;
+    - data_addr_o[22] + NET data_addr_o[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 143820 ) N ;
+    - data_addr_o[23] + NET data_addr_o[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 145860 ) N ;
+    - data_addr_o[24] + NET data_addr_o[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 148580 ) N ;
+    - data_addr_o[25] + NET data_addr_o[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 150620 ) N ;
+    - data_addr_o[26] + NET data_addr_o[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 152660 ) N ;
+    - data_addr_o[27] + NET data_addr_o[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 155380 ) N ;
+    - data_addr_o[28] + NET data_addr_o[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 157420 ) N ;
+    - data_addr_o[29] + NET data_addr_o[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 160140 ) N ;
+    - data_addr_o[30] + NET data_addr_o[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 162180 ) N ;
+    - data_addr_o[31] + NET data_addr_o[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 164220 ) N ;
+    - data_wdata_o[0] + NET data_wdata_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 166940 ) N ;
+    - data_wdata_o[1] + NET data_wdata_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 168980 ) N ;
+    - data_wdata_o[2] + NET data_wdata_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 171700 ) N ;
+    - data_wdata_o[3] + NET data_wdata_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 173740 ) N ;
+    - data_wdata_o[4] + NET data_wdata_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 175780 ) N ;
+    - data_wdata_o[5] + NET data_wdata_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 178500 ) N ;
+    - data_wdata_o[6] + NET data_wdata_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 180540 ) N ;
+    - data_wdata_o[7] + NET data_wdata_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 183260 ) N ;
+    - data_wdata_o[8] + NET data_wdata_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 185300 ) N ;
+    - data_wdata_o[9] + NET data_wdata_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 188020 ) N ;
+    - data_wdata_o[10] + NET data_wdata_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 190060 ) N ;
+    - data_wdata_o[11] + NET data_wdata_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 192100 ) N ;
+    - data_wdata_o[12] + NET data_wdata_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 194820 ) N ;
+    - data_wdata_o[13] + NET data_wdata_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 196860 ) N ;
+    - data_wdata_o[14] + NET data_wdata_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 199580 ) N ;
+    - data_wdata_o[15] + NET data_wdata_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 201620 ) N ;
+    - data_wdata_o[16] + NET data_wdata_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 203660 ) N ;
+    - data_wdata_o[17] + NET data_wdata_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 206380 ) N ;
+    - data_wdata_o[18] + NET data_wdata_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 208420 ) N ;
+    - data_wdata_o[19] + NET data_wdata_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 211140 ) N ;
+    - data_wdata_o[20] + NET data_wdata_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 213180 ) N ;
+    - data_wdata_o[21] + NET data_wdata_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 215220 ) N ;
+    - data_wdata_o[22] + NET data_wdata_o[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 217940 ) N ;
+    - data_wdata_o[23] + NET data_wdata_o[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 219980 ) N ;
+    - data_wdata_o[24] + NET data_wdata_o[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 222700 ) N ;
+    - data_wdata_o[25] + NET data_wdata_o[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 224740 ) N ;
+    - data_wdata_o[26] + NET data_wdata_o[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 227460 ) N ;
+    - data_wdata_o[27] + NET data_wdata_o[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 229500 ) N ;
+    - data_wdata_o[28] + NET data_wdata_o[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 231540 ) N ;
+    - data_wdata_o[29] + NET data_wdata_o[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 234260 ) N ;
+    - data_wdata_o[30] + NET data_wdata_o[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 236300 ) N ;
+    - data_wdata_o[31] + NET data_wdata_o[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 239020 ) N ;
+    - dummy_instr_id_o + NET dummy_instr_id_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 241060 ) N ;
+    - rf_raddr_a_o[0] + NET rf_raddr_a_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 243100 ) N ;
+    - rf_raddr_a_o[1] + NET rf_raddr_a_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 245820 ) N ;
+    - rf_raddr_a_o[2] + NET rf_raddr_a_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 247860 ) N ;
+    - rf_raddr_a_o[3] + NET rf_raddr_a_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 250580 ) N ;
+    - rf_raddr_a_o[4] + NET rf_raddr_a_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 252620 ) N ;
+    - rf_raddr_b_o[0] + NET rf_raddr_b_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 254660 ) N ;
+    - rf_raddr_b_o[1] + NET rf_raddr_b_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 257380 ) N ;
+    - rf_raddr_b_o[2] + NET rf_raddr_b_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 259420 ) N ;
+    - rf_raddr_b_o[3] + NET rf_raddr_b_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 262140 ) N ;
+    - rf_raddr_b_o[4] + NET rf_raddr_b_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 264180 ) N ;
+    - rf_waddr_wb_o[0] + NET rf_waddr_wb_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 266900 ) N ;
+    - rf_waddr_wb_o[1] + NET rf_waddr_wb_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 268940 ) N ;
+    - rf_waddr_wb_o[2] + NET rf_waddr_wb_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 270980 ) N ;
+    - rf_waddr_wb_o[3] + NET rf_waddr_wb_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 273700 ) N ;
+    - rf_waddr_wb_o[4] + NET rf_waddr_wb_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 275740 ) N ;
+    - rf_we_wb_o + NET rf_we_wb_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 278460 ) N ;
+    - rf_wdata_wb_ecc_o[0] + NET rf_wdata_wb_ecc_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 280500 ) N ;
+    - rf_wdata_wb_ecc_o[1] + NET rf_wdata_wb_ecc_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 282540 ) N ;
+    - rf_wdata_wb_ecc_o[2] + NET rf_wdata_wb_ecc_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 285260 ) N ;
+    - rf_wdata_wb_ecc_o[3] + NET rf_wdata_wb_ecc_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 287300 ) N ;
+    - rf_wdata_wb_ecc_o[4] + NET rf_wdata_wb_ecc_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 290020 ) N ;
+    - rf_wdata_wb_ecc_o[5] + NET rf_wdata_wb_ecc_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 292060 ) N ;
+    - rf_wdata_wb_ecc_o[6] + NET rf_wdata_wb_ecc_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 294100 ) N ;
+    - rf_wdata_wb_ecc_o[7] + NET rf_wdata_wb_ecc_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 296820 ) N ;
+    - rf_wdata_wb_ecc_o[8] + NET rf_wdata_wb_ecc_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 298860 ) N ;
+    - rf_wdata_wb_ecc_o[9] + NET rf_wdata_wb_ecc_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 301580 ) N ;
+    - rf_wdata_wb_ecc_o[10] + NET rf_wdata_wb_ecc_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 303620 ) N ;
+    - rf_wdata_wb_ecc_o[11] + NET rf_wdata_wb_ecc_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 306340 ) N ;
+    - rf_wdata_wb_ecc_o[12] + NET rf_wdata_wb_ecc_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 308380 ) N ;
+    - rf_wdata_wb_ecc_o[13] + NET rf_wdata_wb_ecc_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 310420 ) N ;
+    - rf_wdata_wb_ecc_o[14] + NET rf_wdata_wb_ecc_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 313140 ) N ;
+    - rf_wdata_wb_ecc_o[15] + NET rf_wdata_wb_ecc_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 315180 ) N ;
+    - rf_wdata_wb_ecc_o[16] + NET rf_wdata_wb_ecc_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 317900 ) N ;
+    - rf_wdata_wb_ecc_o[17] + NET rf_wdata_wb_ecc_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 319940 ) N ;
+    - rf_wdata_wb_ecc_o[18] + NET rf_wdata_wb_ecc_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 321980 ) N ;
+    - rf_wdata_wb_ecc_o[19] + NET rf_wdata_wb_ecc_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 324700 ) N ;
+    - rf_wdata_wb_ecc_o[20] + NET rf_wdata_wb_ecc_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 326740 ) N ;
+    - rf_wdata_wb_ecc_o[21] + NET rf_wdata_wb_ecc_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 329460 ) N ;
+    - rf_wdata_wb_ecc_o[22] + NET rf_wdata_wb_ecc_o[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 331500 ) N ;
+    - rf_wdata_wb_ecc_o[23] + NET rf_wdata_wb_ecc_o[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 333540 ) N ;
+    - rf_wdata_wb_ecc_o[24] + NET rf_wdata_wb_ecc_o[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 336260 ) N ;
+    - rf_wdata_wb_ecc_o[25] + NET rf_wdata_wb_ecc_o[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 338300 ) N ;
+    - rf_wdata_wb_ecc_o[26] + NET rf_wdata_wb_ecc_o[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 341020 ) N ;
+    - rf_wdata_wb_ecc_o[27] + NET rf_wdata_wb_ecc_o[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 343060 ) N ;
+    - rf_wdata_wb_ecc_o[28] + NET rf_wdata_wb_ecc_o[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 345100 ) N ;
+    - rf_wdata_wb_ecc_o[29] + NET rf_wdata_wb_ecc_o[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 347820 ) N ;
+    - rf_wdata_wb_ecc_o[30] + NET rf_wdata_wb_ecc_o[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 349860 ) N ;
+    - rf_wdata_wb_ecc_o[31] + NET rf_wdata_wb_ecc_o[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 352580 ) N ;
+    - ic_tag_req_o[0] + NET ic_tag_req_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 354620 ) N ;
+    - ic_tag_req_o[1] + NET ic_tag_req_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 357340 ) N ;
+    - ic_tag_write_o + NET ic_tag_write_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 359380 ) N ;
+    - ic_tag_addr_o[0] + NET ic_tag_addr_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 361420 ) N ;
+    - ic_tag_addr_o[1] + NET ic_tag_addr_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 364140 ) N ;
+    - ic_tag_addr_o[2] + NET ic_tag_addr_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 366180 ) N ;
+    - ic_tag_addr_o[3] + NET ic_tag_addr_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 368900 ) N ;
+    - ic_tag_addr_o[4] + NET ic_tag_addr_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 370940 ) N ;
+    - ic_tag_addr_o[5] + NET ic_tag_addr_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 372980 ) N ;
+    - ic_tag_addr_o[6] + NET ic_tag_addr_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 375700 ) N ;
+    - ic_tag_addr_o[7] + NET ic_tag_addr_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 377740 ) N ;
+    - ic_tag_wdata_o[0] + NET ic_tag_wdata_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 380460 ) N ;
+    - ic_tag_wdata_o[1] + NET ic_tag_wdata_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 382500 ) N ;
+    - ic_tag_wdata_o[2] + NET ic_tag_wdata_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 384540 ) N ;
+    - ic_tag_wdata_o[3] + NET ic_tag_wdata_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 387260 ) N ;
+    - ic_tag_wdata_o[4] + NET ic_tag_wdata_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 389300 ) N ;
+    - ic_tag_wdata_o[5] + NET ic_tag_wdata_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 392020 ) N ;
+    - ic_tag_wdata_o[6] + NET ic_tag_wdata_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 394060 ) N ;
+    - ic_tag_wdata_o[7] + NET ic_tag_wdata_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 396780 ) N ;
+    - ic_tag_wdata_o[8] + NET ic_tag_wdata_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 398820 ) N ;
+    - ic_tag_wdata_o[9] + NET ic_tag_wdata_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 400860 ) N ;
+    - ic_tag_wdata_o[10] + NET ic_tag_wdata_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 403580 ) N ;
+    - ic_tag_wdata_o[11] + NET ic_tag_wdata_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 405620 ) N ;
+    - ic_tag_wdata_o[12] + NET ic_tag_wdata_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 408340 ) N ;
+    - ic_tag_wdata_o[13] + NET ic_tag_wdata_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 410380 ) N ;
+    - ic_tag_wdata_o[14] + NET ic_tag_wdata_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 412420 ) N ;
+    - ic_tag_wdata_o[15] + NET ic_tag_wdata_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 415140 ) N ;
+    - ic_tag_wdata_o[16] + NET ic_tag_wdata_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 417180 ) N ;
+    - ic_tag_wdata_o[17] + NET ic_tag_wdata_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 419900 ) N ;
+    - ic_tag_wdata_o[18] + NET ic_tag_wdata_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 421940 ) N ;
+    - ic_tag_wdata_o[19] + NET ic_tag_wdata_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 423980 ) N ;
+    - ic_tag_wdata_o[20] + NET ic_tag_wdata_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 426700 ) N ;
+    - ic_tag_wdata_o[21] + NET ic_tag_wdata_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 428740 ) N ;
+    - ic_data_req_o[0] + NET ic_data_req_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 431460 ) N ;
+    - ic_data_req_o[1] + NET ic_data_req_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 433500 ) N ;
+    - ic_data_write_o + NET ic_data_write_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 436220 ) N ;
+    - ic_data_addr_o[0] + NET ic_data_addr_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 438260 ) N ;
+    - ic_data_addr_o[1] + NET ic_data_addr_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 440300 ) N ;
+    - ic_data_addr_o[2] + NET ic_data_addr_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 443020 ) N ;
+    - ic_data_addr_o[3] + NET ic_data_addr_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 445060 ) N ;
+    - ic_data_addr_o[4] + NET ic_data_addr_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 447780 ) N ;
+    - ic_data_addr_o[5] + NET ic_data_addr_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 449820 ) N ;
+    - ic_data_addr_o[6] + NET ic_data_addr_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 451860 ) N ;
+    - ic_data_addr_o[7] + NET ic_data_addr_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 454580 ) N ;
+    - ic_data_wdata_o[0] + NET ic_data_wdata_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 456620 ) N ;
+    - ic_data_wdata_o[1] + NET ic_data_wdata_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 459340 ) N ;
+    - ic_data_wdata_o[2] + NET ic_data_wdata_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 461380 ) N ;
+    - ic_data_wdata_o[3] + NET ic_data_wdata_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 463420 ) N ;
+    - ic_data_wdata_o[4] + NET ic_data_wdata_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 466140 ) N ;
+    - ic_data_wdata_o[5] + NET ic_data_wdata_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 468180 ) N ;
+    - ic_data_wdata_o[6] + NET ic_data_wdata_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 470900 ) N ;
+    - ic_data_wdata_o[7] + NET ic_data_wdata_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 472940 ) N ;
+    - ic_data_wdata_o[8] + NET ic_data_wdata_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 474980 ) N ;
+    - ic_data_wdata_o[9] + NET ic_data_wdata_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 477700 ) N ;
+    - ic_data_wdata_o[10] + NET ic_data_wdata_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 479740 ) N ;
+    - ic_data_wdata_o[11] + NET ic_data_wdata_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 482460 ) N ;
+    - ic_data_wdata_o[12] + NET ic_data_wdata_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 484500 ) N ;
+    - ic_data_wdata_o[13] + NET ic_data_wdata_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 487220 ) N ;
+    - ic_data_wdata_o[14] + NET ic_data_wdata_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 489260 ) N ;
+    - ic_data_wdata_o[15] + NET ic_data_wdata_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 491300 ) N ;
+    - ic_data_wdata_o[16] + NET ic_data_wdata_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 494020 ) N ;
+    - ic_data_wdata_o[17] + NET ic_data_wdata_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 496060 ) N ;
+    - ic_data_wdata_o[18] + NET ic_data_wdata_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 498780 ) N ;
+    - ic_data_wdata_o[19] + NET ic_data_wdata_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 500820 ) N ;
+    - ic_data_wdata_o[20] + NET ic_data_wdata_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 502860 ) N ;
+    - ic_data_wdata_o[21] + NET ic_data_wdata_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 505580 ) N ;
+    - ic_data_wdata_o[22] + NET ic_data_wdata_o[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 507620 ) N ;
+    - ic_data_wdata_o[23] + NET ic_data_wdata_o[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 510340 ) N ;
+    - ic_data_wdata_o[24] + NET ic_data_wdata_o[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 512380 ) N ;
+    - ic_data_wdata_o[25] + NET ic_data_wdata_o[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 514420 ) N ;
+    - ic_data_wdata_o[26] + NET ic_data_wdata_o[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 517140 ) N ;
+    - ic_data_wdata_o[27] + NET ic_data_wdata_o[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 519180 ) N ;
+    - ic_data_wdata_o[28] + NET ic_data_wdata_o[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 521900 ) N ;
+    - ic_data_wdata_o[29] + NET ic_data_wdata_o[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 523940 ) N ;
+    - ic_data_wdata_o[30] + NET ic_data_wdata_o[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 526660 ) N ;
+    - ic_data_wdata_o[31] + NET ic_data_wdata_o[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 528700 ) N ;
+    - ic_data_wdata_o[32] + NET ic_data_wdata_o[32] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 530740 ) N ;
+    - ic_data_wdata_o[33] + NET ic_data_wdata_o[33] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 533460 ) N ;
+    - ic_data_wdata_o[34] + NET ic_data_wdata_o[34] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 535500 ) N ;
+    - ic_data_wdata_o[35] + NET ic_data_wdata_o[35] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 538220 ) N ;
+    - ic_data_wdata_o[36] + NET ic_data_wdata_o[36] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 540260 ) N ;
+    - ic_data_wdata_o[37] + NET ic_data_wdata_o[37] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 542300 ) N ;
+    - ic_data_wdata_o[38] + NET ic_data_wdata_o[38] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 545020 ) N ;
+    - ic_data_wdata_o[39] + NET ic_data_wdata_o[39] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 547060 ) N ;
+    - ic_data_wdata_o[40] + NET ic_data_wdata_o[40] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 549780 ) N ;
+    - ic_data_wdata_o[41] + NET ic_data_wdata_o[41] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 551820 ) N ;
+    - ic_data_wdata_o[42] + NET ic_data_wdata_o[42] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 553860 ) N ;
+    - ic_data_wdata_o[43] + NET ic_data_wdata_o[43] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 556580 ) N ;
+    - ic_data_wdata_o[44] + NET ic_data_wdata_o[44] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 558620 ) N ;
+    - ic_data_wdata_o[45] + NET ic_data_wdata_o[45] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 561340 ) N ;
+    - ic_data_wdata_o[46] + NET ic_data_wdata_o[46] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 563380 ) N ;
+    - ic_data_wdata_o[47] + NET ic_data_wdata_o[47] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 566100 ) N ;
+    - ic_data_wdata_o[48] + NET ic_data_wdata_o[48] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 568140 ) N ;
+    - ic_data_wdata_o[49] + NET ic_data_wdata_o[49] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 570180 ) N ;
+    - ic_data_wdata_o[50] + NET ic_data_wdata_o[50] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 572900 ) N ;
+    - ic_data_wdata_o[51] + NET ic_data_wdata_o[51] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 574940 ) N ;
+    - ic_data_wdata_o[52] + NET ic_data_wdata_o[52] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 577660 ) N ;
+    - ic_data_wdata_o[53] + NET ic_data_wdata_o[53] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 579700 ) N ;
+    - ic_data_wdata_o[54] + NET ic_data_wdata_o[54] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 581740 ) N ;
+    - ic_data_wdata_o[55] + NET ic_data_wdata_o[55] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 584460 ) N ;
+    - ic_data_wdata_o[56] + NET ic_data_wdata_o[56] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 586500 ) N ;
+    - ic_data_wdata_o[57] + NET ic_data_wdata_o[57] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 589220 ) N ;
+    - ic_data_wdata_o[58] + NET ic_data_wdata_o[58] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 591260 ) N ;
+    - ic_data_wdata_o[59] + NET ic_data_wdata_o[59] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 593300 ) N ;
+    - ic_data_wdata_o[60] + NET ic_data_wdata_o[60] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 596020 ) N ;
+    - ic_data_wdata_o[61] + NET ic_data_wdata_o[61] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 598060 ) N ;
+    - ic_data_wdata_o[62] + NET ic_data_wdata_o[62] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 600780 ) N ;
+    - ic_data_wdata_o[63] + NET ic_data_wdata_o[63] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 602820 ) N ;
+    - irq_pending_o + NET irq_pending_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 604860 ) N ;
+    - crash_dump_o[0] + NET crash_dump_o[0] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 607580 ) N ;
+    - crash_dump_o[1] + NET crash_dump_o[1] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 609620 ) N ;
+    - crash_dump_o[2] + NET crash_dump_o[2] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 612340 ) N ;
+    - crash_dump_o[3] + NET crash_dump_o[3] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 614380 ) N ;
+    - crash_dump_o[4] + NET crash_dump_o[4] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 617100 ) N ;
+    - crash_dump_o[5] + NET crash_dump_o[5] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 619140 ) N ;
+    - crash_dump_o[6] + NET crash_dump_o[6] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 621180 ) N ;
+    - crash_dump_o[7] + NET crash_dump_o[7] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 623900 ) N ;
+    - crash_dump_o[8] + NET crash_dump_o[8] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 625940 ) N ;
+    - crash_dump_o[9] + NET crash_dump_o[9] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 628660 ) N ;
+    - crash_dump_o[10] + NET crash_dump_o[10] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 630700 ) N ;
+    - crash_dump_o[11] + NET crash_dump_o[11] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 632740 ) N ;
+    - crash_dump_o[12] + NET crash_dump_o[12] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 635460 ) N ;
+    - crash_dump_o[13] + NET crash_dump_o[13] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 637500 ) N ;
+    - crash_dump_o[14] + NET crash_dump_o[14] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 640220 ) N ;
+    - crash_dump_o[15] + NET crash_dump_o[15] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 642260 ) N ;
+    - crash_dump_o[16] + NET crash_dump_o[16] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 644300 ) N ;
+    - crash_dump_o[17] + NET crash_dump_o[17] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 647020 ) N ;
+    - crash_dump_o[18] + NET crash_dump_o[18] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 649060 ) N ;
+    - crash_dump_o[19] + NET crash_dump_o[19] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 651780 ) N ;
+    - crash_dump_o[20] + NET crash_dump_o[20] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 653820 ) N ;
+    - crash_dump_o[21] + NET crash_dump_o[21] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 656540 ) N ;
+    - crash_dump_o[22] + NET crash_dump_o[22] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 658580 ) N ;
+    - crash_dump_o[23] + NET crash_dump_o[23] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 660620 ) N ;
+    - crash_dump_o[24] + NET crash_dump_o[24] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 663340 ) N ;
+    - crash_dump_o[25] + NET crash_dump_o[25] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 665380 ) N ;
+    - crash_dump_o[26] + NET crash_dump_o[26] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 668100 ) N ;
+    - crash_dump_o[27] + NET crash_dump_o[27] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 670140 ) N ;
+    - crash_dump_o[28] + NET crash_dump_o[28] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 672180 ) N ;
+    - crash_dump_o[29] + NET crash_dump_o[29] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 674900 ) N ;
+    - crash_dump_o[30] + NET crash_dump_o[30] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 676940 ) N ;
+    - crash_dump_o[31] + NET crash_dump_o[31] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 679660 ) N ;
+    - crash_dump_o[32] + NET crash_dump_o[32] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 681700 ) N ;
+    - crash_dump_o[33] + NET crash_dump_o[33] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 683740 ) N ;
+    - crash_dump_o[34] + NET crash_dump_o[34] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 686460 ) N ;
+    - crash_dump_o[35] + NET crash_dump_o[35] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 688500 ) N ;
+    - crash_dump_o[36] + NET crash_dump_o[36] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 691220 ) N ;
+    - crash_dump_o[37] + NET crash_dump_o[37] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 693260 ) N ;
+    - crash_dump_o[38] + NET crash_dump_o[38] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 695980 ) N ;
+    - crash_dump_o[39] + NET crash_dump_o[39] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 698020 ) N ;
+    - crash_dump_o[40] + NET crash_dump_o[40] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 700060 ) N ;
+    - crash_dump_o[41] + NET crash_dump_o[41] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 702780 ) N ;
+    - crash_dump_o[42] + NET crash_dump_o[42] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 704820 ) N ;
+    - crash_dump_o[43] + NET crash_dump_o[43] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 707540 ) N ;
+    - crash_dump_o[44] + NET crash_dump_o[44] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 709580 ) N ;
+    - crash_dump_o[45] + NET crash_dump_o[45] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 711620 ) N ;
+    - crash_dump_o[46] + NET crash_dump_o[46] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 714340 ) N ;
+    - crash_dump_o[47] + NET crash_dump_o[47] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 716380 ) N ;
+    - crash_dump_o[48] + NET crash_dump_o[48] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 719100 ) N ;
+    - crash_dump_o[49] + NET crash_dump_o[49] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 721140 ) N ;
+    - crash_dump_o[50] + NET crash_dump_o[50] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 723180 ) N ;
+    - crash_dump_o[51] + NET crash_dump_o[51] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 725900 ) N ;
+    - crash_dump_o[52] + NET crash_dump_o[52] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 727940 ) N ;
+    - crash_dump_o[53] + NET crash_dump_o[53] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 730660 ) N ;
+    - crash_dump_o[54] + NET crash_dump_o[54] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 732700 ) N ;
+    - crash_dump_o[55] + NET crash_dump_o[55] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 735420 ) N ;
+    - crash_dump_o[56] + NET crash_dump_o[56] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 737460 ) N ;
+    - crash_dump_o[57] + NET crash_dump_o[57] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 739500 ) N ;
+    - crash_dump_o[58] + NET crash_dump_o[58] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 742220 ) N ;
+    - crash_dump_o[59] + NET crash_dump_o[59] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 744260 ) N ;
+    - crash_dump_o[60] + NET crash_dump_o[60] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 746980 ) N ;
+    - crash_dump_o[61] + NET crash_dump_o[61] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 749020 ) N ;
+    - crash_dump_o[62] + NET crash_dump_o[62] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 751060 ) N ;
+    - crash_dump_o[63] + NET crash_dump_o[63] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 753780 ) N ;
+    - crash_dump_o[64] + NET crash_dump_o[64] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 755820 ) N ;
+    - crash_dump_o[65] + NET crash_dump_o[65] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 758540 ) N ;
+    - crash_dump_o[66] + NET crash_dump_o[66] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 760580 ) N ;
+    - crash_dump_o[67] + NET crash_dump_o[67] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 762620 ) N ;
+    - crash_dump_o[68] + NET crash_dump_o[68] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 765340 ) N ;
+    - crash_dump_o[69] + NET crash_dump_o[69] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 767380 ) N ;
+    - crash_dump_o[70] + NET crash_dump_o[70] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 770100 ) N ;
+    - crash_dump_o[71] + NET crash_dump_o[71] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 772140 ) N ;
+    - crash_dump_o[72] + NET crash_dump_o[72] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 774180 ) N ;
+    - crash_dump_o[73] + NET crash_dump_o[73] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 776900 ) N ;
+    - crash_dump_o[74] + NET crash_dump_o[74] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 778940 ) N ;
+    - crash_dump_o[75] + NET crash_dump_o[75] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 781660 ) N ;
+    - crash_dump_o[76] + NET crash_dump_o[76] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 783700 ) N ;
+    - crash_dump_o[77] + NET crash_dump_o[77] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 786420 ) N ;
+    - crash_dump_o[78] + NET crash_dump_o[78] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 788460 ) N ;
+    - crash_dump_o[79] + NET crash_dump_o[79] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 790500 ) N ;
+    - crash_dump_o[80] + NET crash_dump_o[80] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 793220 ) N ;
+    - crash_dump_o[81] + NET crash_dump_o[81] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 795260 ) N ;
+    - crash_dump_o[82] + NET crash_dump_o[82] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 797980 ) N ;
+    - crash_dump_o[83] + NET crash_dump_o[83] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 800020 ) N ;
+    - crash_dump_o[84] + NET crash_dump_o[84] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 802060 ) N ;
+    - crash_dump_o[85] + NET crash_dump_o[85] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 804780 ) N ;
+    - crash_dump_o[86] + NET crash_dump_o[86] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 806820 ) N ;
+    - crash_dump_o[87] + NET crash_dump_o[87] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 809540 ) N ;
+    - crash_dump_o[88] + NET crash_dump_o[88] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 811580 ) N ;
+    - crash_dump_o[89] + NET crash_dump_o[89] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 813620 ) N ;
+    - crash_dump_o[90] + NET crash_dump_o[90] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 816340 ) N ;
+    - crash_dump_o[91] + NET crash_dump_o[91] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 818380 ) N ;
+    - crash_dump_o[92] + NET crash_dump_o[92] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 821100 ) N ;
+    - crash_dump_o[93] + NET crash_dump_o[93] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 823140 ) N ;
+    - crash_dump_o[94] + NET crash_dump_o[94] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 825860 ) N ;
+    - crash_dump_o[95] + NET crash_dump_o[95] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 827900 ) N ;
+    - crash_dump_o[96] + NET crash_dump_o[96] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 829940 ) N ;
+    - crash_dump_o[97] + NET crash_dump_o[97] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 832660 ) N ;
+    - crash_dump_o[98] + NET crash_dump_o[98] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 834700 ) N ;
+    - crash_dump_o[99] + NET crash_dump_o[99] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 837420 ) N ;
+    - crash_dump_o[100] + NET crash_dump_o[100] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 839460 ) N ;
+    - crash_dump_o[101] + NET crash_dump_o[101] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 841500 ) N ;
+    - crash_dump_o[102] + NET crash_dump_o[102] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 844220 ) N ;
+    - crash_dump_o[103] + NET crash_dump_o[103] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 846260 ) N ;
+    - crash_dump_o[104] + NET crash_dump_o[104] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 848980 ) N ;
+    - crash_dump_o[105] + NET crash_dump_o[105] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 851020 ) N ;
+    - crash_dump_o[106] + NET crash_dump_o[106] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 853060 ) N ;
+    - crash_dump_o[107] + NET crash_dump_o[107] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 855780 ) N ;
+    - crash_dump_o[108] + NET crash_dump_o[108] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 857820 ) N ;
+    - crash_dump_o[109] + NET crash_dump_o[109] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 860540 ) N ;
+    - crash_dump_o[110] + NET crash_dump_o[110] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 862580 ) N ;
+    - crash_dump_o[111] + NET crash_dump_o[111] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 865300 ) N ;
+    - crash_dump_o[112] + NET crash_dump_o[112] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 867340 ) N ;
+    - crash_dump_o[113] + NET crash_dump_o[113] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 869380 ) N ;
+    - crash_dump_o[114] + NET crash_dump_o[114] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 872100 ) N ;
+    - crash_dump_o[115] + NET crash_dump_o[115] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 874140 ) N ;
+    - crash_dump_o[116] + NET crash_dump_o[116] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 876860 ) N ;
+    - crash_dump_o[117] + NET crash_dump_o[117] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 878900 ) N ;
+    - crash_dump_o[118] + NET crash_dump_o[118] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 880940 ) N ;
+    - crash_dump_o[119] + NET crash_dump_o[119] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 883660 ) N ;
+    - crash_dump_o[120] + NET crash_dump_o[120] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 885700 ) N ;
+    - crash_dump_o[121] + NET crash_dump_o[121] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 888420 ) N ;
+    - crash_dump_o[122] + NET crash_dump_o[122] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 890460 ) N ;
+    - crash_dump_o[123] + NET crash_dump_o[123] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 892500 ) N ;
+    - crash_dump_o[124] + NET crash_dump_o[124] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 895220 ) N ;
+    - crash_dump_o[125] + NET crash_dump_o[125] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 897260 ) N ;
+    - crash_dump_o[126] + NET crash_dump_o[126] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 899980 ) N ;
+    - crash_dump_o[127] + NET crash_dump_o[127] + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 902020 ) N ;
+    - alert_minor_o + NET alert_minor_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 904060 ) N ;
+    - alert_major_o + NET alert_major_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 906780 ) N ;
+    - core_busy_o + NET core_busy_o + DIRECTION INOUT + USE SIGNAL
+       + PORT
+         + LAYER met3 ( -450 -150 ) ( 450 150 )
+         + FIXED ( 908050 908820 ) N ;
+END PINS
+
+BLOCKAGES 0 ;
+END BLOCKAGES
+
+SPECIALNETS 0 ;
+END SPECIALNETS
+
+END DESIGN

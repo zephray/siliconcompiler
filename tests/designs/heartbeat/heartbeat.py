@@ -1,50 +1,24 @@
-import math
+from tests.designs import common
 
 import siliconcompiler
-from siliconcompiler.floorplan import Floorplan
 
 def generate_floorplan(chip):
-    fp = Floorplan(chip)
-    site_area = fp.stdcell_width * fp.stdcell_height
-    area = 67 * 5 * (site_area / 0.266)
-    sidelength = math.sqrt(area)
+    pins = [
+        ('input', 'clk', 1),
+        ('input', 'nreset', 1),
+        ('output', 'out', 1),
+    ]
 
-    corewidth = fp.snap(sidelength, fp.stdcell_width)
-    coreheight = fp.snap(sidelength, fp.stdcell_height)
-
-    coremargin = 10
-    coremargin_w = fp.snap(coremargin, fp.stdcell_width)
-    coremargin_h = fp.snap(coremargin, fp.stdcell_height)
-
-    die_width = corewidth + 2 * coremargin_w
-    die_height = coreheight + 2 * coremargin_h
-
-    fp.create_diearea([(0, 0), (die_width, die_height)],
-                      corearea=[(coremargin_w, coremargin_h),
-                                (corewidth + coremargin_w, coreheight + coremargin_h)])
-
-    in_pins = ['clk', 'nreset']
-    out_pins = ['out']
-
-    layer = chip.get('asic', 'hpinlayer')
-    width = fp.layers[layer]['width']
-    depth = 3 * width
-
-    in_spacing = (die_height - len(in_pins) * width) / (len(in_pins) + 1)
-    fp.place_pins(in_pins, 0, in_spacing, 0, in_spacing + width, depth, width, layer, snap=True)
-
-    out_spacing = (die_height - len(out_pins) * width) / (len(out_pins) + 1)
-    fp.place_pins(out_pins, die_width-depth, out_spacing, 0, out_spacing + width, depth, width, layer, snap=True)
-
-    outfile = 'heartbeat.def'
-    fp.write_def(outfile)
-
-    return outfile
+    return common.generate_floorplan(chip, 67, pins)
 
 def heartbeat(target):
     chip = siliconcompiler.Chip()
     chip.set('source', 'heartbeat.v')
     chip.set('design', 'heartbeat')
+
+    flow, tech = target.split('_')
+    if flow == 'asicflow' and tech != 'freepdk45':
+        chip.set('flowarg', 'verify', 'true')
 
     chip.target(target)
     mode = chip.get('mode')
@@ -58,10 +32,6 @@ def heartbeat(target):
             chip.clock(name='clk', pin='clk', period=1.0)
         elif process == 'skywater130':
             chip.clock(name='clk', pin='clk', period=6.5)
-    elif mode == 'fpga':
-        partname = chip.get('fpga', 'partname')
-        if partname == 'ice40up5k-sg48':
-            chip.add('constraint', 'heartbeat_ice40.pcf')
 
     return chip
 
