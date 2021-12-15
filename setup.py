@@ -128,7 +128,8 @@ setup(
         "test": [
             "pytest >= 6.2.4",
             "pytest-xdist >= 2.3.0",
-            "pyvirtualdisplay"
+            "pyvirtualdisplay",
+            "migen"
         ]
     },
     entry_points={"console_scripts": entry_points},

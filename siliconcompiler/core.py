@@ -2914,7 +2914,7 @@ class Chip:
         version = None
         if vercheck and (veropt is not None) and (exe is not None):
             fullexe = self._resolve_env_vars(exe)
-            cmdlist = [fullexe] + veropt.split()
+            cmdlist = [fullexe] + shlex.split(veropt)
             self.logger.info("Checking version of tool '%s'", tool)
             proc = subprocess.run(cmdlist, stdout=PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
             parse_version = self.find_function(tool, 'tool', 'parse_version')
