@@ -10,12 +10,20 @@ on:
 
 jobs:
   build_wheels:
-    name: Wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: Wheels on ${{ matrix.options.os }}
+    runs-on: ${{ matrix.options.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        options:
+        - os: ubuntu-latest
+          python: "cp36-* cp37-* cp38-* cp39-* cp310-*"
+        - os: macos-latest
+          python: "cp36-* cp37-* cp38-*"
+        - os: macos-latest
+          python: "cp39-* cp310-*"
+        - os: windows-latest
+          python: "cp36-* cp37-* cp38-* cp39-* cp310-*"
 
     steps:
     - uses: actions/checkout@v2
@@ -27,22 +35,22 @@ jobs:
 
     - uses: actions/cache@v2
       id: surelog-cache
-      if: matrix.os != 'ubuntu-latest'
+      if: matrix.options.os != 'ubuntu-latest'
       with:
         path: |
           siliconcompiler/tools/surelog/bin/surelog*
           siliconcompiler/tools/surelog/lib/surelog/sv/builtin.sv
-        key: ${{ matrix.os }}-${{ steps.get-surelog.outputs.version }}
+        key: ${{ matrix.options.os }}-${{ steps.get-surelog.outputs.version }}
 
     - name: Setup env (Windows)
-      if: matrix.os == 'windows-latest'
+      if: matrix.options.os == 'windows-latest'
       run: |
         choco install -y graphviz winflexbison3
         vcpkg install zlib zlib:x64-windows
         .github/workflows/bin/install_klayout_win.bat
 
     - name: Setup env (macOS)
-      if: matrix.os == 'macos-latest'
+      if: matrix.options.os == 'macos-latest'
       run: |
         brew install graphviz
         brew install --cask klayout
@@ -54,21 +62,22 @@ jobs:
         sudo chown root /tmp/.X11-unix
 
     - name: Build Surelog (Windows)
-      if: matrix.os == 'windows-latest' && steps.surelog-cache.outputs.cache-hit != 'true'
+      if: matrix.options.os == 'windows-latest' && steps.surelog-cache.outputs.cache-hit != 'true'
       run: .github/workflows/bin/install_surelog_win.bat
 
     - name: Build Surelog (macOS)
-      if: matrix.os == 'macos-latest' && steps.surelog-cache.outputs.cache-hit != 'true'
+      if: matrix.options.os == 'macos-latest' && steps.surelog-cache.outputs.cache-hit != 'true'
       run: .github/workflows/bin/install_surelog_macos.sh
 
-    - uses: pypa/cibuildwheel@v2.1.1
+    - uses: pypa/cibuildwheel@v2.3.1
       env:
         CIBW_BEFORE_ALL_LINUX: >
           export PREFIX={package}/siliconcompiler/tools/surelog &&
           {package}/.github/workflows/bin/setup_wheel_env_linux.sh
         CIBW_ENVIRONMENT_WINDOWS: SC_CMAKEARGS="-DCMAKE_TOOLCHAIN_FILE=$VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake."
         CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
-        CIBW_SKIP: "pp* *win32 *i686"
+        CIBW_BUILD: ${{ matrix.options.python }}
+        CIBW_SKIP: "*win32 *i686"
         MACOSX_DEPLOYMENT_TARGET: "10.15"
         CIBW_ARCHS_MACOS: x86_64 arm64
         CIBW_TEST_SKIP: "*_arm64"
