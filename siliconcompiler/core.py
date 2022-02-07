@@ -1647,7 +1647,7 @@ class Chip:
 
             for filename in required_inputs:
                 path = os.path.join(input_dir, filename)
-                if not os.path.isfile(path):
+                if (not os.path.isfile(path) and not os.path.isdir(path)):
                     self.logger.error(f'Required input {filename} not received for {step}{index}.')
                     self.error = 1
 
