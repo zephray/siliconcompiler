@@ -108,6 +108,8 @@ if {[expr ! [dict exists $sc_cfg "read" def $sc_step $sc_index]]} {
     # Add power nets
     ###########################
     set block [ord::get_db_block]
+    puts "ADDING POWER NETS"
+    puts $sc_supplies
     foreach supply $sc_supplies {
         set pin [dict get $sc_cfg supply $supply pin]
         puts $pin
