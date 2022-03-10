@@ -28,6 +28,11 @@ def test_adder_sweep(setup):
     adder_sweep.main()
 
 @pytest.mark.eda
+def test_parallel_adder_sweep(setup):
+    import parallel_adder_sweep
+    parallel_adder_sweep.main()
+
+@pytest.mark.eda
 def test_check_area(setup):
     import check_area
     check_area.main()
