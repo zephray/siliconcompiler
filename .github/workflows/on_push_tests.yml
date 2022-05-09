@@ -5,16 +5,20 @@ name: 'Quick CI Tests'
 jobs:
   self_hosted_tests:
     timeout-minutes: 15
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    container: ghcr.io/nmoroze/sc_tools
     name: 'Tool-based tests'
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: src
       - run: |
-          python3 -m venv create $GITHUB_WORKSPACE/clean_env --clear
-          source $GITHUB_WORKSPACE/clean_env/bin/activate
+          cd src
+          python3 -m venv create ./clean_env --clear
+          source ./clean_env/bin/activate
           echo $VIRTUAL_ENV
-          pip3 install -r $GITHUB_WORKSPACE/requirements.txt $GITHUB_WORKSPACE/.
-          pytest -n 4 --import-mode=append -m "eda and quick"
+          pip3 install .[test]
+          pytest -n 4 --import-mode=append tests/examples/test_gcd.py::test_py
 
   python_test_job:
     timeout-minutes: 15
