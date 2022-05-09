@@ -16,7 +16,7 @@ jobs:
       - run: |
           cd src
           python3 -m venv create ./clean_env --clear
-          source ./clean_env/bin/activate
+          . ./clean_env/bin/activate
           echo $VIRTUAL_ENV
           pip3 install .[test]
           pytest -n 4 --import-mode=append tests/examples/test_gcd.py::test_py
