@@ -17,10 +17,9 @@ jobs:
           cd src
           python3 -m venv create ./clean_env --clear
           . ./clean_env/bin/activate
-          . /siliconcompiler/third_party/tools/openroad/setup_env.sh
           echo $VIRTUAL_ENV
           pip3 install .[test]
-          pytest -n 4 --import-mode=append tests/examples/test_gcd.py::test_py
+          bash -c "pytest -n 4 --import-mode=append tests/examples/test_gcd.py::test_py"
 
   python_test_job:
     timeout-minutes: 15
