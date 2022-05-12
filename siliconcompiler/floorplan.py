@@ -1377,7 +1377,8 @@ class Floorplan:
 def _find_cell_area(chip, startstep, startindex):
     '''Helper to work back through the preceeding flowgraph steps to find a step
     that's set the cellarea.'''
-    select = chip.get('flowstatus', startstep, startindex, 'select')
+    flow = chip.get('flow')
+    select = chip.get('flowgraph', flow, startstep, startindex, 'select')
     for step, index in select:
         cell_area = chip.get('metric', step, index, 'cellarea', 'real')
         if cell_area:

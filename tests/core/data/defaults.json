@@ -1249,7 +1249,8 @@
                             "shorthelp": "file extension for stdout generated content",
                             "signature": null,
                             "switch": "-eda_stdout_suffix 'tool step index <str>'",
-                            "type": "str", "value": "log"
+                            "type": "str",
+                            "value": "log"
                         }
                     }
                 }
@@ -1450,6 +1451,38 @@
                         "type": "[(str,str)]",
                         "value": []
                     },
+                    "select": {
+                        "defvalue": [],
+                        "example": [
+                            "cli: -flowgraph_select 'asicflow cts 0 (place,42)'",
+                            "api:  chip.set('flowgraph','asicflow', 'cts','0','select',('place','42'))"
+                        ],
+                        "help": "List of selected inputs for the current step/index specified as\n(in_step,in_index) tuple.",
+                        "lock": "false",
+                        "require": null,
+                        "scope": "job",
+                        "shorthelp": "Flowgraph task select record",
+                        "signature": [],
+                        "switch": "-flowgraph_select 'flow step index <(str,str)>'",
+                        "type": "[(str,str)]",
+                        "value": []
+                    },
+                    "status": {
+                        "defvalue": null,
+                        "example": [
+                            "cli: -flowgraph_status 'asicflow cts 10 success'",
+                            "api:  chip.set('flowgraph','asicflow', 'cts','10','status', 'success')"
+                        ],
+                        "help": "Parameter that tracks the status of a task. Valid values are:\n\n* \"success\": task ran successfully\n* \"error\": task failed with an error\n\nAn empty value indicates the task has not yet been completed.",
+                        "lock": "false",
+                        "require": null,
+                        "scope": "job",
+                        "shorthelp": "Flowgraph task status",
+                        "signature": null,
+                        "switch": "-flowgraph_status 'flow step index <str>'",
+                        "type": "str",
+                        "value": null
+                    },
                     "timeout": {
                         "defvalue": null,
                         "example": [
@@ -1517,44 +1550,6 @@
                             "value": null
                         }
                     }
-                }
-            }
-        }
-    },
-    "flowstatus": {
-        "default": {
-            "default": {
-                "select": {
-                    "defvalue": [],
-                    "example": [
-                        "cli: -flowstatus_select 'cts 0 (place,42)'",
-                        "api:  chip.set('flowstatus','cts','0','select',('place','42'))"
-                    ],
-                    "help": "List of selected inputs for the current step/index specified as\n(in_step,in_index) tuple.",
-                    "lock": "false",
-                    "require": null,
-                    "scope": "job",
-                    "shorthelp": "Flowgraph task select record",
-                    "signature": [],
-                    "switch": "-flowstatus_select 'step index <(str,str)>'",
-                    "type": "[(str,str)]",
-                    "value": []
-                },
-                "status": {
-                    "defvalue": null,
-                    "example": [
-                        "cli: -flowstatus_status 'cts 10 success'",
-                        "api:  chip.set('flowstatus','cts','10','status', 'success')"
-                    ],
-                    "help": "Parameter that tracks the status of a task. Valid values are:\n\n* \"success\": task ran successfully\n* \"error\": task failed with an error\n\nAn empty value indicates the task has not yet been completed.",
-                    "lock": "false",
-                    "require": null,
-                    "scope": "job",
-                    "shorthelp": "Flowgraph task status",
-                    "signature": null,
-                    "switch": "-flowstatus_status 'step index <str>'",
-                    "type": "str",
-                    "value": null
                 }
             }
         }

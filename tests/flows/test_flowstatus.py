@@ -62,8 +62,8 @@ def test_flowstatus(scroot, steplist):
 
     chip.summary()
 
-    assert chip.get('flowstatus', 'place', '0', 'status') == siliconcompiler.TaskStatus.ERROR
-    assert chip.get('flowstatus', 'place', '1', 'status') == siliconcompiler.TaskStatus.SUCCESS
+    assert chip.get('flowgraph', flow, 'place', '0', 'status') == siliconcompiler.TaskStatus.ERROR
+    assert chip.get('flowgraph', flow, 'place', '1', 'status') == siliconcompiler.TaskStatus.SUCCESS
 
 @pytest.mark.eda
 @pytest.mark.quick
@@ -114,8 +114,8 @@ def test_long_branch(scroot):
 
     chip.run()
 
-    assert chip.get('flowstatus', 'place', '0', 'status') == siliconcompiler.TaskStatus.ERROR
-    assert chip.get('flowstatus', 'place', '1', 'status') == siliconcompiler.TaskStatus.SUCCESS
+    assert chip.get('flowgraph', flow, 'place', '0', 'status') == siliconcompiler.TaskStatus.ERROR
+    assert chip.get('flowgraph', flow, 'place', '1', 'status') == siliconcompiler.TaskStatus.SUCCESS
 
 @pytest.mark.eda
 @pytest.mark.quick
@@ -154,7 +154,8 @@ def test_remote(scroot):
     # Kill the server process.
     srv_proc.kill()
 
-    assert chip.get('flowstatus', 'place', '0', 'status') == siliconcompiler.TaskStatus.ERROR
-    assert chip.get('flowstatus', 'place', '1', 'status') == siliconcompiler.TaskStatus.SUCCESS
+    flow = chip.get('flow')
+    assert chip.get('flowgraph', flow, 'place', '0', 'status') == siliconcompiler.TaskStatus.ERROR
+    assert chip.get('flowgraph', flow, 'place', '1', 'status') == siliconcompiler.TaskStatus.SUCCESS
 
     chip.summary()

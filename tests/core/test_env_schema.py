@@ -27,8 +27,8 @@ def test_env(monkeypatch):
         assert os.environ['TEST'] == 'hello'
 
         # Logic to make sure chip.run() registers task as success
-
-        chip.set('flowstatus', step, index, 'status', siliconcompiler.TaskStatus.SUCCESS)
+        flow = chip.get('flow')
+        chip.set('flowgraph', flow, step, index, 'status', siliconcompiler.TaskStatus.SUCCESS)
         outdir = chip._getworkdir(step=step, index=index)
         chip.write_manifest(os.path.join(outdir, 'outputs', f"{chip.get('design')}.pkg.json"))
 

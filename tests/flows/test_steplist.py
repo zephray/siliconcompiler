@@ -12,8 +12,9 @@ def test_steplist(gcd_chip):
     assert gcd_chip.find_result('gds', step='export') is None
     # Make sure we ran syn
     assert gcd_chip.find_result('vg', step='syn')
-    assert gcd_chip.get('flowstatus', 'import', '0', 'status') == siliconcompiler.TaskStatus.SUCCESS
-    assert gcd_chip.get('flowstatus', 'syn', '0', 'status') == siliconcompiler.TaskStatus.SUCCESS
+    flow = gcd_chip.get('flow')
+    assert gcd_chip.get('flowgraph', flow, 'import', '0', 'status') == siliconcompiler.TaskStatus.SUCCESS
+    assert gcd_chip.get('flowgraph', flow, 'syn', '0', 'status') == siliconcompiler.TaskStatus.SUCCESS
 
     # Re-run
     gcd_chip.set('steplist', ['syn'])

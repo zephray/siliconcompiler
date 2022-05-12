@@ -1534,6 +1534,16 @@ class Chip:
         self._merge_manifest(cfg, job, clobber, clear, check)
 
     ###########################################################################
+    def _key_may_be_updated(self, keypath):
+        '''Helper that returns whether `keypath` can be updated mid-run.'''
+        # TODO: cleaner way to manage this?
+        if keypath[0] in ('metric', 'record'):
+            return True
+        if keypath[0] == 'flowgraph' and keypath[4] in ('select', 'status'):
+            return True
+        return False
+
+    ###########################################################################
     def _merge_manifest(self, cfg, job=None, clobber=True, clear=True, check=False, partial=False):
         """
         Internal merge_manifest() implementation with `partial` arg.
@@ -1549,7 +1559,7 @@ class Chip:
             dst = self.cfg
 
         for keylist in self.getkeys(cfg=cfg):
-            if partial and keylist[0] not in ('metric', 'flowstatus', 'record'):
+            if partial and not self._key_may_be_updated(keylist):
                 continue
             if keylist[0] == 'history':
                 continue
@@ -1772,7 +1782,7 @@ class Chip:
                     if in_step in steplist and in_index in indexlist[in_step]:
                         # we're gonna run this step, OK
                         continue
-                    if self.get('flowstatus', in_step, in_index, 'status') == TaskStatus.SUCCESS:
+                    if self.get('flowgraph', flow, in_step, in_index, 'status') == TaskStatus.SUCCESS:
                         # this task has already completed successfully, OK
                         continue
                     self.logger.error(f'{step}{index} relies on {in_step}{in_index}, '
@@ -2948,21 +2958,21 @@ class Chip:
         # Start search with any successful leaf tasks.
         leaf_tasks = self._find_leaves(steplist)
         for task in leaf_tasks:
-            if self.get('flowstatus', *task, 'status') == TaskStatus.SUCCESS:
+            if self.get('flowgraph', flow, *task, 'status') == TaskStatus.SUCCESS:
                 selected_tasks.add(task)
                 to_search.append(task)
 
         # Search backwards, saving anything that was selected by leaf tasks.
         while len(to_search) > 0:
             task = to_search.pop(-1)
-            for selected in self.get('flowstatus', *task, 'select'):
+            for selected in self.get('flowgraph', flow, *task, 'select'):
                 if selected not in selected_tasks:
                     selected_tasks.add(selected)
                     to_search.append(selected)
 
         # only report tool based steps functions
         for step in steplist.copy():
-            if self.get('flowgraph',flow, step,'0','tool') in self.builtin:
+            if self.get('flowgraph', flow, step,'0','tool') in self.builtin:
                 index = steplist.index(step)
                 del steplist[index]
 
@@ -3439,7 +3449,7 @@ class Chip:
                 failed[step] = {}
             failed[step][index] = False
 
-            if self.get('flowstatus', step, index, 'status') == TaskStatus.ERROR:
+            if self.get('flowgraph', flow, step, index, 'status') == TaskStatus.ERROR:
                 failed[step][index] = True
             else:
                 for metric in self.getkeys('metric', step, index):
@@ -3640,7 +3650,7 @@ class Chip:
         if not self.get('remote'):
             for in_step, in_index in self.get('flowgraph', flow, step, index, 'input'):
                 in_task_status = status[in_step + in_index]
-                self.set('flowstatus', in_step, in_index, 'status', in_task_status)
+                self.set('flowgraph', flow, in_step, in_index, 'status', in_task_status)
                 if in_task_status != TaskStatus.ERROR:
                     cfgfile = f"../../../{in_job}/{in_step}/{in_index}/outputs/{design}.pkg.json"
                     self._read_manifest(cfgfile, clobber=False, partial=True)
@@ -3691,7 +3701,7 @@ class Chip:
             self.logger.error(f'No inputs selected after running {tool}')
             self._haltstep(step, index)
 
-        self.set('flowstatus', step, index, 'select', sel_inputs)
+        self.set('flowgraph', flow, step, index, 'select', sel_inputs)
 
         ##################
         # 8. Copy (link) output data from previous steps
@@ -3701,12 +3711,12 @@ class Chip:
 
         if not self.get('flowgraph', flow, step, index,'input'):
             all_inputs = []
-        elif not self.get('flowstatus', step, index, 'select'):
+        elif not self.get('flowgraph', flow, step, index, 'select'):
             all_inputs = self.get('flowgraph', flow, step, index,'input')
         else:
-            all_inputs = self.get('flowstatus', step, index, 'select')
+            all_inputs = self.get('flowgraph', flow, step, index, 'select')
         for in_step, in_index in all_inputs:
-            if self.get('flowstatus', in_step, in_index, 'status') == TaskStatus.ERROR:
+            if self.get('flowgraph', flow, in_step, in_index, 'status') == TaskStatus.ERROR:
                 self.logger.error(f'Halting step due to previous error in {in_step}{in_index}')
                 self._haltstep(step, index)
 
@@ -3856,7 +3866,7 @@ class Chip:
                     # timeout. Based on https://stackoverflow.com/a/18422264.
                     is_stdout_log = self.get('eda', tool, 'stdout', step, index, 'destination') == 'log'
                     is_stderr_log = self.get('eda', tool, 'stderr', step, index, 'destination') == 'log' and stderr_file != stdout_file
-                    # if STDOUT and STDERR are to be redirected to the same file, 
+                    # if STDOUT and STDERR are to be redirected to the same file,
                     # use a single writer
                     if stderr_file == stdout_file:
                         stderr_writer.close()
@@ -3953,7 +3963,7 @@ class Chip:
 
         ##################
         # 22. Save a successful manifest
-        self.set('flowstatus', step, index, 'status', TaskStatus.SUCCESS)
+        self.set('flowgraph', flow, step, index, 'status', TaskStatus.SUCCESS)
         self.set('arg', 'step', None, clobber=True)
         self.set('arg', 'index', None, clobber=True)
 
@@ -4086,23 +4096,23 @@ class Chip:
                     # If stepdir doesn't exist, we need to re-run this task. If
                     # we're not running with -resume, we also re-run anything
                     # in the steplist.
-                    self.set('flowstatus', step, index, 'status', None)
+                    self.set('flowgraph', flow, step, index, 'status', None)
                     for metric in self.getkeys('metric', 'default', 'default'):
                         self.set('metric', step, index, metric, 'real', None)
                     for record in self.getkeys('record', 'default', 'default'):
                         self.set('record', step, index, record, None)
                 elif os.path.isfile(cfg):
-                    self.set('flowstatus', step, index, 'status', TaskStatus.SUCCESS)
+                    self.set('flowgraph', flow, step, index, 'status', TaskStatus.SUCCESS)
                     all_indices_failed = False
                 else:
-                    self.set('flowstatus', step, index, 'status', TaskStatus.ERROR)
+                    self.set('flowgraph', flow, step, index, 'status', TaskStatus.ERROR)
 
             if should_resume and all_indices_failed and step in steplist:
                 # When running with -resume, we re-run any step in steplist that
                 # had all indices fail.
                 for index in self.getkeys('flowgraph', flow, step):
                     if index in indexlist[step]:
-                        self.set('flowstatus', step, index, 'status', None)
+                        self.set('flowgraph', flow, step, index, 'status', None)
                         for metric in self.getkeys('metric', 'default', 'default'):
                             self.set('metric', step, index, metric, 'real', None)
                         for record in self.getkeys('record', 'default', 'default'):
@@ -4180,7 +4190,7 @@ class Chip:
             for step in self.getkeys('flowgraph', flow):
                 for index in self.getkeys('flowgraph', flow, step):
                     stepstr = step + index
-                    task_status = self.get('flowstatus', step, index, 'status')
+                    task_status = self.get('flowgraph', flow, step, index, 'status')
                     if task_status is not None:
                         status[step + index] = task_status
                     else:
@@ -4314,7 +4324,7 @@ class Chip:
                 if not index_succeeded:
                     raise SiliconCompilerError('Run() failed, see previous errors.')
 
-            # On success, write out status dict to 'flowstatus'. We do this
+            # On success, write out status dict to 'flowgraph'. We do this
             # since certain scenarios won't be caught by reading in manifests (a
             # failing step doesn't dump a manifest). For example, if the
             # steplist's final step has two indices and one fails.
@@ -4322,7 +4332,7 @@ class Chip:
                 for index in indexlist[step]:
                     stepstr = step + index
                     if status[stepstr] != TaskStatus.PENDING:
-                        self.set('flowstatus', step, index, 'status', status[stepstr])
+                        self.set('flowgraph', flow, step, index, 'status', status[stepstr])
 
 
             # Merge cfg back from last executed runsteps.
@@ -4348,7 +4358,7 @@ class Chip:
                 if status[laststep+index] == TaskStatus.SUCCESS:
                     self._read_manifest(lastcfg, clobber=False, partial=True)
                 else:
-                    self.set('flowstatus', laststep, index, 'status', TaskStatus.ERROR)
+                    self.set('flowgraph', flow, laststep, index, 'status', TaskStatus.ERROR)
 
         # Clear scratchpad args since these are checked on run() entry
         self.set('arg', 'step', None, clobber=True)

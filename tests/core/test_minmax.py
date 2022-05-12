@@ -81,8 +81,10 @@ def test_maximum(chip):
 def test_all_failed(chip):
     N = len(chip.getkeys('flowgraph', chip.get('flow'), 'syn'))
 
+    flow = chip.get('flow')
     for index in range(N):
-        chip.set('flowstatus', 'syn', str(index), 'status', siliconcompiler.TaskStatus.ERROR)
+        flow = chip.get('flow')
+        chip.set('flowgraph', flow, 'syn', str(index), 'status', siliconcompiler.TaskStatus.ERROR)
 
     steplist = []
     for i in range(N):
@@ -96,7 +98,8 @@ def test_winner_failed(chip):
     N = len(chip.getkeys('flowgraph', chip.get('flow'), 'syn'))
 
     # set error bit on what would otherwise be winner
-    chip.set('flowstatus', 'syn', '9', 'status', siliconcompiler.TaskStatus.ERROR)
+    flow = chip.get('flow')
+    chip.set('flowgraph', flow, 'syn', '9', 'status', siliconcompiler.TaskStatus.ERROR)
 
     steplist = []
     for i in range(N):
