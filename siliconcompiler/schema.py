@@ -112,6 +112,17 @@ def schema_cfg():
     cfg = {}
     cfg['history'] = {}
 
+    scparam(cfg,['schemaversion'],
+            sctype='str',
+            scope='global',
+            defvalue=SCHEMA_VERSION,
+            require='all',
+            shorthelp="Schema version number",
+            lock='true',
+            switch="-schemaversion <str>",
+            example=["api: chip.get('schemaversion')"],
+            schelp="""SiliconCompiler schema version number.""")
+
     # Runtime options
     cfg = schema_options(cfg)
     cfg = schema_arg(cfg)
@@ -2011,9 +2022,6 @@ def schema_record(cfg, step='default', index='default'):
                            * govcloud: generic US government cloud
                            * <region>: cloud and entity specific region string name
                            """],
-               'schemaversion': ['schema version number',
-                               '1.0',
-                               """Version number for the Silicon Compiler Schema."""],
                'scversion': ['software version number',
                              '1.0',
                              """Version number for the SiliconCompiler software."""],
@@ -2060,16 +2068,6 @@ def schema_record(cfg, step='default', index='default'):
 def schema_options(cfg):
     ''' Run-time options
     '''
-
-    scparam(cfg,['option', 'version'],
-            sctype='bool',
-            shorthelp="Prints SC version numbers",
-            switch="-version <bool>",
-            example=["cli: -version",
-                    "api: chip.get('option', 'version')"],
-            schelp="""Command line switch to print the schema and software
-            version numbers in an 'sc' command line app.""")
-
 
     # Units
     units = {

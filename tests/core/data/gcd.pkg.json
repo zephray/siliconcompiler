@@ -13966,7 +13966,7 @@
                         "switch": "-metric_exetime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "1.84"
+                        "value": "2.15"
                     }
                 },
                 "holdpaths": {
@@ -14127,7 +14127,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "98283520.0"
+                        "value": "98394112.0"
                     }
                 },
                 "nets": {
@@ -14314,7 +14314,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "2.06"
+                        "value": "2.35"
                     }
                 },
                 "totalarea": {
@@ -14757,7 +14757,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "91414528.0"
+                        "value": "87310336.0"
                     }
                 },
                 "nets": {
@@ -14944,7 +14944,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.63"
+                        "value": "0.61"
                     }
                 },
                 "totalarea": {
@@ -15226,7 +15226,7 @@
                         "switch": "-metric_exetime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.97"
+                        "value": "0.95"
                     }
                 },
                 "holdpaths": {
@@ -15387,7 +15387,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "365735936"
+                        "value": "222294016"
                     }
                 },
                 "nets": {
@@ -15574,7 +15574,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "1.25"
+                        "value": "1.2"
                     }
                 },
                 "totalarea": {
@@ -16017,7 +16017,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "81420288.0"
+                        "value": "85356544.0"
                     }
                 },
                 "nets": {
@@ -16204,7 +16204,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.63"
+                        "value": "0.59"
                     }
                 },
                 "totalarea": {
@@ -16647,7 +16647,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "38584320.0"
+                        "value": "37306368.0"
                     }
                 },
                 "nets": {
@@ -16834,7 +16834,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.48"
+                        "value": "0.46"
                     }
                 },
                 "totalarea": {
@@ -17133,7 +17133,7 @@
                         "switch": "-metric_exetime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.31"
+                        "value": "0.41"
                     }
                 },
                 "holdpaths": {
@@ -17294,7 +17294,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "77291520.0"
+                        "value": "84414464.0"
                     }
                 },
                 "nets": {
@@ -17481,7 +17481,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.52"
+                        "value": "0.59"
                     }
                 },
                 "totalarea": {
@@ -17763,7 +17763,7 @@
                         "switch": "-metric_exetime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.61"
+                        "value": "0.62"
                     }
                 },
                 "holdpaths": {
@@ -17924,7 +17924,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "108646400.0"
+                        "value": "105189376.0"
                     }
                 },
                 "nets": {
@@ -18111,7 +18111,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.82"
+                        "value": "0.81"
                     }
                 },
                 "totalarea": {
@@ -18393,7 +18393,7 @@
                         "switch": "-metric_exetime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "3.11"
+                        "value": "3.23"
                     }
                 },
                 "holdpaths": {
@@ -18554,7 +18554,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "747593728.0"
+                        "value": "755380224.0"
                     }
                 },
                 "nets": {
@@ -18741,7 +18741,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "3.33"
+                        "value": "3.47"
                     }
                 },
                 "totalarea": {
@@ -19023,7 +19023,7 @@
                         "switch": "-metric_exetime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "0.81"
+                        "value": "0.71"
                     }
                 },
                 "holdpaths": {
@@ -19184,7 +19184,7 @@
                         "switch": "-metric_memory 'step index group <float>'",
                         "type": "float",
                         "unit": "B",
-                        "value": "31092736.0"
+                        "value": "30846976.0"
                     }
                 },
                 "nets": {
@@ -19371,7 +19371,7 @@
                         "switch": "-metric_tasktime 'step index group <float>'",
                         "type": "float",
                         "unit": "s",
-                        "value": "1.0"
+                        "value": "0.88"
                     }
                 },
                 "totalarea": {
@@ -20758,7 +20758,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:55"
+                    "value": "2022-05-12 14:44:26"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -20837,6 +20837,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -20846,7 +20857,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:53"
+                    "value": "2022-05-12 14:44:23"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -20916,7 +20927,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:59"
+                    "value": "2022-05-12 14:44:30"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -20995,6 +21006,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21004,7 +21026,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:58"
+                    "value": "2022-05-12 14:44:30"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -21074,7 +21096,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:27:01"
+                    "value": "2022-05-12 14:44:32"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -21153,6 +21175,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21162,7 +21195,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:59"
+                    "value": "2022-05-12 14:44:31"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -21232,7 +21265,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:50"
+                    "value": "2022-05-12 14:44:21"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -21311,6 +21344,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21320,7 +21364,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:50"
+                    "value": "2022-05-12 14:44:21"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -21390,7 +21434,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:48"
+                    "value": "2022-05-12 14:44:19"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -21469,6 +21513,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21478,7 +21533,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:48"
+                    "value": "2022-05-12 14:44:19"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -21548,7 +21603,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:51"
+                    "value": "2022-05-12 14:44:22"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -21627,6 +21682,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21636,7 +21702,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:51"
+                    "value": "2022-05-12 14:44:21"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -21706,7 +21772,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:52"
+                    "value": "2022-05-12 14:44:23"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -21785,6 +21851,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21794,7 +21871,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:51"
+                    "value": "2022-05-12 14:44:22"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -21864,7 +21941,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:58"
+                    "value": "2022-05-12 14:44:30"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -21943,6 +22020,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -21952,7 +22040,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:55"
+                    "value": "2022-05-12 14:44:26"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -22022,7 +22110,7 @@
                     "signature": null,
                     "switch": "-record_endtime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:49"
+                    "value": "2022-05-12 14:44:20"
                 },
                 "ipaddr": {
                     "defvalue": null,
@@ -22101,6 +22189,17 @@
                     "type": "str",
                     "value": "local"
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": "0.8.0"
+                },
                 "starttime": {
                     "defvalue": null,
                     "lock": "false",
@@ -22110,7 +22209,7 @@
                     "signature": null,
                     "switch": "-record_starttime 'step index <str>'",
                     "type": "str",
-                    "value": "2022-05-12 13:26:48"
+                    "value": "2022-05-12 14:44:19"
                 },
                 "toolpath": {
                     "defvalue": null,
@@ -22180,6 +22279,17 @@
         "switch": "-resume <bool>",
         "type": "bool",
         "value": "false"
+    },
+    "schemaversion": {
+        "defvalue": "0.8.0",
+        "lock": "true",
+        "require": "all",
+        "scope": "global",
+        "shorthelp": "Schema version number",
+        "signature": null,
+        "switch": "-schemaversion <str>",
+        "type": "str",
+        "value": "0.8.0"
     },
     "scpath": {
         "defvalue": [],
@@ -22379,41 +22489,6 @@
             "switch": "-record_voltage '<str>'",
             "type": "str",
             "value": "mv"
-        }
-    },
-    "version": {
-        "print": {
-            "defvalue": "false",
-            "lock": "false",
-            "require": "all",
-            "scope": "global",
-            "shorthelp": "Prints version number",
-            "signature": null,
-            "switch": "-version <bool>",
-            "type": "bool",
-            "value": "false"
-        },
-        "schema": {
-            "defvalue": "0.8.0",
-            "lock": "false",
-            "require": null,
-            "scope": "global",
-            "shorthelp": "Schema version number",
-            "signature": null,
-            "switch": "-version_schema <str>",
-            "type": "str",
-            "value": "0.8.0"
-        },
-        "software": {
-            "defvalue": "0.8.0",
-            "lock": "false",
-            "require": null,
-            "scope": "global",
-            "shorthelp": "Software version number",
-            "signature": null,
-            "switch": "-version_software <str>",
-            "type": "str",
-            "value": "0.8.0"
         }
     }
 }

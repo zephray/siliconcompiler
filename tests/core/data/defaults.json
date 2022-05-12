@@ -6449,6 +6449,22 @@
                     "type": "str",
                     "value": null
                 },
+                "scversion": {
+                    "defvalue": null,
+                    "example": [
+                        "cli: -record_scversion 'dfm 0 <1.0>'",
+                        "api: chip.set('record','dfm','0','scversion', <1.0>)"
+                    ],
+                    "help": "Record tracking the software version number per step and index basis. Version number for the SiliconCompiler software.",
+                    "lock": "false",
+                    "require": null,
+                    "scope": "job",
+                    "shorthelp": "Record: software version number",
+                    "signature": null,
+                    "switch": "-record_scversion 'step index <str>'",
+                    "type": "str",
+                    "value": null
+                },
                 "starttime": {
                     "defvalue": null,
                     "example": [
@@ -6579,6 +6595,21 @@
         "switch": "-resume <bool>",
         "type": "bool",
         "value": "false"
+    },
+    "schemaversion": {
+        "defvalue": "0.8.0",
+        "example": [
+            "api: chip.get('schemaversion')"
+        ],
+        "help": "SiliconCompiler schema version number.",
+        "lock": "true",
+        "require": "all",
+        "scope": "global",
+        "shorthelp": "Schema version number",
+        "signature": null,
+        "switch": "-schemaversion <str>",
+        "type": "str",
+        "value": "0.8.0"
     },
     "scpath": {
         "defvalue": [],
@@ -6984,56 +7015,6 @@
             "switch": "-record_voltage '<str>'",
             "type": "str",
             "value": "mv"
-        }
-    },
-    "version": {
-        "print": {
-            "defvalue": "false",
-            "example": [
-                "cli: -version",
-                "api: chip.get('version', 'print')"
-            ],
-            "help": "Command line switch to print the schema and software\nversion numbers in an 'sc' command line app.",
-            "lock": "false",
-            "require": "all",
-            "scope": "global",
-            "shorthelp": "Prints version number",
-            "signature": null,
-            "switch": "-version <bool>",
-            "type": "bool",
-            "value": "false"
-        },
-        "schema": {
-            "defvalue": "0.8.0",
-            "example": [
-                "cli: -version_schema",
-                "api: chip.get('version', 'schema')"
-            ],
-            "help": "SiliconCompiler schema version number.",
-            "lock": "false",
-            "require": null,
-            "scope": "global",
-            "shorthelp": "Schema version number",
-            "signature": null,
-            "switch": "-version_schema <str>",
-            "type": "str",
-            "value": "0.8.0"
-        },
-        "software": {
-            "defvalue": null,
-            "example": [
-                "cli: -version_software",
-                "api: chip.get('version', 'software')"
-            ],
-            "help": "SiliconCompiler software version number.",
-            "lock": "false",
-            "require": null,
-            "scope": "global",
-            "shorthelp": "Software version number",
-            "signature": null,
-            "switch": "-version_software <str>",
-            "type": "str",
-            "value": null
         }
     },
     "vlib": {
