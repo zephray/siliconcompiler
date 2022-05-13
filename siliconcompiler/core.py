@@ -668,6 +668,8 @@ class Chip:
         helpstr = self.get(*keypath, field='help')
         example = self.get(*keypath, field='example')
 
+        examplestr = ("\nExamples:    " + example[0] + ''.join(
+                     ["\n             " + ex for ex in example[1:]]))
 
         #Removing multiple spaces and newlines
         helpstr = helpstr.rstrip()
@@ -689,8 +691,7 @@ class Chip:
                    "\nType:        " + typestr  +
                    "\nRequirement: " + requirement   +
                    "\nDefault:     " + defstr   +
-                   "\nExamples:    " + example[0] +
-                   "\n             " + example[1] +
+                   examplestr +
                    "\nHelp:        " + para_list[0] + "\n")
         for line in para_list[1:]:
             fullstr = (fullstr +
