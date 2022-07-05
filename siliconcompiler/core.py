@@ -4522,6 +4522,20 @@ class Chip:
         views (and we probably want to prioritize final layouts like
         DEF/GDS/OAS).
         '''
+        design = self.get('design')
+        # TODO: keeping the below logic for backwards compatibility. Once
+        # all flows/examples register their outputs in ['output', ...], we
+        # can fully switch over to the generic logic.
+        laststep = 'export'
+        lastindex = '0'
+        lastdir = self._getworkdir(step=laststep, index=lastindex)
+        gds_file= f"{lastdir}/outputs/{design}.gds"
+        def_file = f"{lastdir}/outputs/{design}.def"
+        if os.path.isfile(gds_file):
+            return gds_file
+        elif os.path.isfile(def_file):
+            return def_file
+
         for key in self.getkeys('output'):
             for output in self.find_files('output', key):
                 file_ext = utils.get_file_ext(output)
@@ -4557,25 +4571,10 @@ class Chip:
         if extra_options is None:
             extra_options = []
 
-        # Finding last layout if no argument specified
+        # Inferring layout if no argument specified
         if filename is None:
             self.logger.info('Searching build directory for layout to show.')
-            design = self.get('design')
-            # TODO: keeping the below logic for backwards compatibility. Once
-            # all flows/examples register their outputs in ['output', ...], we
-            # can fully switch over to the generic logic.
-            laststep = 'export'
-            lastindex = '0'
-            lastdir = self._getworkdir(step=laststep, index=lastindex)
-            gds_file= f"{lastdir}/outputs/{design}.gds"
-            def_file = f"{lastdir}/outputs/{design}.def"
-            if os.path.isfile(gds_file):
-                filename = gds_file
-            elif os.path.isfile(def_file):
-                filename = def_file
-            else:
-                # Generic logic
-                filename = self._find_showable_output()
+            filename = self._find_showable_output()
 
         if filename is None:
             self.logger.error('Unable to automatically find layout in build directory.')
