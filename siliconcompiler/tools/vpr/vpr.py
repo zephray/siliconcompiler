@@ -49,12 +49,13 @@ def setup(chip):
     chip.set('tool', tool, 'threads', step, index, os.cpu_count(), clobber=False)
 
     #TO-DO: PRIOROTIZE the post-routing packing results?
-    chip.set('tool', tool, 'output', step, index, chip.design + '.net')
-    chip.add('tool', tool, 'output', step, index, chip.design + '.place')
-    chip.add('tool', tool, 'output', step, index, chip.design + '.route')
+    design = chip.get_entrypoint()
+    chip.set('tool', tool, 'output', step, index, design + '.net')
+    chip.add('tool', tool, 'output', step, index, design + '.place')
+    chip.add('tool', tool, 'output', step, index, design + '.route')
     chip.add('tool', tool, 'output', step, index, 'vpr_stdout.log')
-    
-    topmodule = chip.get('design')
+
+    topmodule = chip.get_entrypoint()
     blif = "inputs/" + topmodule + ".blif"
 
     options = []
@@ -62,11 +63,11 @@ def setup(chip):
         options.append(arch)
 
     options.append(blif)
-    
+
     # sdc = chip.get('input', 'sdc')
     # if sdc:
     #     options.append(f"--sdc_file {sdc}")
-        
+
     chip.add('tool', tool, 'option', step, index,  options)
 
 
@@ -75,13 +76,14 @@ def setup(chip):
 # Runtime pre processing
 #############################################
 def pre_process(chip):
-    
+
     #have to rename the net connected to unhooked pins from $undef to unconn
     # as VPR uses unconn keywords to identify unconnected pins
-    
+
     step = chip.get('arg','step')
     index = chip.get('arg','index')
-    blif_file = f"{chip._getworkdir()}/{step}/{index}/inputs/{chip.design}.blif"
+    design = chip.get_entrypoint()
+    blif_file = f"{chip._getworkdir()}/{step}/{index}/inputs/{design}.blif"
     print(blif_file)
     with open(blif_file,'r+') as f:
         netlist = f.read()
@@ -89,7 +91,7 @@ def pre_process(chip):
         netlist = re.sub('\$undef', 'unconn', netlist)
         f.write(netlist)
         f.truncate()
-    
+
 ################################
 # Post_process (post executable)
 ################################
@@ -97,12 +99,13 @@ def pre_process(chip):
 def post_process(chip):
     ''' Tool specific function to run after step execution
     '''
-    
+
     step = chip.get('arg','step')
     index = chip.get('arg','index')
     for file in chip.get('tool', 'vpr', 'output', step, index):
         shutil.copy(file, 'outputs')
-    shutil.copy(f'inputs/{chip.design}.blif', 'outputs')
+    design = chip.get_entrypoint()
+    shutil.copy(f'inputs/{design}.blif', 'outputs')
     #TODO: return error code
     return 0
 
