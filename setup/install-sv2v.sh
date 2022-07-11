@@ -9,8 +9,8 @@ cd deps
 curl -sSL https://get.haskellstack.org/ | sh
 
 git clone https://github.com/zachjs/sv2v.git
+cd sv2v
 git fetch --tags
 git checkout v0.0.9
-cd sv2v
 make
-cd -
+cd ../../
