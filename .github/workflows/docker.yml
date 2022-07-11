@@ -4,6 +4,7 @@ name: Create and publish an sc_tools Docker image
 
 on:
   workflow_dispatch:
+  push:
 
 env:
   REGISTRY: ghcr.io
