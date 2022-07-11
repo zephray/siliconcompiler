@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# exit when any command fails
+set -e
+
 sudo apt-get install -y build-essential m4 tcsh csh libx11-dev tcl-dev tk-dev
 
 mkdir -p deps

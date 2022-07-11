@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# exit when any command fails
+set -e
+
 src_path=$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)
 
 sudo apt-get install -y pkg-config build-essential libatomic-ops-dev python3 bison flex libreadline-dev gawk libffi-dev git graphviz tcl xdot libboost-system-dev libboost-python-dev libboost-filesystem-dev libboost-serialization-dev libboost-thread-dev zlib1g-dev cmake swig libeigen3-dev

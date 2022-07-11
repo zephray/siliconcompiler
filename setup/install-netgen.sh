@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# exit when any command fails
+set -e
+
 sudo apt-get install -y build-essential tcl-dev tk-dev
 
 mkdir -p deps

@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# exit when any command fails
+set -e
+
 sudo apt-get install -y python3-pip
 pip3 install -r requirements.txt
 python3 -m pip install -e .
