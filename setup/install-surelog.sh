@@ -4,8 +4,18 @@ set -e
 sudo apt-get install -y build-essential cmake git pkg-config tclsh swig uuid-dev libgoogle-perftools-dev python3 python3-dev
 sudo apt-get install -y default-jre
 
-git submodule update --init --recursive third_party/tools/surelog
-cd third_party/tools/surelog
+if git status > /dev/null; then
+    # If we're in a Git repo, use the submodule
+    git submodule update --init --recursive third_party/tools/surelog
+    cd third_party/tools/surelog
+else
+    # Otherwise, clone into deps/
+    mkdir -p deps
+    git clone https://github.com/chipsalliance/Surelog.git deps/surelog
+    cd deps/surelog
+    # TODO: single source of truth between this and submodule
+    git checkout 5b07b264b
+fi
 
 # Workaround: Surelog's antlr4 dependency clones a git:// repo during its build process.
 # GitHub recently deprecated some ways of cloning via git://, so we need to use https:// instead.

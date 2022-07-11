@@ -31,8 +31,18 @@ sudo ln -s /usr/local/lib/libtcl8.6.so /usr/local/lib/libtcl.so
 
 cd ${src_path}/..
 
-git submodule update --init --recursive third_party/tools/openroad
-cd third_party/tools/openroad
+if git status > /dev/null; then
+    # If we're in a Git repo, use the submodule
+    git submodule update --init --recursive third_party/tools/openroad
+    cd third_party/tools/openroad
+else
+    # Otherwise, clone into deps/
+    git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git deps/openroad
+    cd deps/openroad
+    # TODO: single source of truth between this and submodule
+    git checkout 3bdbd4e6
+fi
+
 ./build_openroad.sh -o
 
 echo "Please add \"source $(pwd)/setup_env.sh\" to your .bashrc"
