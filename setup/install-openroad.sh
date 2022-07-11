@@ -41,6 +41,7 @@ else
     cd deps/openroad
     # TODO: single source of truth between this and submodule
     git checkout 3bdbd4e6
+    git submodule update --init --recursive
 fi
 
 ./build_openroad.sh -o

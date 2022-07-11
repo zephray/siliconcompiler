@@ -15,6 +15,7 @@ else
     cd deps/surelog
     # TODO: single source of truth between this and submodule
     git checkout 5b07b264b
+    git submodule update --init --recursive
 fi
 
 # Workaround: Surelog's antlr4 dependency clones a git:// repo during its build process.
