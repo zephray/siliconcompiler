@@ -4,7 +4,8 @@
 import subprocess
 import sys
 
-installs = ['surelog', 'klayout', 'magic', 'openroad', 'sv2v', 'netgen']
+# installs = ['surelog', 'klayout', 'magic', 'openroad', 'sv2v', 'netgen']
+installs = ['klayout']
 for i in installs:
     print(f'Installing {i}...')
     script_path = 'setup/install-'+i+'.sh'
