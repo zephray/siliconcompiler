@@ -40,5 +40,5 @@ jobs:
           context: setup
           file: setup/docker/Dockerfile
           push: true
-          tags: ${{ env.REGISTRY }}/siliconcompiler/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/nmoroze/${{ env.IMAGE_NAME }}:latest
           # labels: ${{ steps.meta.outputs.labels }}
