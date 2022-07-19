@@ -39,7 +39,7 @@ jobs:
         with:
           buildkitd-flags: --debug
 
-        name: Set up containerd
+      - name: Set up containerd
         uses: crazy-max/ghaction-setup-containerd@v2
 
       - name: Build and push Docker image
