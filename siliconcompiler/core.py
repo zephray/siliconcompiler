@@ -4472,7 +4472,7 @@ class Chip:
                 if not index_succeeded:
                     self.error('Run() failed, see previous errors.', fatal=True)
 
-            # On success, write out status dict to flowgraph status'. We do this
+            # On success, write out status dict to flowgraph status. We do this
             # since certain scenarios won't be caught by reading in manifests (a
             # failing step doesn't dump a manifest). For example, if the
             # steplist's final step has two indices and one fails.
@@ -4483,30 +4483,25 @@ class Chip:
                         self.set('flowgraph', flow, step, index, 'status', status[stepstr])
 
 
-            # Merge cfg back from last executed runsteps.
-            # Note: any information generated in steps that do not merge into the
-            # last step will not be picked up in this chip object.
-            # TODO: we might as well fix this? We can add a helper function to
-            # find all steps in the steplist that don't lead to others.
+            # Merge cfg back from last executed tasks.
+            for step in self._find_leaves():
+                for index in indexlist[step]:
+                    lastdir = self._getworkdir(step=step, index=index)
 
-            laststep = steplist[-1]
-            for index in indexlist[laststep]:
-                lastdir = self._getworkdir(step=laststep, index=index)
+                    # This no-op listdir operation is important for ensuring we have
+                    # a consistent view of the filesystem when dealing with NFS.
+                    # Without this, this thread is often unable to find the final
+                    # manifest of runs performed on job schedulers, even if they
+                    # completed successfully. Inspired by:
+                    # https://stackoverflow.com/a/70029046.
 
-                # This no-op listdir operation is important for ensuring we have
-                # a consistent view of the filesystem when dealing with NFS.
-                # Without this, this thread is often unable to find the final
-                # manifest of runs performed on job schedulers, even if they
-                # completed successfully. Inspired by:
-                # https://stackoverflow.com/a/70029046.
+                    os.listdir(os.path.dirname(lastdir))
 
-                os.listdir(os.path.dirname(lastdir))
-
-                lastcfg = f"{lastdir}/outputs/{self.get('design')}.pkg.json"
-                if status[laststep+index] == TaskStatus.SUCCESS:
-                    self._read_manifest(lastcfg, clobber=False, partial=True)
-                else:
-                    self.set('flowgraph', flow, laststep, index, 'status', TaskStatus.ERROR)
+                    lastcfg = f"{lastdir}/outputs/{self.get('design')}.pkg.json"
+                    if status[step+index] == TaskStatus.SUCCESS:
+                        self._read_manifest(lastcfg, clobber=False, partial=True)
+                    else:
+                        self.set('flowgraph', flow, step, index, 'status', TaskStatus.ERROR)
 
         # Clear scratchpad args since these are checked on run() entry
         self.set('arg', 'step', None, clobber=True)
