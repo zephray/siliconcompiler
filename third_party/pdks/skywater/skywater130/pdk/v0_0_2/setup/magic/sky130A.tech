@@ -14,9 +14,9 @@ tech
 end
 
 version
- version 1.0.150-0-gb06f0f2
+ version 1.0.291-36-g41c0908
  description "SkyWater SKY130: Open Source rules and DRC"
- requires magic-8.3.111
+ requires magic-8.3.277
 end
 
 #------------------------------------------------------------------------
@@ -25,6 +25,8 @@ end
 # Status 8/14/20: Rev 2 (alpha):
 # Started updating with new device/model naming convention
 # Status 1/3/21: Taking out of beta and declaring an official release.
+# Status 3/17/22: Added fringeshieldhalo to improve parasitic capacitance
+#		  calculations.
 #------------------------------------------------------------------------
 
 #------------------------------------------------------------------------
@@ -56,9 +58,9 @@ end
 # sky130_fd_pr__diode_pd2nw_05v5_lvt pdiodelvt	low Vt p+ diff diode
 # sky130_fd_pr__diode_pd2nw_05v5_hvt pdiodehvt	high Vt p+ diff diode
 # sky130_fd_pr__diode_pd2nw_11v0 mvpdiode	thickox p+ diff diode
-# sky130_fd_pr__npn_05v0	pbase		NPN in deep nwell
+# sky130_fd_pr__npn_05v5	pbase		NPN in deep nwell
 # sky130_fd_pr__npn_11v0	pbase		thick oxide gated NPN
-# sky130_fd_pr__pnp_05v0	nbase		PNP
+# sky130_fd_pr__pnp_05v5	nbase		PNP
 # sky130_fd_pr__cap_mim_m3_1	mimcap		MiM cap 1st plate
 # sky130_fd_pr__cap_mim_m3_2	mimcap2		MiM cap 2nd plate
 # sky130_fd_pr__res_generic_nd	rdn		n+ diff resistor
@@ -75,6 +77,7 @@ end
 # sky130_fd_pr__res_iso_pw	rpw		pwell resistor (in deep nwell)
 # sky130_fd_pr__esd_nfet_g5v0d10v5 mvnfetesd	ESD thickox nFET
 # sky130_fd_pr__esd_pfet_g5v0d10v5 mvpfetesd	ESD thickox pFET
+# sky130_fd_pr__photodiode	photo		Photodiode
 #
 # (*) Note that ppres may extract into some generic type called
 # "sky130_fd_pr__res_xhigh_po", but only specific sizes of xhrpoly are
@@ -127,6 +130,7 @@ types
 # Deep nwell
   dwell dnwell,dnw
   dwell isosubstrate,isosub
+  dwell photodiode,photo
 
 # Wells
   well nwell,nw
@@ -218,7 +222,7 @@ types
   active pdiodehvtc,pdihvtc
   active ndiodelvtc,ndilvtc
 
-# Local Interconnect
+# Local Interconnect 
   locali locali,li1,li
  -locali corelocali,coreli1,coreli
   locali rlocali,rli1,rli
@@ -234,6 +238,7 @@ types
  -metal1 obsm1
   metal1 padl
  -metal1 m1fill
+
 
 # Metal 2
   metal2 metal2,m2,met2
@@ -285,6 +290,12 @@ types
  -comment res1p41
  -comment res2p85
  -comment res5p73
+# fixed bipolar area identifiers
+ -comment pnp0p68
+ -comment pnp3p40
+ -comment npn1p00
+ -comment npn2p00
+ -comment npn11p0
 
 end
 
@@ -416,6 +427,10 @@ aliases
 
   psub		pwell
 
+  obstypes	obswell,mvobsactive,obsactive,obsli,obsmcon,obsm1,obsm2,obsm3,obsm4,obsm5,obsmrdl,obscomment
+  idtypes	res0p35,res0p69,res1p41,res2p85,res5p73,pnp0p68,pnp3p40,npn1p00,npn2p00,npn11p0
+  blocktypes	fillblock,fillblock4
+  
 end
 
 #-----------------------------------------------------
@@ -429,6 +444,7 @@ styles
   nwell     nwell
   pwell	    pwell
   rpwell    pwell 	ptransistor_stripes
+  photo	    nwell	nwell_field_implant
   ndiff     ndiffusion
   fomfill   ndiffusion
   pdiff     pdiffusion
@@ -476,7 +492,7 @@ styles
   mvnsc     ndiff_in_nwell metal1  contact_X'es hvndiff_mask
   mvpsc     pdiff_in_pwell metal1  contact_X'es hvpdiff_mask
 
-  poly      polysilicon
+  poly      polysilicon 
   polyfill  polysilicon
   pc        polysilicon    metal1  contact_X'es
   npolyres  polysilicon    silicide_block nselect2
@@ -489,6 +505,11 @@ styles
   res1p41   implant1
   res2p85   implant1
   res5p73   implant1
+  pnp0p68   implant1
+  pnp3p40   implant1
+  npn1p00   implant1
+  npn2p00   implant1
+  npn11p0   implant1
 
   pdiode    pdiffusion     pselect2
   ndiode    ndiffusion     nselect2
@@ -522,6 +543,8 @@ styles
   rm1       metal2         poly_resist_stripes
   obsm1     metal2
   m2c       metal2         metal3  via2arrow
+
+
   metal2    metal3
   m2fill    metal3
   rm2       metal3         poly_resist_stripes
@@ -585,13 +608,34 @@ compose
   compose  pfet  poly  pdiff
   compose  var   poly  nsd
 
+  decompose npass   poly ndiff
+  decompose npd     poly ndiff
+  decompose scnfet  poly ndiff
+  decompose nfetlvt poly ndiff
+  decompose nsonos  poly ndiff
+
+  decompose ppu       poly pdiff
+  decompose scpfet    poly pdiff
+  decompose scpfethvt poly pdiff
+  decompose pfethvt   poly pdiff
+  decompose pfetlvt   poly pdiff
+  decompose pfetmvt   poly pdiff
+  decompose corenvar  poly nsd
+  decompose corepvar  poly psd
+  decompose varhvt    poly nsd
+
   compose  mvnfet  poly  mvndiff
   compose  mvpfet  poly  mvpdiff
   compose  mvvar   poly  mvnsd
 
+  decompose nnfet     poly mvndiff
+  decompose mvnfetesd poly mvndiff
+  decompose mvnnfet   poly mvndiff
+  decompose mvpfetesd poly mvpdiff
+
   paint	 obsmcon locali	 via1
   paint	 obsmcon obsm1	 obsli,obsm1
-
+  
   paint  ndc     nwell  pdc
   paint  nfet    nwell  pfet
   paint  scnfet  nwell  scpfet
@@ -614,6 +658,10 @@ compose
   paint  nsc 	 coreli nsc
   paint  psc 	 coreli psc
   paint  viali 	 coreli viali
+  paint  mvpdc	 coreli mvpdc
+  paint  mvndc	 coreli mvndc
+  paint  mvnsc 	 coreli mvnsc
+  paint  mvpsc 	 coreli mvpsc
 
   paint  coreli  pdc    pdc
   paint  coreli  ndc    ndc
@@ -621,6 +669,11 @@ compose
   paint  coreli  nsc    nsc
   paint  coreli  psc    psc
   paint  coreli  viali  viali
+  paint  coreli  mvpdc  mvpdc
+  paint  coreli  mvndc  mvndc
+  paint  coreli  mvnsc  mvnsc
+  paint  coreli  mvpsc  mvpsc
+
 
   paint  m4      obsm4  m4
   paint  m5      obsm5  m5
@@ -631,8 +684,8 @@ end
 #-----------------------------------------------------
 
 connect
-  *nwell,*nsd,*mvnsd,dnwell,pnp *nwell,*nsd,*mvnsd,dnwell,pnp
-  pwell,*psd,*mvpsd,npn  pwell,*psd,*mvpsd,npn
+  *nwell,*nsd,*mvnsd,dnwell,pnp,photo *nwell,*nsd,*mvnsd,dnwell,pnp,photo
+  pwell,*psd,*mvpsd,npn,isosub  pwell,*psd,*mvpsd,npn,isosub
   *li,coreli,lifill	*li,coreli,lifill
   *m1,m1fill,obsmcon	*m1,m1fill,obsmcon
   *m2,m2fill	*m2,m2fill
@@ -652,7 +705,7 @@ end
 #-----------------------------------------------------
 # CIF/GDS output layer definitions
 #-----------------------------------------------------
-# NOTE:  All values in this section MUST be multiples of 25
+# NOTE:  All values in this section MUST be multiples of 25 
 # or else magic will scale below the allowed layout grid size
 
 cifoutput
@@ -683,12 +736,19 @@ style gdsii
 # DNWELL
 #----------------------------------------------------------------
 
- layer DNWELL	dnwell,pnp
+ layer DNWELL	dnwell,npn,photo
 	calma	64 18
 
  layer PWRES    rpw
 	and	dnwell
 	calma	64 13
+
+#----------------------------------------------------------------
+# SUBCUT
+#----------------------------------------------------------------
+
+ layer SUBCUT	isosub
+	calma	81 53
 
 #----------------------------------------------------------------
 # NWELL
@@ -774,7 +834,7 @@ style gdsii
 	bridge	380 380
 	and-not baseNSDM
 
- layer PSDM basePSDM,extendPSDM
+ layer PSDM basePSDM,extendPSDM 
 	grow	185
 	shrink	185
 	close   265000
@@ -851,13 +911,13 @@ style gdsii
 	calma 80 20
 
 #----------------------------------------------------------------
-# SONOS requires COREID around area (areaid.ce).  Also, the
-# coreli layer indicates a cell needing COREID.  Also, devices
-# npd, npass, and ppu indicate a COREID cell.
+# The coreli layer indicates a cell needing COREID.  Also,
+# devices npd, npass, and ppu indicate a COREID cell.  NOTE:
+# SONOS does not use COREID, counter to SkyWater rules.
 #----------------------------------------------------------------
 
  layer COREID
-	bloat-all nsonos,coreli,ppu,npd,npass,corepvar,corenvar CELLBOUND
+	bloat-all coreli,ppu,npd,npass,corepvar,corenvar CELLBOUND
 	mask-hints COREID
 	calma 81 2
 
@@ -874,7 +934,7 @@ style gdsii
 # ESDID is a marker layer for ESD devices in the padframe I/O.
 #----------------------------------------------------------------
 
- layer ESDID
+ layer ESDID  
 	bloat-all mvnfetesd *mvndiff,*poly
 	bloat-all mvpfetesd *mvpdiff,*poly
 	grow 100
@@ -898,6 +958,9 @@ style gdsii
 	or pnparea
 	mask-hints PNPID
 	calma	82 44
+
+ layer PHOTO photo
+	calma	81 81
 
 #----------------------------------------------------------------
 # RPM
@@ -949,6 +1012,7 @@ style gdsii
  	grow 	345
  	shrink 	345
 	and-not hvntm_block
+	mask-hints HVNTM
 	calma 125 20
 
 #----------------------------------------------------------------
@@ -1136,6 +1200,7 @@ style gdsii
  	squares-grid 55 150 170
  	calma 	68 44
 
+
 #----------------------------------------------------------------
 # MET2
 #----------------------------------------------------------------
@@ -1177,7 +1242,7 @@ style gdsii
 
  layer MET3PIN
 	labels	allm3 port
-	calma	70 16
+	calma	70 16 
 
  layer MET3RES rm3
 	labels rm3
@@ -1270,7 +1335,7 @@ style gdsii
 	shrink	50000
 	grow	40000
 	# Test only---needs GDS layer number
-
+	
   layer	PI2	*metrdl
 	shrink	50000
 	grow	25000
@@ -1390,6 +1455,13 @@ style drc
  templayer mim2_bottom
  bloat-all *mimcap2 *metal4
 
+ # Define areas where mim2cc is inside the boundary of mimcc
+ # by more than the contact surround
+ templayer mim2_contact_overlap
+ bloat-all *mimcap2 mimcc
+ shrink 60
+ and-not *mimcap2
+
  # Note that metal fill is performed by the foundry and so is not
  # an option for a cifoutput style.
 
@@ -1470,7 +1542,7 @@ style drc
  and nwell,pnp
  grow 945
  and nwell,pnp
-
+ 
  templayer ntap_missing *pdiff,*mvpdiff
  and-not pwell_in_dnwell
  and-not ntap_reach
@@ -1548,10 +1620,24 @@ style drc
  bridge	700 600
 
  # Simple spacing checks to lvnwell must use CIF-DRC rule
+ # Note that HVI may *abut* lvnwell;  this can only be handled
+ # with mask-hints layers.
+
+ templayer drawn_hvi
+	mask-hints HVI
+
  templayer allmvdiffnowell *mvndiff,*mvpsd
+ and-not drawn_hvi
+
+ templayer nwell_or_hvi nwell,drawn_hvi
 
  templayer lvnwell nwell
  and-not mvnwell
+
+ # Check for low-voltage diffusion in high-voltage well
+ templayer lvdiff_in_mvnwell *pdiff,*pdiode,pdiffres,*nsd
+ or pfet,ppu,scpfet,scpfethvt,pfetlvt,pfetmvt,pfethvt
+ and mvnwell
 
  templayer nwell_with_tap
  bloat-all nsc,mvnsc nwell,pnp
@@ -1560,10 +1646,10 @@ style drc
  and-not nwell_with_tap
 
  templayer tap_with_licon
- bloat-all psc,mvpsc psd,mvpsd
- bloat-all nsc,mvnsc nsd,mvnsd
+ bloat-all allpactivetap psd,mvpsd
+ bloat-all allnactivetap nsd,mvnsd
 
- templayer tap_missing_licon psd,nsd,mvpsd,mvnsd
+ templayer tap_missing_licon allnactivetap,allpactivetap
  and-not tap_with_licon
 
  # Make sure varactor nwell contains no P diffusion
@@ -1857,13 +1943,13 @@ style wafflefill variants (),(tiled)
         grow    245
 
 #---------------------------------------------------
- layer  FOMFILL fomfill_pass1
+ layer  FOMFILL fomfill_pass1 
 	or	fomfill_pass2
 	or	fomfill_coarse
 	or	fomfill_fine
  	calma 	23 28
 
- layer	POLYFILL polyfill_pass1
+ layer	POLYFILL polyfill_pass1 
 	or	 polyfill_coarse
 	or	 polyfill_medium
 	or	 polyfill_fine
@@ -2160,11 +2246,11 @@ end
 #-----------------------------------------------------------------------
 cifinput
 #-----------------------------------------------------------------------
-# NOTE:  All values in this section MUST be multiples of 25
+# NOTE:  All values in this section MUST be multiples of 25 
 # or else magic will scale below the allowed layout grid size
 #-----------------------------------------------------------------------
 
-style  sky130 variants (),(vendor)
+style  sky130 variants (vendor),()
  scalefactor 10 nanometers
  gridlimit 5
 
@@ -2178,7 +2264,15 @@ style  sky130 variants (),(vendor)
  ignore POLYMOD
  ignore LOWTAPDENSITY
  ignore FILLOBSPOLY
+ ignore MET5BLOCK
  ignore OUTLINE
+ ignore POLYCUT
+ ignore POLYGATE
+ ignore DIFFCUT
+ ignore HVNWELLID
+ ignore PADDIFFID
+ ignore PADMETALID
+ ignore PADCENTERID
 
  layer pnp NWELL,WELLTXT,WELLPIN
  and PNPID
@@ -2232,9 +2326,15 @@ style  sky130 variants (),(vendor)
  layer dnwell DNWELL
  labels DNWELL
 
+ layer isosub SUBCUT
+ labels SUBCUT
+
  layer npn DNWELL
  and-not NWELL,nwelcheck
  and NPNID
+
+ layer photo DNWELL
+ and PHOTO
 
  layer rpw PWRES
  and DNWELL
@@ -2327,7 +2427,7 @@ style  sky130 variants (),(vendor)
  and-not HVI,hvcheck
  and PSDM
  copyup pdifcheck
- labels DIFF
+ labels DIFF 
  variants (vendor)
  labels DIFFTXT port
  variants ()
@@ -2477,6 +2577,7 @@ style  sky130 variants (),(vendor)
 
  # Always force nwell under pfet (nwell encloses pdiff by 0.18)
  layer nwell pfetarea
+ and-not COREID
  grow 180
 
  # Copy mvpdiff areas up for contact checks
@@ -2917,7 +3018,7 @@ style  sky130 variants (),(vendor)
  templayer ndcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and NSDM
  and-not NWELL,nwelcheck
@@ -2934,7 +3035,7 @@ style  sky130 variants (),(vendor)
  templayer nscbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF,TAP
  and NSDM
  and NWELL,nwelcheck
@@ -2951,7 +3052,7 @@ style  sky130 variants (),(vendor)
  templayer pdcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and NWELL,nwelcheck
@@ -2968,7 +3069,7 @@ style  sky130 variants (),(vendor)
  templayer pdcnowell CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and pfetexpand
@@ -2985,7 +3086,7 @@ style  sky130 variants (),(vendor)
  templayer pscbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF,TAP
  and PSDM
  and-not NWELL,nwelcheck
@@ -3003,7 +3104,7 @@ style  sky130 variants (),(vendor)
  templayer pcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and POLY
  and-not DIFF
  and-not RPM,URPM
@@ -3019,7 +3120,7 @@ style  sky130 variants (),(vendor)
  templayer ndicbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and NSDM
  and DIODE
@@ -3039,7 +3140,7 @@ style  sky130 variants (),(vendor)
  templayer ndilvtcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and NSDM
  and DIODE
@@ -3059,7 +3160,7 @@ style  sky130 variants (),(vendor)
  templayer pdicbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and DIODE
@@ -3080,7 +3181,7 @@ style  sky130 variants (),(vendor)
  templayer pdilvtcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and DIODE
@@ -3101,7 +3202,7 @@ style  sky130 variants (),(vendor)
  templayer pdihvtcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and DIODE
@@ -3122,7 +3223,7 @@ style  sky130 variants (),(vendor)
  templayer mvndcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and NSDM
  and-not NWELL,nwelcheck
@@ -3139,7 +3240,7 @@ style  sky130 variants (),(vendor)
  templayer mvnscbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF,TAP
  and NSDM
  and NWELL,nwelcheck
@@ -3156,7 +3257,7 @@ style  sky130 variants (),(vendor)
  templayer mvpdcbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and NWELL,nwelcheck
@@ -3173,7 +3274,7 @@ style  sky130 variants (),(vendor)
  templayer mvpdcnowell CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and mvpfetexpand
@@ -3191,7 +3292,7 @@ style  sky130 variants (),(vendor)
  templayer mvpscbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF,TAP
  and PSDM
  and-not NWELL,nwelcheck
@@ -3209,7 +3310,7 @@ style  sky130 variants (),(vendor)
  templayer mvndicbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and NSDM
  and DIODE
@@ -3229,7 +3330,7 @@ style  sky130 variants (),(vendor)
  templayer nndicbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and NSDM
  and DIODE
@@ -3249,7 +3350,7 @@ style  sky130 variants (),(vendor)
  templayer mvpdicbase CONT
  or barecont
  and LI
- or licont
+ or barelicont
  and DIFF
  and PSDM
  and DIODE
@@ -3348,6 +3449,7 @@ style  sky130 variants (),(vendor)
  labels CAPM2
 
 
+
  templayer m2cbase VIA1
  and-not COREID
  grow 5
@@ -3384,7 +3486,7 @@ style  sky130 variants (),(vendor)
  layer m3c m3cbase
  grow 60
  shrink 60
- shrink 140
+ shrink 140 
  grow 140
  or m3cbase
 
@@ -3648,8 +3750,8 @@ style  sky130 variants (),(vendor)
  # Find contacts not covered in
  # metal and pull them into the
  # next layer up
-
- templayer gencont CONT
+ 
+ templayer barelicont CONT
  and LI
  and-not DIFF,TAP
  and-not POLY
@@ -3723,6 +3825,7 @@ style  sky130 variants (),(vendor)
  calma NWELL 64 20
  calma DIFF 65 20
  calma DNWELL 64 18
+ calma SUBCUT 81 53
  calma PWRES 64 13
  calma TAP  65 44
  # LVTN
@@ -3764,6 +3867,8 @@ style  sky130 variants (),(vendor)
  calma CAPID 82 64
  # Core area ID mark
  calma COREID 81 2
+ # Photodiode ID mark
+ calma PHOTO 81 81
  # Standard cell ID mark
  calma STDCELL 81 4
  # Padframe cell ID mark
@@ -3774,8 +3879,17 @@ style  sky130 variants (),(vendor)
  calma LOWTAPDENSITY 81 14
  # ESD area ID
  calma ESDID 81 19
+ # Various unused layers
  calma OUTLINE 236 0
-
+ calma POLYCUT 66 14
+ calma POLYGATE 66 9
+ calma DIFFCUT 65 14
+ calma HVNWELLID 81 63
+ calma MET5BLOCK 72 10
+ calma PADDIFFID 81 6
+ calma PADMETALID 81 8
+ calma PADCENTERID 81 20
+ 
  # LICON
  calma CONT 66 44
  calma LI   67 20
@@ -3897,7 +4011,7 @@ end
 drc
 
  style drc variants (fast),(full),(routing)
- scalefactor 10
+ scalefactor 10 
  cifstyle drc
 
  variants (fast),(full)
@@ -3908,7 +4022,7 @@ drc
 
  width dnwell 3000 "Deep N-well width < %d (dnwell.2)"
  spacing dnwell dnwell 6300 touching_ok "Deep N-well spacing < %d (dnwell.3)"
- spacing dnwell allnwell 4500 surround_ok \
+ spacing allnwell dnwell 4500 surround_ok \
 	"Deep N-well spacing to N-well < %d (nwell.7)"
 
  variants (full)
@@ -3920,6 +4034,11 @@ drc
  cifmaxwidth pdiff_crosses_dnwell 0 bend_illegal \
 	"P+ diff cannot straddle Deep N-well (dnwell.5)"
  variants (fast),(full)
+
+ width photo 3000 "Photodiode width < %d (photo.2)"
+ spacing photo photo 5000 touching_ok "Photodiode spacing < %d (photo.3)"
+ spacing photo dnwell 5300 touching_illegal \
+	"Photodiode spacing to deep nwell < %d (photo.4)"
 
 #-----------------------------
 # NWELL
@@ -3936,6 +4055,10 @@ drc
 	"Spacing of HV nwell to LV nwell < 2.0um (nwell.8)"
  cifspacing mvnwell mvnwell 2000 touching_ok \
 	"Spacing of HV nwell to HV nwell < 2.0um (nwell.8)"
+
+ cifmaxwidth lvdiff_in_mvnwell 0 bend_illegal \
+	"All HV nwell can contain only HV diffusion (diff/tap.21)" 
+
  variants (fast),(full)
 
 #-----------------------------
@@ -3953,8 +4076,11 @@ drc
  extend *psd *ndiff 290 "Butting tap length < %d (diff/tap.4)"
  extend *nsd *pdiff 290 "Butting tap length < %d (diff/tap.4)"
  width mvpdiffres 150 "MV P-Diffusion resistor width < %d (diff/tap.14a)"
- spacing alldifflv,var,varhvt,fomfill alldifflv,var,varhvt,fomfill 270 touching_ok \
+ spacing alldifflv,var,varhvt,corenvar,corepvar,fomfill \
+	 alldifflv,var,varhvt,corenvar,corepvar,fomfill 270 touching_ok \
 	"Diffusion spacing < %d (diff/tap.3)"
+ spacing alldifflv,var,varhvt alldiffmv,mvvar 270 touching_illegal \
+	"LV to MV Diffusion spacing < %d (diff/tap.3)"
  spacing alldiffmvnontap,mvvar alldiffmvnontap,mvvar 300 touching_ok \
 	"MV Diffusion spacing < %d (diff/tap.15a)"
  spacing alldiffmv *mvnsd,*mvpsd 270 touching_ok \
@@ -3987,6 +4113,8 @@ drc
 variants (full)
  cifspacing allmvdiffnowell lvnwell 825 touching_illegal \
 	"MV diffusion to LV nwell spacing < %d (hvi.5 + nsd/psd.5)"
+ cifspacing nwell_or_hvi nwell_or_hvi 700 touching_ok \
+	"HVI to HVI or LV nwell spacing < %d (hvi.5)"
 variants (fast),(full)
 
  spacing allnfets allpactivenonfet 270 touching_illegal \
@@ -4048,7 +4176,7 @@ variants (fast),(full)
 	"poly spacing to Diffusion < %d (poly.4)"
  spacing npres *nsd 480 touching_illegal \
 	"poly resistor spacing to N-tap < %d (poly.9)"
- overhang *ndiff,rndiff nfet,scnfet,npd,npass 250 "N-Diffusion overhang of nFET < %d (poly.7)"
+ overhang *ndiff,rndiff nfet,scnfet,npd,npass,nsonos 250 "N-Diffusion overhang of nFET < %d (poly.7)"
  overhang *mvndiff,mvrndiff mvnfet,mvnnfet,nnfet 250 \
 	"N-Diffusion overhang of nFET < %d (poly.7)"
  overhang *pdiff,rpdiff pfet,scpfet,ppu 250 "P-Diffusion overhang of pmos < %d (poly.7)"
@@ -4083,7 +4211,7 @@ variants (fast),(full)
  cifmaxwidth rpm_hvntm_check 0 bend_illegal \
 	"Distance from precision resistor to MV N+ device < 0.585um (rpm.3 + rpm.9 + hvntm.3)"
 
- variants (fast,full)
+ variants (fast),(full)
 
  angles allpoly,polyfill 90 "Only 90 degree angles permitted on poly (x.2)"
 
@@ -4163,6 +4291,8 @@ variants (fast),(full)
 	"Diffusion contact to standard cell gate < %d (licon.11)"
  spacing ndc,pdc npd,npass,ppu 40 touching_illegal \
 	"Diffusion contact to SRAM gate < %d (licon.11)"
+ spacing ndc,pdc nsonos 75 touching_illegal \
+	"Diffusion contact to SONOS gate < %d (licon.11)"
  spacing mvndc,mvpdc mvnfet,mvnfetesd,mvnnfet,nnfet,mvpfet,mvpfetesd 55 touching_illegal \
 	"Diffusion contact to gate < %d (licon.11)"
  spacing nsc varactor,varhvt 250 touching_illegal \
@@ -4195,9 +4325,9 @@ variants (fast),(full)
  surround pdic/a *pdi 60 directional \
 	"P-diode overlap of N-diode contact < %d in one direction (licon.5c)"
 
- surround nsc/a *nsd 120 directional \
+ surround nsc/a *nsd,corenvar 120 directional \
 	"N-tap overlap of N-tap contact < %d in one direction (licon.7)"
- surround psc/a *psd 120 directional \
+ surround psc/a *psd,corepvar 120 directional \
 	"P-tap overlap of P-tap contact < %d in one direction (licon.7)"
 
  surround mvndc/a *mvndiff,mvnfet,mvnfetesd,mvrnd 40 absence_illegal \
@@ -4313,15 +4443,16 @@ variants *
 
  width v1/m1 260 "Via1 width < %d (via.1a + 2 * via.4a)"
  spacing v1 v1 60 touching_ok "Via1 spacing < %d (via.2 - 2 * via.4a)"
- surround v1/m1 *m1 30 directional \
+ surround v1/m1 *m1,rm1 30 directional \
 	"Metal1 overlap of Via1 < %d in one direction (via.5a - via.4a)"
- surround v1/m2 *m2 30 directional \
+ surround v1/m2 *m2,rm2 30 directional \
 	"Metal2 overlap of Via1 < %d in one direction (met2.5 - met2.4)"
 
  exact_overlap v1/m1
 
+
 #--------------------------------------------------
-# METAL2 -
+# METAL2 - 
 #--------------------------------------------------
 
  width allm2,m2fill 140 "Metal2 width < %d (met2.1)"
@@ -4348,18 +4479,18 @@ variants *
 # VIA2
 #--------------------------------------------------
 
- width v2/m2 280 "via2.width < %d (via2.1a + 2 * via2.4)"
+ width v2/m2 280 "via2 width < %d (via2.1a + 2 * via2.4)"
 
- spacing v2 v2 120 touching_ok "via2.spacing < 0.24um (via2.2 - 2 * via2.4)"
+ spacing v2 v2 120 touching_ok "via2 spacing < %d (via2.2 - 2 * via2.4)"
 
- surround v2/m2 *m2 45 directional \
-	"Metal2 overlap of via2.< %d in one direction (via2.4a - via2.4)"
- surround v2/m3 *m3 25 absence_illegal "Metal3 overlap of via2.< %d (met3.4)"
+ surround v2/m2 *m2,rm2 45 directional \
+	"Metal2 overlap of via2 < %d in one direction (via2.4a - via2.4)"
+ surround v2/m3 *m3,rm3 25 absence_illegal "Metal3 overlap of via2 < %d (met3.4)"
 
  exact_overlap v2/m2
 
 #--------------------------------------------------
-# METAL3 -
+# METAL3 - 
 #--------------------------------------------------
 
  width allm3,m3fill 300 "Metal3 width < %d (met3.1)"
@@ -4383,12 +4514,12 @@ variants *
 # VIA3 - Requires METAL5 Module
 #--------------------------------------------------
 
- width v3/m3 320 "via3.width < %d (via3.1 + 2 * via3.4)"
- spacing v3 v3 80 touching_ok "via3.spacing < %d (via3.2 - 2 * via3.4)"
- surround v3/m3 *m3 30 directional \
-	"Metal3 overlap of via3.in one direction < %d (via3.5 - via3.4)"
- surround v3/m4 *m4 5 absence_illegal \
-	"Metal4 overlap of via3.< %d (met4.3 - via3.4)"
+ width v3/m3 320 "via3 width < %d (via3.1 + 2 * via3.4)"
+ spacing v3 v3 80 touching_ok "via3 spacing < %d (via3.2 - 2 * via3.4)"
+ surround v3/m3 *m3,rm3 30 directional \
+	"Metal3 overlap of via3 in one direction < %d (via3.5 - via3.4)"
+ surround v3/m4 *m4,rm4 5 absence_illegal \
+	"Metal4 overlap of via3 < %d (met4.3 - via3.4)"
 
  exact_overlap v3/m3
 
@@ -4418,10 +4549,10 @@ variants *
 # VIA4 - Requires METAL5 Module
 #--------------------------------------------------
 
- width v4/m4 1180 "via4.width < %d (via4.1 + 2 * via4.4)"
- spacing v4 v4 420 touching_ok "via4.spacing < %d (via4.2 - 2 * via4.4)"
- surround v4/m5 *m5 120 absence_illegal \
-	"Metal5 overlap of via4.< %d (met5.3 - via4.4)"
+ width v4/m4 1180 "via4 width < %d (via4.1 + 2 * via4.4)"
+ spacing v4 v4 420 touching_ok "via4 spacing < %d (via4.2 - 2 * via4.4)"
+ surround v4/m5 *m5,rm5 120 absence_illegal \
+	"Metal5 overlap of via4 < %d (met5.3 - via4.4)"
 
  exact_overlap v4/m4
 
@@ -4442,7 +4573,7 @@ variants (full)
  width metrdl 10000 "RDL width < %d (rdl.1)"
  spacing metrdl metrdl 10000 touching_ok "RDL spacing < %d (rdl.2)"
  surround glass metrdl 10750 absence_ok "RDL must surround glass cut by %d (rdl.3)"
- spacing metrdl padl 19660 surround_ok "RDL spacing to unrelated pad < %d (rdl.6)"
+ spacing padl metrdl 19660 surround_ok "RDL spacing to unrelated pad < %d (rdl.6)"
 
 variants (fast),(full)
 
@@ -4568,7 +4699,7 @@ variants (full)
 variants (fast),(full)
 
 #-----------------------------------------------------------
-# MiM CAP (CAPM) -
+# MiM CAP (CAPM) - 
 #-----------------------------------------------------------
 
  width *mimcap 1000 "MiM cap width < %d (capm.1)"
@@ -4609,12 +4740,15 @@ variants (fast),(full)
 
  surround *mimcap2 *metal4/m4 140 absence_illegal \
 	"Metal4 must surround MiM2 cap by %d (cap2m.3)"
- spacing via3,mimcc *mimcap2 80 touching_illegal \
+ spacing via3 *mimcap2 80 touching_illegal \
 	"MiM2 cap spacing to via3 < %d (cap2m.8 - via3.4)"
  spacing *mimcap2 *metal4/m4 500 surround_ok \
 	"MiM2 cap spacing to unrelated metal4 < %d (cap2m.11)"
 
 variants (full)
+ cifmaxwidth mim2_contact_overlap 0 bend_illegal \
+	"MiM2 cap contact must not cross MiM cap contact (cap2m.8)"
+ 
  cifspacing mim2_bottom mim2_bottom 1200 touching_ok \
  	"MiM2 cap bottom plate spacing < %d (cap2m.2b)"
 variants (fast),(full)
@@ -4691,16 +4825,15 @@ end
 # Device and Parasitic extraction
 #-----------------------------------------------------
 
-
 extract
- style ngspice variants (),(orig),(si)
+ style ngspice variants (),(orig),(si),(hrhc),(lrhc),(hrlc),(lrlc)
  cscale 1
  # NOTE: SkyWater SPICE libraries use .option scale 1E6 so all
  # dimensions must be in units of microns in the extract file.
  # Use extract style "ngspice(si)" to override this and produce
  # a file with SI units for length/area.
 
- variants (),(orig)
+ variants (),(orig),(hrhc),(lrhc),(hrlc),(lrlc)
  lambda  1E6
  variants (si)
  lambda 1.0
@@ -4708,7 +4841,8 @@ extract
 
  units	microns
  step   7
- sidehalo 2
+ sidehalo 8
+ fringeshieldhalo 8
 
  # NOTE:  MiM cap layers have been purposely put out of order,
  # may want to reconsider.
@@ -4742,22 +4876,22 @@ extract
  height m1fill	     1.3761 0.36
  height v1	     1.7361 0.27
  height allm2	     2.0061 0.36
- height m2fill	     1.3761 0.36
+ height m2fill	     2.0061 0.36
  height v2	     2.3661 0.42
  height allm3	     2.7861 0.845
- height m3fill	     1.3761 0.36
- height v3	     3.6311 0.39
- height allm4	     4.0211 0.845
- height m4fill	     1.3761 0.36
- height v4	     4.8661 0.505
- height allm5	     5.3711 1.26
- height m5fill	     1.3761 0.36
+ height m3fill	     2.7861 0.845
  height mimcap	     2.4661 0.2
  height mimcap2	     3.7311 0.2
  height mimcc	     2.6661 0.12
  height mim2cc	     3.9311 0.09
- height mrdlc	     6.6311 5.2523
- height mrdl	    11.8834 4.0
+ height v3	     3.6311 0.39
+ height allm4	     4.0211 0.845
+ height m4fill	     4.0211 0.845
+ height v4	     4.8661 0.505
+ height allm5	     5.3711 1.26
+ height m5fill	     5.3711 1.26
+ height mrdlc	     6.6311 0.63
+ height mrdl	     7.2611 3.0
 
  # Antenna check parameters
  # Note that checks w/diode diffusion are not modeled
@@ -4776,14 +4910,15 @@ extract
 
  substrate *ppdiff,*mvppdiff,space/w,pwell well $SUB -dnwell,isosub
 
-# Layer resistance: Use document xp018-PDS-v4_2_1.pdf
-
 # Resistances are in milliohms per square
 # Optional 3rd argument is the corner adjustment fraction
 # Device values come from trtc.cor (typical corner)
+
+variants (),(orig),(si)
+
+ resist (pwell,isosub)/well     4400000
  resist (dnwell)/dwell          2200000
- resist (pwell)/well            3050000
- resist (nwell)/well            1700000
+ resist (nwell)/well             950000
  resist (rpw)/well              3050000 0.5
  resist (*ndiff,nsd)/active 	 120000
  resist (*pdiff,*psd)/active	 197000
@@ -4801,7 +4936,7 @@ extract
  resist (allpolynonres)/active   48200
  resist rmp/active   		 48200
 
- resist (allli)/locali		 12200
+ resist (allli)/locali		 12800
  resist (allm1)/metal1		   125
  resist (allm2)/metal2		   125
  resist (allm3)/metal3	            47
@@ -4809,12 +4944,12 @@ extract
  resist (allm5)/metal5  	    29
  resist mrdl/metali		     5
 
- contact ndc,nsc		 15000
- contact pdc,psc		 15000
- contact mvndc,mvnsc		 15000
- contact mvpdc,mvpsc	  	 15000
- contact pc			 15000
- contact mcon			152000
+ contact ndc,nsc		185000
+ contact pdc,psc		585000
+ contact mvndc,mvnsc		185000
+ contact mvpdc,mvpsc	  	585000
+ contact pc			152000
+ contact mcon			  9300
  contact m2c			  4500
  contact m3c			  3410
  contact mimcc			  4500
@@ -4822,6 +4957,106 @@ extract
  contact via3			  3410
  contact via4			   380
  contact mrdlc			     6
+
+variants (hrhc),(hrlc)
+
+ # High-end corner resistances
+ # No corner values available for: substrate, xhrpoly, uhrpoly, RDL
+ resist (pwell,isosub)/well     4400000
+ resist (dnwell)/dwell          2575000
+ resist (nwell)/well            1350000
+ resist (rpw)/well              3535000 0.5
+ resist (*ndiff,nsd)/active 	 132000
+ resist (*pdiff,*psd)/active	 228000
+ resist (*mvndiff,mvnsd)/active  126000
+ resist (*mvpdiff,*mvpsd)/active 228000
+
+ resist ndiffres/active 	132000 0.5
+ resist pdiffres/active 	228000 0.5
+ resist mvndiffres/active 	126000 0.5
+ resist mvpdiffres/active 	228000 0.5
+ resist mrp1/active		 55800 0.5
+ resist xhrpoly/active	        319800 0.5
+ resist uhrpoly/active	       2000000 0.5
+
+ resist (allpolynonres)/active   55800
+ resist rmp/active   		 55800
+
+ resist (allli)/locali		 17000
+ resist (allm1)/metal1		   145
+ resist (allm2)/metal2		   145
+ resist (allm3)/metal3	            56
+ resist (allm4)/metal4  	    56
+ resist (allm5)/metal5  	    36
+ resist mrdl/metali		     5
+
+ contact ndc,nsc		280000
+ contact pdc,psc		840000
+ contact mvndc,mvnsc		280000
+ contact mvpdc,mvpsc	  	840000
+ contact pc			252000
+ contact mcon			 23000
+ contact m2c			 15000
+ contact m3c			  8000
+ contact mimcc			 15000
+ contact mim2cc			  8000
+ contact via3			  8000
+ contact via4			   891
+ contact mrdlc			     6
+
+variants (lrhc),(lrlc)
+
+ # Low-end corner resistances
+ # No corner values available for: substrate, xhrpoly, uhrpoly, RDL
+ resist (pwell,isosub)/well     4400000
+ resist (dnwell)/dwell          1825000
+ resist (nwell)/well             550000
+ resist (rpw)/well              2565000 0.5
+ resist (*ndiff,nsd)/active 	 108000
+ resist (*pdiff,*psd)/active	 166000
+ resist (*mvndiff,mvnsd)/active  102000
+ resist (*mvpdiff,*mvpsd)/active 160000
+
+ resist ndiffres/active 	108000 0.5
+ resist pdiffres/active 	166000 0.5
+ resist mvndiffres/active 	102000 0.5
+ resist mvpdiffres/active 	160000 0.5
+ resist mrp1/active		 42200 0.5
+ resist xhrpoly/active	        319800 0.5
+ resist uhrpoly/active	       2000000 0.5
+
+ resist (allpolynonres)/active   42200
+ resist rmp/active   		 42200
+
+ resist (allli)/locali		 10500
+ resist (allm1)/metal1		   105
+ resist (allm2)/metal2		   105
+ resist (allm3)/metal3	            38
+ resist (allm4)/metal4  	    38
+ resist (allm5)/metal5  	    21
+ resist mrdl/metali		     5
+
+ contact ndc,nsc		 95000
+ contact pdc,psc		345000
+ contact mvndc,mvnsc		 95000
+ contact mvpdc,mvpsc	  	345000
+ contact pc			 52000
+ contact mcon			  1600
+ contact m2c			  2000
+ contact m3c			   500
+ contact mimcc			  2000
+ contact mim2cc			   500
+ contact via3			   500
+ contact via4			    12
+ contact mrdlc			     6
+
+variants *
+
+ # These types should not be considered as electrical nodes
+ resist blocktypes	 	 None
+ resist obstypes	 	 None
+ resist idtypes	 	 	 None
+ resist comment	 	 	 None
 
 #-------------------------------------------------------------------------
 # Parasitic capacitance values:  Use document (...)
@@ -4844,11 +5079,454 @@ extract
 # should be split between the two terminals.  Unsure of the correct model.
 #-------------------------------------------------------------------------
 
+variants (),(orig),(si),(hrhc),(lrhc),(hrlc),(lrlc)
+# Nominal capacitances
+
+#deep n-well
+defaultareacap     dnwell dwell 120
+
+#p-well
+defaultoverlap     pwell well dnwell dwell 120
+
 #n-well
 # NOTE:  This value not found in PEX files
-defaultareacap     nwell well 120
+defaultareacap     nwell well dnwell dwell 120
 
-#n-active
+#n-active 
+# Rely on device models to capture *ndiff area cap
+# Do not extract parasitics from resistors
+# defaultareacap     allnactivenonfet active 790
+# defaultperimeter   allnactivenonfet active 280
+
+#p-active
+# Rely on device models to capture *pdiff area cap
+# Do not extract parasitics from resistors
+# defaultareacap     allpactivenonfet active 810
+# defaultperimeter   allpactivenonfet active 300
+
+#poly
+# Do not extract parasitics from resistors
+# defaultsidewall    allpolynonfet active  17
+# defaultareacap     allpolynonfet active  106
+# defaultperimeter   allpolynonfet active   57
+
+ defaultsidewall    *poly active 17.0
+ defaultareacap     *poly active 106.13
+ defaultperimeter   *poly active 55.27
+ defaultsideoverlap *poly active nwell,pwell well  55.27
+
+#locali
+ defaultsidewall    allli locali 28.0
+ defaultareacap     allli locali 36.99
+ defaultperimeter   allli locali 40.70
+ defaultoverlap     allli locali nwell,pwell well  36.99
+ defaultsideoverlap allli locali nwell,pwell well  40.70
+
+#locali->diff
+ defaultoverlap     allli locali allactivenonfet active 55.3
+ defaultsideoverlap allli locali allactivenonfet active 44.27
+
+#locali->poly
+ defaultoverlap     allli locali allpolynonres active 94.16
+ defaultsideoverlap allli locali allpolynonres active 51.85
+ defaultsideoverlap *poly active allli locali 25.14
+
+#metal1
+ defaultsidewall    allm1 metal1 36.9
+ defaultareacap     allm1 metal1 25.78
+ defaultperimeter   allm1 metal1 40.57
+ defaultoverlap     allm1 metal1 nwell,pwell well  25.78
+ defaultsideoverlap allm1 metal1 nwell,pwell well  40.57
+
+#metal1->diff
+ defaultoverlap     allm1 metal1 allactivenonfet active 33.6
+ defaultsideoverlap allm1 metal1 allactivenonfet active 43.10
+
+#metal1->poly
+ defaultoverlap     allm1 metal1 allpolynonres active 44.81
+ defaultsideoverlap allm1 metal1 allpolynonres active 46.72
+ defaultsideoverlap *poly active allm1 metal1 16.69
+
+#metal1->locali
+ defaultoverlap     allm1 metal1 allli locali 114.20
+ defaultsideoverlap allm1 metal1 allli locali 59.50
+ defaultsideoverlap allli locali allm1 metal1 34.70
+
+#metal2
+ defaultsidewall    allm2 metal2      39.1
+
+ defaultareacap     allm2 metal2 16.9
+ defaultperimeter   allm2 metal2 37.76
+ defaultoverlap     allm2 metal2 nwell,pwell well 16.9
+ defaultsideoverlap allm2 metal2 nwell,pwell well 37.76
+
+#metal2->diff
+ defaultoverlap     allm2 metal2 allactivenonfet active 20.8
+ defaultsideoverlap allm2 metal2 allactivenonfet active 39.54
+
+#metal2->poly
+ defaultoverlap     allm2 metal2 allpolynonres active 24.50
+ defaultsideoverlap allm2 metal2 allpolynonres active 41.22
+ defaultsideoverlap *poly active allm2 metal2 11.17
+
+#metal2->locali
+ defaultoverlap     allm2 metal2 allli locali 37.56
+ defaultsideoverlap allm2 metal2 allli locali 46.28
+ defaultsideoverlap allli locali allm2 metal2 21.74
+
+#metal2->metal1
+ defaultoverlap     allm2 metal2 allm1 metal1 133.86
+ defaultsideoverlap allm2 metal2 allm1 metal1 67.05
+ defaultsideoverlap allm1 metal1 allm2 metal2 48.19
+
+
+#metal3
+ defaultsidewall    allm3 metal3     56.2
+
+ defaultareacap     allm3 metal3 12.37
+ defaultperimeter   allm3 metal3 40.99
+ defaultoverlap     allm3 metal3 nwell,pwell well 12.37
+ defaultsideoverlap allm3 metal3 nwell,pwell well 40.99
+
+#metal3->diff
+ defaultoverlap     allm3 metal3 allactive active 14.2
+ defaultsideoverlap allm3 metal3 allactive active 42.25
+
+#metal3->poly
+ defaultoverlap     allm3 metal3 allpolynonres active 16.06
+ defaultsideoverlap allm3 metal3 allpolynonres active 43.53
+ defaultsideoverlap *poly active allm3 metal3 9.18
+
+#metal3->locali
+ defaultoverlap     allm3 metal3 allli locali 20.79
+ defaultsideoverlap allm3 metal3 allli locali 46.71
+ defaultsideoverlap allli locali allm3 metal3 15.08
+
+#metal3->metal1
+ defaultoverlap     allm3 metal3 allm1 metal1 34.54
+ defaultsideoverlap allm3 metal3 allm1 metal1 54.81
+ defaultsideoverlap allm1 metal1 allm3 metal3 26.68
+
+
+#metal3->metal2
+ defaultoverlap     allm3 metal3 allm2 metal2 86.19
+ defaultsideoverlap allm3 metal3 allm2 metal2 69.85
+ defaultsideoverlap allm2 metal2 allm3 metal3 44.43
+
+#metal4
+ defaultsidewall    allm4 metal4 59.0
+ defaultareacap     allm4 metal4 8.42
+ defaultperimeter   allm4 metal4 36.68
+ defaultoverlap     allm4 metal4 nwell,pwell well 8.42
+ defaultsideoverlap allm4 metal4 nwell,pwell well 36.68
+
+#metal4->diff
+ defaultoverlap     allm4 metal4 allactivenonfet active 9.41
+ defaultsideoverlap allm4 metal4 allactivenonfet active 37.57
+
+#metal4->poly
+ defaultoverlap     allm4 metal4 allpolynonres active 10.01
+ defaultsideoverlap allm4 metal4 allpolynonres active 38.11
+ defaultsideoverlap *poly active allm4 metal4 6.35
+
+#metal4->locali
+ defaultoverlap     allm4 metal4 allli locali 11.67
+ defaultsideoverlap allm4 metal4 allli locali 39.71
+ defaultsideoverlap allli locali allm4 metal4 10.14
+
+#metal4->metal1
+ defaultoverlap     allm4 metal4 allm1 metal1 15.03
+ defaultsideoverlap allm4 metal4 allm1 metal1 42.56
+ defaultsideoverlap allm1 metal1 allm4 metal4 16.42
+
+
+#metal4->metal2
+ defaultoverlap     allm4 metal4 allm2 metal2 20.33
+ defaultsideoverlap allm4 metal4 allm2 metal2 46.38
+ defaultsideoverlap allm2 metal2 allm4 metal4 22.33
+
+#metal4->metal3
+ defaultoverlap     allm4 metal4 allm3 metal3 84.03
+ defaultsideoverlap allm4 metal4 allm3 metal3 70.52
+ defaultsideoverlap allm3 metal3 allm4 metal4 42.64
+
+#metal5
+ defaultsidewall    allm5 metal5 95.1
+ defaultareacap     allm5 metal5 6.32
+ defaultperimeter   allm5 metal5 38.85
+ defaultoverlap     allm5 metal5 nwell,pwell well  6.32
+ defaultsideoverlap allm5 metal5 nwell,pwell well  38.85
+
+#metal5->diff
+ defaultoverlap     allm5 metal5 allactivenonfet active 6.88
+ defaultsideoverlap allm5 metal5 allactivenonfet active 39.52
+
+#metal5->poly
+ defaultoverlap     allm5 metal5 allpolynonres active 7.21
+ defaultsideoverlap allm5 metal5 allpolynonres active 39.91
+ defaultsideoverlap *poly active allm5 metal5 6.49
+
+#metal5->locali
+ defaultoverlap     allm5 metal5 allli locali 8.03
+ defaultsideoverlap allm5 metal5 allli locali 41.15
+ defaultsideoverlap allli locali allm5 metal5 7.64
+
+#metal5->metal1
+ defaultoverlap     allm5 metal5 allm1 metal1 9.48
+ defaultsideoverlap allm5 metal5 allm1 metal1 43.19
+ defaultsideoverlap allm1 metal1 allm5 metal5 12.02
+
+
+#metal5->metal2
+ defaultoverlap     allm5 metal5 allm2 metal2 11.34
+ defaultsideoverlap allm5 metal5 allm2 metal2 45.59
+ defaultsideoverlap allm2 metal2 allm5 metal5 15.69
+
+#metal5->metal3
+ defaultoverlap     allm5 metal5 allm3 metal3 19.63
+ defaultsideoverlap allm5 metal5 allm3 metal3 54.15
+ defaultsideoverlap allm3 metal3 allm5 metal5 27.84
+
+#metal5->metal4
+ defaultoverlap     allm5 metal5 allm4 metal4 68.33
+ defaultsideoverlap allm5 metal5 allm4 metal4 82.82
+ defaultsideoverlap allm4 metal4 allm5 metal5 46.98
+
+#-------------------------------------------------------------------------
+# Parasitic capacitance values for minimum corner
+#-------------------------------------------------------------------------
+
+variants (hrlc),(lrlc)
+# Minimum corner capacitances
+
+#deep n-well
+defaultareacap     dnwell dwell 120
+
+#p-well
+defaultoverlap     pwell well dnwell dwell 120
+
+#n-well
+# NOTE:  This value not found in PEX files
+defaultareacap     nwell well dnwell dwell 120
+
+#n-active 
+# Rely on device models to capture *ndiff area cap
+# Do not extract parasitics from resistors
+# defaultareacap     allnactivenonfet active 790
+# defaultperimeter   allnactivenonfet active 280
+
+#p-active
+# Rely on device models to capture *pdiff area cap
+# Do not extract parasitics from resistors
+# defaultareacap     allpactivenonfet active 810
+# defaultperimeter   allpactivenonfet active 300
+
+#poly
+# Do not extract parasitics from resistors
+# defaultsidewall    allpolynonfet active  22
+# defaultareacap     allpolynonfet active  80.4
+# defaultperimeter   allpolynonfet active   57
+
+ defaultsidewall    *poly active 17.0
+ defaultareacap     *poly active 80.4
+ defaultperimeter   *poly active 48.83
+ defaultsideoverlap *poly active nwell,pwell well  48.83
+
+#locali
+ defaultsidewall    allli locali 26.7
+ defaultareacap     allli locali 29.3
+ defaultperimeter   allli locali 35.69
+ defaultoverlap     allli locali nwell,pwell well  29.3
+ defaultsideoverlap allli locali nwell,pwell well  35.69
+
+#locali->diff
+ defaultoverlap     allli locali allactivenonfet active 45.3
+ defaultsideoverlap allli locali allactivenonfet active 39.59
+
+#locali->poly
+ defaultoverlap     allli locali allpolynonres active 64.5
+ defaultsideoverlap allli locali allpolynonres active 43.75
+ defaultsideoverlap *poly active allli locali 21.21
+
+#metal1
+ defaultsidewall    allm1 metal1 35.6
+ defaultareacap     allm1 metal1 20.2
+ defaultperimeter   allm1 metal1 34.41
+ defaultoverlap     allm1 metal1 nwell,pwell well  20.2
+ defaultsideoverlap allm1 metal1 nwell,pwell well  34.41
+
+#metal1->diff
+ defaultoverlap     allm1 metal1 allactivenonfet active 26.7
+ defaultsideoverlap allm1 metal1 allactivenonfet active 37.22
+
+#metal1->poly
+ defaultoverlap     allm1 metal1 allpolynonres active 32.3
+ defaultsideoverlap allm1 metal1 allpolynonres active 40.34
+ defaultsideoverlap *poly active allm1 metal1 14.41
+
+#metal1->locali
+ defaultoverlap     allm1 metal1 allli locali 77.2
+ defaultsideoverlap allm1 metal1 allli locali 49.46
+ defaultsideoverlap allli locali allm1 metal1 28.84
+
+#metal2
+ defaultsidewall    allm2 metal2      37.6
+
+ defaultareacap     allm2 metal2 14.0
+ defaultperimeter   allm2 metal2 32.60
+ defaultoverlap     allm2 metal2 nwell,pwell well 14.0
+ defaultsideoverlap allm2 metal2 nwell,pwell well 32.60
+
+#metal2->diff
+ defaultoverlap     allm2 metal2 allactivenonfet active 16.8
+ defaultsideoverlap allm2 metal2 allactivenonfet active 34.16
+
+#metal2->poly
+ defaultoverlap     allm2 metal2 allpolynonres active 18.9
+ defaultsideoverlap allm2 metal2 allpolynonres active 34.46
+ defaultsideoverlap *poly active allm2 metal2 9.34
+
+#metal2->locali
+ defaultoverlap     allm2 metal2 allli locali 28.6
+ defaultsideoverlap allm2 metal2 allli locali 39.67
+ defaultsideoverlap allli locali allm2 metal2 18.63
+
+#metal2->metal1
+ defaultoverlap     allm2 metal2 allm1 metal1 80.4
+ defaultsideoverlap allm2 metal2 allm1 metal1 53.85
+ defaultsideoverlap allm1 metal1 allm2 metal2 38.70
+
+
+#metal3
+ defaultsidewall    allm3 metal3     52.0
+
+ defaultareacap     allm3 metal3 10.2
+ defaultperimeter   allm3 metal3 36.05
+ defaultoverlap     allm3 metal3 nwell,pwell well 10.2
+ defaultsideoverlap allm3 metal3 nwell,pwell well 36.05
+
+#metal3->diff
+ defaultoverlap     allm3 metal3 allactive active 11.7
+ defaultsideoverlap allm3 metal3 allactive active 37.59
+
+#metal3->poly
+ defaultoverlap     allm3 metal3 allpolynonres active 12.6
+ defaultsideoverlap allm3 metal3 allpolynonres active 38.28
+ defaultsideoverlap *poly active allm3 metal3 8.07
+
+#metal3->locali
+ defaultoverlap     allm3 metal3 allli locali 16.3
+ defaultsideoverlap allm3 metal3 allli locali 41.75
+ defaultsideoverlap allli locali allm3 metal3 13.48
+
+#metal3->metal1
+ defaultoverlap     allm3 metal3 allm1 metal1 25.8
+ defaultsideoverlap allm3 metal3 allm1 metal1 48.82
+ defaultsideoverlap allm1 metal1 allm3 metal3 23.76
+
+
+#metal3->metal2
+ defaultoverlap     allm3 metal3 allm2 metal2 59.5
+ defaultsideoverlap allm3 metal3 allm2 metal2 61.18
+ defaultsideoverlap allm2 metal2 allm3 metal3 38.92
+
+#metal4
+ defaultsidewall    allm4 metal4 53.7
+ defaultareacap     allm4 metal4 7.28
+ defaultperimeter   allm4 metal4 32.39
+ defaultoverlap     allm4 metal4 nwell,pwell well 7.28
+ defaultsideoverlap allm4 metal4 nwell,pwell well 32.39
+
+#metal4->diff
+ defaultoverlap     allm4 metal4 allactivenonfet active 7.98
+ defaultsideoverlap allm4 metal4 allactivenonfet active 33.54
+
+#metal4->poly
+ defaultoverlap     allm4 metal4 allpolynonres active 8.42
+ defaultsideoverlap allm4 metal4 allpolynonres active 33.59
+ defaultsideoverlap *poly active allm4 metal4 5.60
+
+#metal4->locali
+ defaultoverlap     allm4 metal4 allli locali 9.92
+ defaultsideoverlap allm4 metal4 allli locali 35.49
+ defaultsideoverlap allli locali allm4 metal4 9.06
+
+#metal4->metal1
+ defaultoverlap     allm4 metal4 allm1 metal1 12.8
+ defaultsideoverlap allm4 metal4 allm1 metal1 38.29
+ defaultsideoverlap allm1 metal1 allm4 metal4 14.77
+
+
+#metal4->metal2
+ defaultoverlap     allm4 metal4 allm2 metal2 17.8
+ defaultsideoverlap allm4 metal4 allm2 metal2 42.08
+ defaultsideoverlap allm2 metal2 allm4 metal4 20.26
+
+#metal4->metal3
+ defaultoverlap     allm4 metal4 allm3 metal3 57.6
+ defaultsideoverlap allm4 metal4 allm3 metal3 59.42
+ defaultsideoverlap allm3 metal3 allm4 metal4 35.93
+
+#metal5
+ defaultsidewall    allm5 metal5 81.5
+ defaultareacap     allm5 metal5 5.56
+ defaultperimeter   allm5 metal5 34.65
+ defaultoverlap     allm5 metal5 nwell,pwell well  5.56
+ defaultsideoverlap allm5 metal5 nwell,pwell well  34.65
+
+#metal5->diff
+ defaultoverlap     allm5 metal5 allactivenonfet active 5.96
+ defaultsideoverlap allm5 metal5 allactivenonfet active 35.55
+
+#metal5->poly
+ defaultoverlap     allm5 metal5 allpolynonres active 6.2
+ defaultsideoverlap allm5 metal5 allpolynonres active 35.59
+ defaultsideoverlap *poly active allm5 metal5 5.79
+
+#metal5->locali
+ defaultoverlap     allm5 metal5 allli locali 6.97
+ defaultsideoverlap allm5 metal5 allli locali 37.24
+ defaultsideoverlap allli locali allm5 metal5 6.91
+
+#metal5->metal1
+ defaultoverlap     allm5 metal5 allm1 metal1 8.26
+ defaultsideoverlap allm5 metal5 allm1 metal1 39.30
+ defaultsideoverlap allm1 metal1 allm5 metal5 10.94
+
+
+#metal5->metal2
+ defaultoverlap     allm5 metal5 allm2 metal2 10.1
+ defaultsideoverlap allm5 metal5 allm2 metal2 41.75
+ defaultsideoverlap allm2 metal2 allm5 metal5 14.37
+
+#metal5->metal3
+ defaultoverlap     allm5 metal5 allm3 metal3 16.7
+ defaultsideoverlap allm5 metal5 allm3 metal3 48.75
+ defaultsideoverlap allm3 metal3 allm5 metal5 25.06
+
+#metal5->metal4
+ defaultoverlap     allm5 metal5 allm4 metal4 48.7
+ defaultsideoverlap allm5 metal5 allm4 metal4 70.26
+ defaultsideoverlap allm4 metal4 allm5 metal5 39.86
+
+#-------------------------------------------------------------------------
+# Parasitic capacitance values for maximum corner
+#-------------------------------------------------------------------------
+
+variants (hrhc),(lrhc)
+# Maximum corner capacitances
+
+#deep n-well
+defaultareacap     dnwell dwell 120
+
+#p-well
+defaultoverlap     pwell well dnwell dwell 120
+
+#n-well
+# NOTE:  This value not found in PEX files
+defaultareacap     nwell well dnwell dwell 120
+
+#n-active 
 # Rely on device models to capture *ndiff area cap
 # Do not extract parasitics from resistors
 # defaultareacap     allnactivenonfet active 790
@@ -4866,181 +5544,196 @@ defaultareacap     nwell well 120
 # defaultareacap     allpolynonfet active  106
 # defaultperimeter   allpolynonfet active   57
 
- defaultsidewall    *poly active  23
- defaultareacap     *poly active nwell,obswell,pwell well  106
- defaultperimeter   *poly active nwell,obswell,pwell well  55
+ defaultsidewall    *poly active 17.0
+ defaultareacap     *poly active 155.0
+ defaultperimeter   *poly active 64.82
+ defaultsideoverlap *poly active nwell,pwell well  64.82
 
 #locali
- defaultsidewall    allli locali       33
- defaultareacap     allli locali nwell,obswell,pwell well  37
- defaultperimeter   allli locali nwell,obswell,pwell well  55
- defaultoverlap     allli locali nwell well 37
+ defaultsidewall    allli locali 28.7
+ defaultareacap     allli locali 49.7
+ defaultperimeter   allli locali 47.02
+ defaultoverlap     allli locali nwell,pwell well  49.7
+ defaultsideoverlap allli locali nwell,pwell well  47.02
 
 #locali->diff
- defaultoverlap     allli locali allactivenonfet active 37
- defaultsideoverlap allli locali allactivenonfet active 55
+ defaultoverlap     allli locali allactivenonfet active 70.9
+ defaultsideoverlap allli locali allactivenonfet active 49.94
 
 #locali->poly
- defaultoverlap     allli locali allpolynonres active 94
- defaultsideoverlap allli locali allpolynonres active 52
- defaultsideoverlap *poly active allli locali 25
+ defaultoverlap     allli locali allpolynonres active 174.0
+ defaultsideoverlap allli locali allpolynonres active 66.60
+ defaultsideoverlap *poly active allli locali 32.29
 
 #metal1
- defaultsidewall    allm1 metal1      45
- defaultareacap     allm1 metal1 nwell,obswell,pwell well  26
- defaultperimeter   allm1 metal1 nwell,obswell,pwell well  41
- defaultoverlap     allm1 metal1 nwell well 26
+ defaultsidewall    allm1 metal1 37.6
+ defaultareacap     allm1 metal1 35.7
+ defaultperimeter   allm1 metal1 49.59
+ defaultoverlap     allm1 metal1 nwell,pwell well  35.7
+ defaultsideoverlap allm1 metal1 nwell,pwell well  49.59
 
 #metal1->diff
- defaultoverlap     allm1 metal1 allactivenonfet active 26
- defaultsideoverlap allm1 metal1 allactivenonfet active 41
+ defaultoverlap     allm1 metal1 allactivenonfet active 45.4
+ defaultsideoverlap allm1 metal1 allactivenonfet active 51.17
 
 #metal1->poly
- defaultoverlap     allm1 metal1 allpolynonres active 45
- defaultsideoverlap allm1 metal1 allpolynonres active 47
- defaultsideoverlap *poly active allm1 metal1 17
+ defaultoverlap     allm1 metal1 allpolynonres active 73.2
+ defaultsideoverlap allm1 metal1 allpolynonres active 59.78
+ defaultsideoverlap *poly active allm1 metal1 21.36
 
 #metal1->locali
- defaultoverlap     allm1 metal1 allli locali 114
- defaultsideoverlap allm1 metal1 allli locali 59
- defaultsideoverlap allli locali allm1 metal1 35
+ defaultoverlap     allm1 metal1 allli locali 215.0
+ defaultsideoverlap allm1 metal1 allli locali 80.12
+ defaultsideoverlap allli locali allm1 metal1 46.73
 
 #metal2
- defaultsidewall    allm2 metal2      50
- defaultareacap     allm2 metal2 nwell,obswell,pwell well 17
- defaultperimeter   allm2 metal2 nwell,obswell,pwell well 41
- defaultoverlap     allm2 metal2 nwell well 38
+ defaultsidewall    allm2 metal2      40.2
+
+ defaultareacap     allm2 metal2 23.5
+ defaultperimeter   allm2 metal2 46.03
+ defaultoverlap     allm2 metal2 nwell,pwell well 23.5
+ defaultsideoverlap allm2 metal2 nwell,pwell well 46.03
 
 #metal2->diff
- defaultoverlap     allm2 metal2 allactivenonfet active 17
- defaultsideoverlap allm2 metal2 allactivenonfet active 41
+ defaultoverlap     allm2 metal2 allactivenonfet active 27.4
+ defaultsideoverlap allm2 metal2 allactivenonfet active 47.45
 
 #metal2->poly
- defaultoverlap     allm2 metal2 allpolynonres active 24
- defaultsideoverlap allm2 metal2 allpolynonres active 41
- defaultsideoverlap *poly active allm2 metal2 11
+ defaultoverlap     allm2 metal2 allpolynonres active 35.5
+ defaultsideoverlap allm2 metal2 allpolynonres active 51.29
+ defaultsideoverlap *poly active allm2 metal2 13.90
 
 #metal2->locali
- defaultoverlap     allm2 metal2 allli locali 38
- defaultsideoverlap allm2 metal2 allli locali 46
- defaultsideoverlap allli locali allm2 metal2 22
+ defaultoverlap     allm2 metal2 allli locali 52.3
+ defaultsideoverlap allm2 metal2 allli locali 55.56
+ defaultsideoverlap allli locali allm2 metal2 26.10
 
 #metal2->metal1
- defaultoverlap     allm2 metal2 allm1 metal1 134
- defaultsideoverlap allm2 metal2 allm1 metal1 67
- defaultsideoverlap allm1 metal1 allm2 metal2 48
+ defaultoverlap     allm2 metal2 allm1 metal1 313.0
+ defaultsideoverlap allm2 metal2 allm1 metal1 102.37
+ defaultsideoverlap allm1 metal1 allm2 metal2 73.576
+
 
 #metal3
- defaultsidewall    allm3 metal3     63
- defaultoverlap     allm3 metal3 nwell well 12
- defaultareacap     allm3 metal3 nwell,obswell,pwell well 12
- defaultperimeter   allm3 metal3 nwell,obswell,pwell well 41
+ defaultsidewall    allm3 metal3     60.6
+
+ defaultareacap     allm3 metal3 16.3
+ defaultperimeter   allm3 metal3 47.38
+ defaultoverlap     allm3 metal3 nwell,pwell well 16.3
+ defaultsideoverlap allm3 metal3 nwell,pwell well 47.38
 
 #metal3->diff
- defaultoverlap     allm3 metal3 allactive active 12
- defaultsideoverlap allm3 metal3 allactive active 41
+ defaultoverlap     allm3 metal3 allactive active 18.1
+ defaultsideoverlap allm3 metal3 allactive active 48.19
 
 #metal3->poly
- defaultoverlap     allm3 metal3 allpolynonres active 16
- defaultsideoverlap allm3 metal3 allpolynonres active 44
- defaultsideoverlap *poly active allm3 metal3 9
+ defaultoverlap     allm3 metal3 allpolynonres active 21.3
+ defaultsideoverlap allm3 metal3 allpolynonres active 50.44
+ defaultsideoverlap *poly active allm3 metal3 10.64
 
 #metal3->locali
- defaultoverlap     allm3 metal3 allli locali 21
- defaultsideoverlap allm3 metal3 allli locali 47
- defaultsideoverlap allli locali allm3 metal3 15
+ defaultoverlap     allm3 metal3 allli locali 26.3 
+ defaultsideoverlap allm3 metal3 allli locali 53.29
+ defaultsideoverlap allli locali allm3 metal3 17.20
 
 #metal3->metal1
- defaultoverlap     allm3 metal3 allm1 metal1 35
- defaultsideoverlap allm3 metal3 allm1 metal1 55
- defaultsideoverlap allm1 metal1 allm3 metal3 27
+ defaultoverlap     allm3 metal3 allm1 metal1 45.2
+ defaultsideoverlap allm3 metal3 allm1 metal1 62.88
+ defaultsideoverlap allm1 metal1 allm3 metal3 30.61
+
 
 #metal3->metal2
- defaultoverlap     allm3 metal3 allm2 metal2 86
- defaultsideoverlap allm3 metal3 allm2 metal2 70
- defaultsideoverlap allm2 metal2 allm3 metal3 44
+ defaultoverlap     allm3 metal3 allm2 metal2 131.0
+ defaultsideoverlap allm3 metal3 allm2 metal2 82.67
+ defaultsideoverlap allm2 metal2 allm3 metal3 52.59
 
 #metal4
- defaultsidewall    allm4 metal4       67
-# defaultareacap     alltopm metal4 well  6
- areacap     	    allm4/m4 8
- defaultoverlap     allm4 metal4 nwell well 8
- defaultperimeter   allm4 metal4 well  37
+ defaultsidewall    allm4 metal4 65.4
+ defaultareacap     allm4 metal4 10.7
+ defaultperimeter   allm4 metal4 42.40
+ defaultoverlap     allm4 metal4 nwell,pwell well 10.7
+ defaultsideoverlap allm4 metal4 nwell,pwell well 42.40
 
 #metal4->diff
- defaultoverlap     allm4 metal4 allactivenonfet active 8
- defaultsideoverlap allm4 metal4 allactivenonfet active 37
+ defaultoverlap     allm4 metal4 allactivenonfet active 11.4
+ defaultsideoverlap allm4 metal4 allactivenonfet active 43.0
 
 #metal4->poly
- defaultoverlap     allm4 metal4 allpolynonres active 10
- defaultsideoverlap allm4 metal4 allpolynonres active 38
- defaultsideoverlap *poly active allm4 metal4 6
+ defaultoverlap     allm4 metal4 allpolynonres active 12.6
+ defaultsideoverlap allm4 metal4 allpolynonres active 43.99
+ defaultsideoverlap *poly active allm4 metal4 7.33
 
 #metal4->locali
- defaultoverlap     allm4 metal4 allli locali 12
- defaultsideoverlap allm4 metal4 allli locali 40
- defaultsideoverlap allli locali allm4 metal4 10
+ defaultoverlap     allm4 metal4 allli locali 14.3
+ defaultsideoverlap allm4 metal4 allli locali 45.09
+ defaultsideoverlap allli locali allm4 metal4 11.51
 
 #metal4->metal1
- defaultoverlap     allm4 metal4 allm1 metal1 15
- defaultsideoverlap allm4 metal4 allm1 metal1 43
- defaultsideoverlap allm1 metal1 allm4 metal4 16
+ defaultoverlap     allm4 metal4 allm1 metal1 18.5
+ defaultsideoverlap allm4 metal4 allm1 metal1 48.07
+ defaultsideoverlap allm1 metal1 allm4 metal4 18.55
+
 
 #metal4->metal2
- defaultoverlap     allm4 metal4 allm2 metal2 20
- defaultsideoverlap allm4 metal4 allm2 metal2 46
- defaultsideoverlap allm2 metal2 allm4 metal4 22
+ defaultoverlap     allm4 metal4 allm2 metal2 25.2
+ defaultsideoverlap allm4 metal4 allm2 metal2 51.98
+ defaultsideoverlap allm2 metal2 allm4 metal4 25.03
 
 #metal4->metal3
- defaultoverlap     allm4 metal4 allm3 metal3 84
- defaultsideoverlap allm4 metal4 allm3 metal3 71
- defaultsideoverlap allm3 metal3 allm4 metal4 43
+ defaultoverlap     allm4 metal4 allm3 metal3 191.0
+ defaultsideoverlap allm4 metal4 allm3 metal3 92.12
+ defaultsideoverlap allm3 metal3 allm4 metal4 55.70
 
 #metal5
- defaultsidewall    allm5 metal5       127
-# defaultareacap     allm5 metal5 well  6
- areacap     	    allm5/m5 6
- defaultoverlap     allm5 metal5 nwell well 6
- defaultperimeter   allm5 metal5 well  39
+ defaultsidewall    allm5 metal5 118.7
+ defaultareacap     allm5 metal5 7.76
+ defaultperimeter   allm5 metal5 44.91
+ defaultoverlap     allm5 metal5 nwell,pwell well  7.76
+ defaultsideoverlap allm5 metal5 nwell,pwell well  44.91
 
 #metal5->diff
- defaultoverlap     allm5 metal5 allactivenonfet active 6
- defaultsideoverlap allm5 metal5 allactivenonfet active 39
+ defaultoverlap     allm5 metal5 allactivenonfet active 8.14
+ defaultsideoverlap allm5 metal5 allactivenonfet active 45.47
 
 #metal5->poly
- defaultoverlap     allm5 metal5 allpolynonres active 7
- defaultsideoverlap allm5 metal5 allpolynonres active 40
- defaultsideoverlap *poly active allm5 metal5 6
+ defaultoverlap     allm5 metal5 allpolynonres active 8.74
+ defaultsideoverlap allm5 metal5 allpolynonres active 46.31
+ defaultsideoverlap *poly active allm5 metal5 7.53
 
 #metal5->locali
- defaultoverlap     allm5 metal5 allli locali 8
- defaultsideoverlap allm5 metal5 allli locali 41
- defaultsideoverlap allli locali allm5 metal5 8
+ defaultoverlap     allm5 metal5 allli locali 9.48
+ defaultsideoverlap allm5 metal5 allli locali 47.09
+ defaultsideoverlap allli locali allm5 metal5 8.74
 
 #metal5->metal1
- defaultoverlap     allm5 metal5 allm1 metal1 9
- defaultsideoverlap allm5 metal5 allm1 metal1 43
- defaultsideoverlap allm1 metal1 allm5 metal5 12
+ defaultoverlap     allm5 metal5 allm1 metal1 11.2
+ defaultsideoverlap allm5 metal5 allm1 metal1 49.44
+ defaultsideoverlap allm1 metal1 allm5 metal5 13.76
+
 
 #metal5->metal2
- defaultoverlap     allm5 metal5 allm2 metal2 11
- defaultsideoverlap allm5 metal5 allm2 metal2 46
- defaultsideoverlap allm2 metal2 allm5 metal5 16
+ defaultoverlap     allm5 metal5 allm2 metal2 13.3
+ defaultsideoverlap allm5 metal5 allm2 metal2 51.69
+ defaultsideoverlap allm2 metal2 allm5 metal5 17.79
 
 #metal5->metal3
- defaultoverlap     allm5 metal5 allm3 metal3 20
- defaultsideoverlap allm5 metal5 allm3 metal3 54
- defaultsideoverlap allm3 metal3 allm5 metal5 28
+ defaultoverlap     allm5 metal5 allm3 metal3 24.6
+ defaultsideoverlap allm5 metal5 allm3 metal3 63.24
+ defaultsideoverlap allm3 metal3 allm5 metal5 32.51
 
 #metal5->metal4
- defaultoverlap     allm5 metal5 allm4 metal4 68
- defaultsideoverlap allm5 metal5 allm4 metal4 83
- defaultsideoverlap allm4 metal4 allm5 metal5 47
+ defaultoverlap     allm5 metal5 allm4 metal4 115.0
+ defaultsideoverlap allm5 metal5 allm4 metal4 109.69
+ defaultsideoverlap allm4 metal4 allm5 metal5 62.22
+
+#---------------------------------------------------------
+
+variants *
 
 
 # Devices:  Base models (not subcircuit wrappers)
 
-variants (),(si)
+variants (),(si),(hrhc),(lrhc),(hrlc),(lrlc)
 
  device msubcircuit sky130_fd_pr__pfet_01v8 pfet,scpfet \
 	*pdiff,pdiffres *pdiff,pdiffres nwell error l=l w=w \
@@ -5084,8 +5777,18 @@ variants (),(si)
 	*mvnndiff nwell error l=l w=w a1=as a2=ad p1=ps p2=pd
 
  # Bipolars
- device msubcircuit sky130_fd_pr__npn_05v0 npn *ndiff dnwell space/w error a2=area
- device msubcircuit sky130_fd_pr__pnp_05v0 pnp *pdiff pwell,space/w a2=area
+ device msubcircuit sky130_fd_pr__npn_05v5_W1p00L1p00 npn *ndiff dnwell space/w \
+	error +npn1p00
+ device msubcircuit sky130_fd_pr__npn_05v5_W1p00L2p00 npn *ndiff dnwell space/w \
+	error +npn2p00
+ device msubcircuit sky130_fd_pr__npn_05v5 npn *ndiff dnwell space/w error a2=area
+ device msubcircuit sky130_fd_pr__pnp_05v5_W0p68L0p68 pnp *pdiff \
+	pwell,space/w +pnp0p68
+ device msubcircuit sky130_fd_pr__pnp_05v5_W3p40L3p40 pnp *pdiff \
+	pwell,space/w +pnp3p40
+ device msubcircuit sky130_fd_pr__pnp_05v5 pnp *pdiff pwell,space/w a2=area
+ device msubcircuit sky130_fd_pr__npn_11v0_W1p00L1p00 npn *mvndiff \
+	dnwell space/w error +npn11p0
  device msubcircuit sky130_fd_pr__npn_11v0 npn *mvndiff dnwell space/w error a2=area
 
  # Ignore the extended-drain FET geometry that forms part of the high-voltage
@@ -5126,6 +5829,8 @@ variants (),(si)
  device resistor sky130_fd_pr__res_generic_m3 rmetal3 *metal3
  device resistor sky130_fd_pr__res_generic_m4 rm4 *m4
  device resistor sky130_fd_pr__res_generic_m5 rm5 *m5
+ device ndiode   sky130_fd_pr__model__parasitic__diode_ps2dn \
+	photo pwell,space/w error a=area
 
  device rsubcircuit sky130_fd_pr__res_high_po_0p35 xhrpoly \
 	xpc pwell,space/w error +res0p35 l=l
@@ -5166,23 +5871,15 @@ variants (),(si)
  device resistor sky130_fd_pr__res_generic_po rmp *poly
  device resistor sky130_fd_pr__res_generic_po mrp1 *poly
 
- device subcircuit  sky130_fd_pr__diode_pd2nw_05v5 *pdiode \
-	nwell a=area
- device subcircuit  sky130_fd_pr__diode_pd2nw_05v5_lvt *pdiodelvt \
-	nwell a=area
- device subcircuit  sky130_fd_pr__diode_pd2nw_05v5_hvt *pdiodehvt \
-	nwell a=area
- device subcircuit  sky130_fd_pr__diode_pd2nw_11v0 *mvpdiode \
-	nwell a=area
+ device pdiode sky130_fd_pr__diode_pd2nw_05v5 *pdiode nwell a=area p=pj
+ device pdiode sky130_fd_pr__diode_pd2nw_05v5_lvt *pdiodelvt nwell a=area p=pj
+ device pdiode sky130_fd_pr__diode_pd2nw_05v5_hvt *pdiodehvt nwell a=area p=pj
+ device pdiode sky130_fd_pr__diode_pd2nw_11v0 *mvpdiode nwell a=area p=pj
 
- device msubcircuit sky130_fd_pr__diode_pw2nd_05v5 *ndiode \
-	pwell,space/w a=area
- device msubcircuit sky130_fd_pr__diode_pw2nd_05v5_lvt *ndiodelvt \
-	pwell,space/w a=area
- device msubcircuit sky130_fd_pr__diode_pw2nd_05v5_nvt *nndiode \
-	pwell,space/w a=area
- device msubcircuit sky130_fd_pr__diode_pw2nd_11v0 *mvndiode \
-	pwell,space/w a=area
+ device ndiode sky130_fd_pr__diode_pw2nd_05v5 *ndiode pwell,space/w a=area p=pj
+ device ndiode sky130_fd_pr__diode_pw2nd_05v5_lvt *ndiodelvt pwell,space/w a=area p=pj
+ device ndiode sky130_fd_pr__diode_pw2nd_05v5_nvt *nndiode pwell,space/w a=area p=pj
+ device ndiode sky130_fd_pr__diode_pw2nd_11v0 *mvndiode pwell,space/w a=area p=pj
 
 
  device csubcircuit sky130_fd_pr__cap_mim_m3_1 *mimcap  *m3 w=w l=l
@@ -5190,11 +5887,11 @@ variants (),(si)
 
  variants (orig)
 
- device mosfet sky130_fd_pr__pfet_01v8 scpfet,pfet pdiff,pdiffres,pdc nwell
- device mosfet sky130_fd_pr__special_pfet_pass ppu pdiff,pdiffres,pdc nwell
- device mosfet sky130_fd_pr__pfet_01v8_lvt pfetlvt pdiff,pdiffres,pdc nwell
- device mosfet sky130_fd_pr__pfet_01v8_mvt pfetmvt pdiff,pdiffres,pdc nwell
- device mosfet sky130_fd_pr__pfet_01v8_hvt scpfethvt,pfethvt pdiff,pdiffres,pdc nwell
+ device mosfet sky130_fd_pr__pfet_01v8 scpfet,pfet pdiff,pdiffres,pdc nwell 
+ device mosfet sky130_fd_pr__special_pfet_pass ppu pdiff,pdiffres,pdc nwell 
+ device mosfet sky130_fd_pr__pfet_01v8_lvt pfetlvt pdiff,pdiffres,pdc nwell 
+ device mosfet sky130_fd_pr__pfet_01v8_mvt pfetmvt pdiff,pdiffres,pdc nwell 
+ device mosfet sky130_fd_pr__pfet_01v8_hvt scpfethvt,pfethvt pdiff,pdiffres,pdc nwell 
  device mosfet sky130_fd_pr__nfet_01v8 scnfet,nfet ndiff,ndiffres,ndc pwell,space/w
  device mosfet sky130_fd_pr__special_nfet_pass  npass ndiff,ndiffres,ndc pwell,space/w
  device mosfet sky130_fd_pr__special_nfet_latch npd ndiff,ndiffres,ndc pwell,space/w
@@ -5214,8 +5911,8 @@ variants (),(si)
  device mosfet sky130_fd_pr__pfet_20v0 mvpfet *mvpdiff,mvpdiffres \
 	pwell,space/w nwell error
 
- device mosfet sky130_fd_pr__pfet_g5v0d10v5 mvpfet mvpdiff,mvpdiffres,mvpdc nwell
- device mosfet sky130_fd_pr__esd_pfet_g5v0d10v5 mvpfetesd mvpdiff,mvpdiffres,mvpdc nwell
+ device mosfet sky130_fd_pr__pfet_g5v0d10v5 mvpfet mvpdiff,mvpdiffres,mvpdc nwell 
+ device mosfet sky130_fd_pr__esd_pfet_g5v0d10v5 mvpfetesd mvpdiff,mvpdiffres,mvpdc nwell 
  device mosfet sky130_fd_pr__nfet_g5v0d10v5 mvnfet mvndiff,mvndiffres,mvndc pwell,space/w
  device mosfet sky130_fd_pr__esd_nfet_g5v0d10v5 mvnfetesd mvndiff,mvndiffres,mvndc pwell,space/w
  device mosfet sky130_fd_pr__nfet_05v0_nvt mvnnfet *mvndiff,mvndiffres pwell,space/w
@@ -5239,18 +5936,18 @@ variants (),(si)
  device resistor sky130_fd_pr__res_high_po_1p41 xhrpoly xpc +res1p41
  device resistor sky130_fd_pr__res_high_po_2p85 xhrpoly xpc +res2p85
  device resistor sky130_fd_pr__res_high_po_5p73 xhrpoly xpc +res5p73
- device resistor sky130_fd_pr__res_high_po xhrpoly xpc
+ device resistor sky130_fd_pr__res_high_po xhrpoly xpc 
  device resistor sky130_fd_pr__res_xhigh_po_0p35 uhrpoly xpc +res0p35
  device resistor sky130_fd_pr__res_xhigh_po_0p69 uhrpoly xpc +res0p69
  device resistor sky130_fd_pr__res_xhigh_po_1p41 uhrpoly xpc +res1p41
  device resistor sky130_fd_pr__res_xhigh_po_2p85 uhrpoly xpc +res2p85
  device resistor sky130_fd_pr__res_xhigh_po_5p73 uhrpoly xpc +res5p73
- device resistor sky130_fd_pr__res_xhigh_po uhrpoly xpc
- device resistor sky130_fd_pr__res_generic_po  mrp1     *poly
- device resistor sky130_fd_pr__res_generic_nd  ndiffres *ndiff
- device resistor sky130_fd_pr__res_generic_pd  pdiffres *pdiff
- device resistor mrdn_hv   mvndiffres *mvndiff
- device resistor mrdp_hv   mvpdiffres *mvpdiff
+ device resistor sky130_fd_pr__res_xhigh_po uhrpoly xpc 
+ device resistor sky130_fd_pr__res_generic_po  mrp1     *poly 
+ device resistor sky130_fd_pr__res_generic_nd  ndiffres *ndiff 
+ device resistor sky130_fd_pr__res_generic_pd  pdiffres *pdiff 
+ device resistor mrdn_hv   mvndiffres *mvndiff 
+ device resistor mrdp_hv   mvpdiffres *mvpdiff 
  device resistor sky130_fd_pr__res_iso_pw   rpw    pwell
 
  device ndiode sky130_fd_pr__diode_pw2nd_05v5 *ndiode pwell,space/w a=area
@@ -5263,8 +5960,13 @@ variants (),(si)
  device pdiode sky130_fd_pr__diode_pd2nw_05v5_hvt *pdiodehvt nwell a=area
  device pdiode sky130_fd_pr__diode_pd2nw_11v0 *mvpdiode nwell a=area
 
+ device bjt sky130_fd_pr__npn_05v5_W1p00L1p00 npn *ndiff dnwell space/w error +npn1p00
+ device bjt sky130_fd_pr__npn_05v5_W1p00L2p00 npn *ndiff dnwell space/w error +npn2p00
  device bjt sky130_fd_pr__npn_05v5 npn *ndiff dnwell space/w error a2=area
+ device bjt sky130_fd_pr__pnp_05v5_W0p68L0p68 pnp *pdiff pwell,space/w +pnp0p68
+ device bjt sky130_fd_pr__pnp_05v5_W3p40L3p40 pnp *pdiff pwell,space/w +pnp3p40
  device bjt sky130_fd_pr__pnp_05v5 pnp *pdiff pwell,space/w a2=area
+ device bjt sky130_fd_pr__npn_11v0_W1p00L1p00 npn *mvndiff dnwell space/w error +npn11p0
  device bjt sky130_fd_pr__npn_11v0 npn *mvndiff dnwell space/w error a2=area
 
  device capacitor sky130_fd_pr__cap_mim_m3_1 *mimcap  *m3 1
@@ -5295,7 +5997,7 @@ wiring
 end
 
 #-----------------------------------------------------
-# Plain old router. . .
+# Plain old router. . . 
 #-----------------------------------------------------
 
 router
@@ -5326,5 +6028,4 @@ plot
      draw m5fill no_color_at_all
      draw nwell cwell
 end
-
 
