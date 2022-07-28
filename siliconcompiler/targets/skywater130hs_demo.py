@@ -32,7 +32,7 @@ def setup(chip):
     chip.set('option', 'mode','asic')
 
     #2. Load PDK, flow, libs
-    chip.load_pdk('skywater130')
+    chip.load_pdk('skywater130hs')
     chip.load_flow('asicflow')
     chip.load_flow('asictopflow')
     chip.load_flow('signoffflow')
