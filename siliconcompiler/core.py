@@ -35,6 +35,7 @@ import csv
 import distro
 import netifaces
 import webbrowser
+import codecs
 import packaging.version
 import packaging.specifiers
 from jinja2 import Environment, FileSystemLoader
@@ -114,6 +115,23 @@ class Chip:
             'checklists': []
         }
 
+        # Custom error handlers used to provide warnings when invalid characters
+        # are encountered in a file for a given encoding. The names
+        # 'replace_with_warning' and 'ignore_with_warning' are supplied to
+        # open() via the 'errors' kwarg.
+
+        # Warning message/behavior for invalid characters while running tool
+        def display_error_handler(e):
+            self.logger.warning('Invalid character in tool output, displaying as �')
+            return codecs.replace_errors(e)
+        codecs.register_error('replace_with_warning', display_error_handler)
+
+        # Warning message/behavior for invalid characters while processing log
+        def log_error_handler(e):
+            self.logger.warning('Ignoring invalid character found while reading log')
+            return codecs.ignore_errors(e)
+        codecs.register_error('ignore_with_warning', log_error_handler)
+
     ###########################################################################
     @property
     def design(self):
@@ -121,6 +139,22 @@ class Chip:
 
         This is an immutable property.'''
         return self.get('design')
+
+    ###########################################################################
+    def top(self):
+        '''Gets the name of the design's entrypoint for compilation and
+        simulation.
+
+        This method should be used to name input and output files in tool
+        drivers, rather than relying on chip.get('design') directly.
+
+        Returns :keypath:`option, entrypoint` if it has been set, otherwise
+        :keypath:`design`.
+        '''
+        entrypoint = self.get('option', 'entrypoint')
+        if not entrypoint:
+            return self.design
+        return entrypoint
 
     ###########################################################################
     def _init_logger(self, step=None, index=None, in_run=False):
@@ -793,9 +827,9 @@ class Chip:
             else:
                 cfg = self.cfg
 
-        keypathstr = ','.join(keypath)
+        keypathstr = f'{keypath}'
 
-        self.logger.debug(f"Reading from [{keypathstr}]. Field = '{field}'")
+        self.logger.debug(f"Reading from {keypathstr}. Field = '{field}'")
         return self._search(cfg, keypathstr, *keypath, field=field, mode='get')
 
     ###########################################################################
@@ -831,7 +865,7 @@ class Chip:
                 cfg = self.cfg['history'][job]
 
         if len(list(keypath)) > 0:
-            keypathstr = ','.join(keypath)
+            keypathstr = f'{keypath}'
             self.logger.debug('Getting schema parameter keys for: %s', keypathstr)
             keys = list(self._search(cfg, keypathstr, *keypath, mode='getkeys'))
             if 'default' in keys:
@@ -904,19 +938,14 @@ class Chip:
         if cfg is None:
             cfg = self.cfg
 
-        # Verify that all keys are strings
-        for key in args[:-1]:
-            if not isinstance(key,str):
-                self.logger.error(f"Key [{key}] is not a string [{args}]")
-
-        keypathstr = ','.join(args[:-1])
+        keypathstr = f'{args[:-1]}'
         all_args = list(args)
 
         # Special case to ensure loglevel is updated ASAP
         if len(args) == 3 and args[1] == 'loglevel' and field == 'value':
             self.logger.setLevel(args[2])
 
-        self.logger.debug(f"Setting [{keypathstr}] to {args[-1]}")
+        self.logger.debug(f"Setting {keypathstr} to {args[-1]}")
         return self._search(cfg, keypathstr, *all_args, field=field, mode='set', clobber=clobber)
 
     ###########################################################################
@@ -948,15 +977,10 @@ class Chip:
         if cfg is None:
             cfg = self.cfg
 
-        # Verify that all keys are strings
-        for key in args[:-1]:
-            if not isinstance(key,str):
-                self.logger.error(f"Key [{key}] is not a string [{args}]")
-
-        keypathstr = ','.join(args[:-1])
+        keypathstr = f'{args[:-1]}'
         all_args = list(args)
 
-        self.logger.debug(f'Appending value {args[-1]} to [{keypathstr}]')
+        self.logger.debug(f'Appending value {args[-1]} to {keypathstr}')
         return self._search(cfg, keypathstr, *all_args, field=field, mode='add')
 
 
@@ -1000,11 +1024,24 @@ class Chip:
         val = all_args[-1]
         empty = [None, 'null', [], 'false']
 
+        # Ensure that all keypath values are strings.
+        # Scripts may accidentally pass in [None] if a prior schema entry was unexpectedly empty.
+        keys_to_check = args
+        if mode in ['set', 'add']:
+            # Ignore the value parameter for 'set' and 'add' operations.
+            keys_to_check = args[:-1]
+        for key in keys_to_check:
+            if not isinstance(key, str):
+                self.error(
+                    f'Invalid keypath: {keypath}\n'
+                    'Your Chip configuration may be missing a parameter which is expected by your build script.')
+                return None
+
         #set/add leaf cell (all_args=(param,val))
         if (mode in ('set', 'add')) & (len(all_args) == 2):
             # clean error if key not found
             if (not param in cfg) & (not 'default' in cfg):
-                self.error(f"Set/Add keypath [{keypath}] does not exist.")
+                self.error(f"Set/Add keypath {keypath} does not exist.")
             else:
                 # making an 'instance' of default if not found
                 if (not param in cfg) & ('default' in cfg):
@@ -1012,7 +1049,7 @@ class Chip:
                 list_type =bool(re.match(r'\[', cfg[param]['type']))
                 # checking for illegal fields
                 if not field in cfg[param] and (field != 'value'):
-                    self.error(f"Field '{field}' for keypath [{keypath}]' is not a valid field.")
+                    self.error(f"Field '{field}' for keypath {keypath}' is not a valid field.")
                 # check legality of value
                 if field == 'value':
                     (type_ok,type_error) = self._typecheck(cfg[param], param, val)
@@ -1029,7 +1066,7 @@ class Chip:
                 selval = cfg[param]['value']
                 # updating values
                 if cfg[param]['lock'] == "true":
-                    self.logger.debug("Ignoring {mode}{} to [{keypath}]. Lock bit is set.")
+                    self.logger.debug("Ignoring {mode}{} to {keypath}. Lock bit is set.")
                 elif (mode == 'set'):
                     if (field != 'value') or (selval in empty) or clobber:
                         if field in ('copy', 'lock'):
@@ -1069,9 +1106,9 @@ class Chip:
                             else:
                                 cfg[param][field] = val
                         else:
-                            self.error(f"Assigning list to scalar for [{keypath}]")
+                            self.error(f"Assigning list to scalar for {keypath}")
                     else:
-                        self.logger.debug(f"Ignoring set() to [{keypath}], value already set. Use clobber=true to override.")
+                        self.logger.debug(f"Ignoring set() to {keypath}, value already set. Use clobber=true to override.")
                 elif (mode == 'add'):
                     if field in ('filehash', 'date', 'author', 'signature'):
                         cfg[param][field].append(str(val))
@@ -1082,19 +1119,19 @@ class Chip:
                     elif list_type & isinstance(val, list):
                         cfg[param][field].extend(val)
                     else:
-                        self.error(f"Illegal use of add() for scalar parameter [{keypath}].")
+                        self.error(f"Illegal use of add() for scalar parameter {keypath}.")
                 return cfg[param][field]
         #get leaf cell (all_args=param)
         elif len(all_args) == 1:
             if not param in cfg:
-                self.error(f"Get keypath [{keypath}] does not exist.")
+                self.error(f"Get keypath {keypath} does not exist.")
             elif mode == 'getcfg':
                 return cfg[param]
             elif mode == 'getkeys':
                 return cfg[param].keys()
             else:
                 if not (field in cfg[param]) and (field!='value'):
-                    self.error(f"Field '{field}' not found for keypath [{keypath}]")
+                    self.error(f"Field '{field}' not found for keypath {keypath}")
                 elif field == 'value':
                     #Select default if no value has been set
                     if field not in cfg[param]:
@@ -1158,7 +1195,7 @@ class Chip:
             if not param in cfg and 'default' in cfg:
                 cfg[param] = copy.deepcopy(cfg['default'])
             elif not param in cfg:
-                self.error(f"Get keypath [{keypath}] does not exist.")
+                self.error(f"Get keypath {keypath} does not exist.")
                 return None
             all_args.pop(0)
             return self._search(cfg[param], keypath, *all_args, field=field, mode=mode, clobber=clobber)
@@ -1372,9 +1409,9 @@ class Chip:
         for path in paths:
             if (copyall or copy) and ('file' in paramtype):
                 name = self._get_imported_filename(path)
-                abspath = os.path.join(self._getworkdir(jobname=job, step='import'), 'outputs', name)
+                abspath = os.path.join(self._getworkdir(jobname=job, step='import'), 'inputs', name)
                 if os.path.isfile(abspath):
-                    # if copy is True and file is found in import outputs,
+                    # if copy is True and file is found in import inputs,
                     # continue. Otherwise, fall through to _find_sc_file (the
                     # file may not have been gathered in imports yet)
                     result.append(abspath)
@@ -1414,7 +1451,7 @@ class Chip:
             jobname = self.get('option', 'jobname')
 
         workdir = self._getworkdir(jobname, step, index)
-        design = self.get('design')
+        design = self.top()
         filename = f"{workdir}/outputs/{design}.{filetype}"
 
         self.logger.debug("Finding result %s", filename)
@@ -1502,10 +1539,10 @@ class Chip:
         '''
         Prints out schema as TCL dictionary
         '''
-
-        fout.write("#############################################")
-        fout.write("#!!!! AUTO-GENERATED FILE. DO NOT EDIT!!!!!!")
-        fout.write("#############################################\n")
+        manifest_header = os.path.join(self.scroot, 'data', 'sc_manifest_header.tcl')
+        with open(manifest_header, 'r') as f:
+            fout.write(f.read())
+        fout.write('\n')
 
         allkeys = self.getkeys(cfg=cfg)
 
@@ -1849,9 +1886,11 @@ class Chip:
                             if self._keypath_empty(keypath):
                                 error = True
                                 self.logger.error(f"Value empty for [{keypath}] for {tool}.")
-                    if self._keypath_empty(['tool', tool, 'exe']):
+
+                    if (self._keypath_empty(['tool', tool, 'exe']) and
+                        self.find_function(tool, 'run', 'tools') is None):
                         error = True
-                        self.logger.error(f'Executable not specified for tool {tool}')
+                        self.logger.error(f'No executable or run() function specified for tool {tool}')
 
         if 'SC_VALID_PATHS' in os.environ:
             if not self._check_files():
@@ -1910,9 +1949,6 @@ class Chip:
         if not steplist:
             steplist = self.list_steps()
 
-        if len(steplist) < 2:
-            return True
-
         for step in steplist:
             for index in self.getkeys('flowgraph', flow, step):
                 # For each task, check input requirements.
@@ -1938,7 +1974,17 @@ class Chip:
                             in_job = jobname
                         workdir = self._getworkdir(jobname=in_job, step=in_step, index=in_index)
                         in_step_out_dir = os.path.join(workdir, 'outputs')
-                        inputs = os.listdir(in_step_out_dir)
+
+                        if not os.path.isdir(in_step_out_dir):
+                            # This means this step hasn't been run, but that
+                            # will be flagged by a different check. No error
+                            # message here since it would be redundant.
+                            inputs = []
+                            continue
+
+                        design = self.get('design')
+                        manifest = f'{design}.pkg.json'
+                        inputs = [inp for inp in os.listdir(in_step_out_dir) if inp != manifest]
                     else:
                         inputs = self._gather_outputs(in_step, in_index)
 
@@ -2482,6 +2528,8 @@ class Chip:
         copyall = self.get('option', 'copyall')
         allkeys = self.getkeys()
         for key in allkeys:
+            if key[0] == 'history':
+                continue
             leaftype = self.get(*key, field='type')
             if re.search('file', leaftype):
                 copy = self.get(*key, field='copy')
@@ -2509,7 +2557,6 @@ class Chip:
         '''
 
         indir = 'inputs'
-        flow = self.get('option', 'flow')
 
         if not os.path.exists(indir):
             os.makedirs(indir)
@@ -2524,27 +2571,6 @@ class Chip:
                 shutil.copy(abspath, os.path.join(indir, filename))
             else:
                 self._haltstep(step, index)
-
-        outdir = 'outputs'
-        if not os.path.exists(outdir):
-            os.makedirs(outdir)
-
-        # Logic to make links from outputs/ to inputs/, skipping anything that
-        # will be output by the tool as well as the manifest. We put this here
-        # so that tools used for the import stage don't have to duplicate this
-        # logic. We skip this logic for 'join'-based single-step imports, since
-        # 'join' does the copy for us.
-        tool = self.get('flowgraph', flow, step, index, 'tool')
-        if tool not in self.builtin:
-            if self.valid('tool', tool, 'output', step, index):
-                outputs = self.get('tool', tool, 'output', step, index)
-            else:
-                outputs = []
-            design = self.get('design')
-            ignore = outputs + [f'{design}.pkg.json']
-            utils.copytree(indir, outdir, dirs_exist_ok=True, link=True, ignore=ignore)
-        elif tool not in ('join', 'nop'):
-            self.error(f'Invalid import step builtin {tool}. Must be tool or join.')
 
     ###########################################################################
     def archive(self, step=None, index=None, all_files=False):
@@ -2887,22 +2913,22 @@ class Chip:
 
         Reads the content of the task's log file and compares the content found
         with the task's 'regex' parameter. The matches are stored in the file
-        '<design>.<suffix>' in the current directory. The matches are printed to
-        STDOUT if display is set to True.
+        '<design>.<suffix>' in the current directory. The matches are logged
+        if display is set to True.
 
         Args:
-            jobname (str): Jobid directory name
-            step (str): Task step name ('syn', 'place', etc)
-            index (str): Task index
-            logfile (str): Path to logfile. If None, {step}.log is used.
-            display (bool): If True, printes matches to STDOUT.
+            jobname (str): Job directory name. If None, :keypath:`option, jobname` is used.
+            step (str): Task step name ('syn', 'place', etc). If None, :keypath:`arg, step` is used.
+            index (str): Task index. Default value is 0. If None, :keypath:`arg, index` is used.
+            logfile (str): Path to logfile. If None, the default task logfile is used.
+            display (bool): If True, logs matches.
 
         Returns:
             Dictionary mapping suffixes to number of matches for that suffix's
             regex.
 
         Examples:
-            >>> chip.check_logfile('place')
+            >>> chip.check_logfile(step='place')
             Searches for regex matches in the place logfile.
         '''
 
@@ -2912,12 +2938,17 @@ class Chip:
 
         if jobname is None:
             jobname = self.get('option', 'jobname')
-        if logfile is None:
-            logfile = f"{step}.log"
         if step is None:
             step = self.get('arg', 'step')
+            if step is None:
+                raise ValueError("Must provide 'step' or set ['arg', 'step']")
         if index is None:
-            index = self.getkeys('flowgraph', flow, step)[0]
+            index = self.get('arg', 'index')
+            if index is None:
+                raise ValueError("Must provide 'index' or set ['arg', 'index']")
+        if logfile is None:
+            logfile = os.path.join(self._getworkdir(jobname=jobname, step=step, index=index),
+                                   f'{step}.log')
 
         tool = self.get('flowgraph', flow, step, index, 'tool')
 
@@ -2935,27 +2966,30 @@ class Chip:
             matches[suffix] = 0
 
         # Looping through patterns for each line
-        with open(logfile) as f:
-          for line in f:
-              for suffix in checks:
-                  string = line
-                  for item in checks[suffix]['args']:
-                      if string is None:
-                          break
-                      else:
-                          string = self.grep(item, string)
-                  if string is not None:
-                      matches[suffix] += 1
-                      #always print to file
-                      print(string.strip(), file=checks[suffix]['report'])
-                      #selectively print to display
-                      if display:
-                            if suffix == 'errors':
-                                self.logger.error(string.strip())
-                            elif suffix == 'warnings':
-                                self.logger.warning(string.strip())
-                            else:
-                                self.logger.info(f'{suffix}: {string.strip()}')
+        with open(logfile, errors='ignore_with_warning') as f:
+            for line in f:
+                for suffix in checks:
+                    string = line
+                    for item in checks[suffix]['args']:
+                        if string is None:
+                            break
+                        else:
+                            string = self.grep(item, string)
+                    if string is not None:
+                        matches[suffix] += 1
+                        #always print to file
+                        print(string.strip(), file=checks[suffix]['report'])
+                        #selectively print to display
+                        if display:
+                                if suffix == 'errors':
+                                    self.logger.error(string.strip())
+                                elif suffix == 'warnings':
+                                    self.logger.warning(string.strip())
+                                else:
+                                    self.logger.info(f'{suffix}: {string.strip()}')
+
+        for suffix in checks:
+            checks[suffix]['report'].close()
 
         return matches
 
@@ -3044,7 +3078,7 @@ class Chip:
             paramstr = "None"
 
         info_list = ["SUMMARY:\n",
-                     "design : " + self.get('design'),
+                     "design : " + self.top(),
                      "params : " + paramstr,
                      "jobdir : "+ jobdir,
                      ]
@@ -3084,48 +3118,54 @@ class Chip:
             for index in indices_to_show[step]:
                 header.append(f'{step}{index}'.center(colwidth))
 
-        # figure out which metrics have non-zero weights
-        metric_list = []
-        for step in steplist:
-            for metric in self.getkeys('metric','default','default'):
-                if metric in self.getkeys('flowgraph', flow, step, '0', 'weight'):
-                    if self.get('flowgraph', flow, step, '0', 'weight', metric) is not None:
-                        if metric not in metric_list:
-                            metric_list.append(metric)
+        # Gather data and determine which metrics to show
+        # We show a metric if:
+        # - it is not in ['option', 'metricoff'] -AND-
+        # - at least one step in the steplist has a non-zero weight for the metric -OR -
+        #   at least one step in the steplist set a value for it
+        metrics_to_show = []
+        for metric in self.getkeys('metric', 'default', 'default'):
+            if metric in self.get('option', 'metricoff'):
+                continue
 
-        # print out all metrics
-        metrics = []
-        for metric in metric_list:
-            metrics.append(" " + metric)
             row = []
+            show_metric = False
             for step in steplist:
                 for index in indices_to_show[step]:
-                    value = self.get('metric', step, index, metric)
+                    if (
+                        metric in self.getkeys('flowgraph', flow, step, index, 'weight') and
+                        self.get('flowgraph', flow, step, index, 'weight', metric)
+                    ):
+                        show_metric = True
 
+                    value = self.get('metric', step, index, metric)
                     if value is None:
-                        value = 'ERR'
+                        value = '---'
                     else:
                         value = str(value)
+                        show_metric = True
 
                     row.append(" " + value.center(colwidth))
-            data.append(row)
+
+            if show_metric:
+                metrics_to_show.append(metric)
+                data.append(row)
 
         pandas.set_option('display.max_rows', 500)
         pandas.set_option('display.max_columns', 500)
         pandas.set_option('display.width', 100)
+        metrics = [" " + metric for metric in metrics_to_show]
         df = pandas.DataFrame(data, metrics, header)
         print(df.to_string())
         print("-"*135)
 
         # Create a report for the Chip object which can be viewed in a web browser.
         # Place report files in the build's root directory.
-        web_dir = os.path.join(self.get('option', 'builddir'),
-                               self.get('design'),
-                               self.get('option', 'jobname'))
+        web_dir = self._getworkdir()
         if os.path.isdir(web_dir):
             # Gather essential variables.
             templ_dir = os.path.join(self.scroot, 'templates', 'report')
-            design = self.get('design')
+            design = self.top()
             flow = self.get('option', 'flow')
             flow_steps = steplist
             flow_tasks = {}
@@ -3162,7 +3202,7 @@ class Chip:
                 wf.write(env.get_template('sc_report.j2').render(
                     manifest = self.cfg,
                     pruned_cfg = pruned_cfg,
-                    metric_keys = metric_list,
+                    metric_keys = metrics_to_show,
                     metrics = self.cfg['metric'],
                     tasks = flow_tasks,
                     img_data = img_data,
@@ -3261,7 +3301,7 @@ class Chip:
             >>> chip.clock('clk, period=1.0)
            Create a clock named 'clk' with a 1.0ns period.
         """
-        design = self.get('design')
+        design = self.top()
         self.set('datasheet', design, 'pin', pin, 'type', 'global', 'clk')
 
         period_range = (period * 1e-9, period * 1e-9, period * 1e-9)
@@ -3525,6 +3565,9 @@ class Chip:
                     if self.valid('flowgraph', flow, step, index, 'goal', metric):
                         goal = self.get('flowgraph', flow, step, index, 'goal', metric)
                         real = self.get('metric', step, index, metric)
+                        if real is None:
+                            self.error(f'Metric {metric} has goal for {step}{index} '
+                                'but it has not been set.', fatal=True)
                         if abs(real) > goal:
                             self.logger.warning(f"Step {step}{index} failed "
                                 f"because it didn't meet goals for '{metric}' "
@@ -3540,6 +3583,8 @@ class Chip:
             for step, index in steplist:
                 if not failed[step][index]:
                     real = self.get('metric', step, index, metric)
+                    if real is None:
+                        continue
                     max_val[metric] = max(max_val[metric], real)
                     min_val[metric] = min(min_val[metric], real)
 
@@ -3558,6 +3603,9 @@ class Chip:
                     continue
 
                 real = self.get('metric', step, index, metric)
+                if real is None:
+                    self.error(f'Metric {metric} has weight for {step}{index} '
+                        'but it has not been set.', fatal=True)
 
                 if not (max_val[metric] - min_val[metric]) == 0:
                     scaled = (real - min_val[metric]) / (max_val[metric] - min_val[metric])
@@ -3634,31 +3682,30 @@ class Chip:
         to run.
 
         Execution flow:
-        T1. Start wall timer
-        T2. Defer job to compute node if using job scheduler
-        T3. Set up working directory + chdir
-        T4. Merge manifests from all input dependancies
-        T5. Write manifest to input directory for convenience
-        T6. Reset all metrics to 0 (consider removing)
-        T7. Select inputs
-        T8. Copy data from previous step outputs into inputs
-        T9. Check manifest
-        T10. Run pre_process() function
-        T11. Set environment variables
-        T12. Check EXE version
-        T13. Save manifest as TCL/YAML
-        T14. Start CPU timer
-        T15. Run EXE
-        T16. stop CPU timer
-        T17. Run post_process()
-        T18. Check log file
-        T19. Hash all task files
-        T20. Stop Wall timer
-        T21. Make a task record
-        T22. Save manifest to disk
-        T23. Halt if any errors found
-        T24. Clean up
-        T25. chdir
+        - Start wall timer
+        - Defer job to compute node if using job scheduler
+        - Set up working directory + chdir
+        - Merge manifests from all input dependancies
+        - Write manifest to input directory for convenience
+        - Select inputs
+        - Copy data from previous step outputs into inputs
+        - Check manifest
+        - Run pre_process() function
+        - Set environment variables
+        - Check EXE version
+        - Save manifest as TCL/YAML
+        - Start CPU timer
+        - Run EXE
+        - stop CPU timer
+        - Run post_process()
+        - Check log file
+        - Hash all task files
+        - Stop Wall timer
+        - Make a task record
+        - Save manifest to disk
+        - Halt if any errors found
+        - Clean up
+        - chdir
 
         Note that since _runtask occurs in its own process with a separate
         address space, any changes made to the `self` object will not
@@ -3671,16 +3718,17 @@ class Chip:
         ##################
         # Shared parameters (long function!)
         design = self.get('design')
+        top = self.top()
         flow = self.get('option', 'flow')
         tool = self.get('flowgraph', flow, step, index, 'tool')
         quiet = self.get('option', 'quiet') and (step not in self.get('option', 'bkpt'))
 
         ##################
-        # 1. Start wall timer
+        # Start wall timer
         wall_start = time.time()
 
         ##################
-        # 2. Defer job to compute node
+        # Defer job to compute node
         # If the job is configured to run on a cluster, collect the schema
         # and send it to a compute node for deferred execution.
         # (Run the initial 'import' stage[s] locally)
@@ -3693,7 +3741,7 @@ class Chip:
             return
 
         ##################
-        # 3. Directory setup
+        # Directory setup
         # support for sharing data across jobs
         job = self.get('option', 'jobname')
         in_job = job
@@ -3712,7 +3760,7 @@ class Chip:
         os.makedirs('reports', exist_ok=True)
 
         ##################
-        # 4. Merge manifests from all input dependancies
+        # Merge manifests from all input dependancies
 
         all_inputs = []
         if not self.get('option', 'remote'):
@@ -3724,7 +3772,7 @@ class Chip:
                     self._read_manifest(cfgfile, clobber=False, partial=True)
 
         ##################
-        # 5. Write manifest prior to step running into inputs
+        # Write manifest prior to step running into inputs
 
         self.set('arg', 'step', None, clobber=True)
         self.set('arg', 'index', None, clobber=True)
@@ -3732,15 +3780,7 @@ class Chip:
         #self.write_manifest(f'inputs/{design}.pkg.json')
 
         ##################
-        # 6. Make metrics zero
-        # TODO: There should be no need for this, but need to fix
-        # without it we need to be more careful with flows to make sure
-        # things like the builtin functions don't look at None values
-        for metric in self.getkeys('metric', 'default', 'default'):
-            self.set('metric', step, index, metric, 0)
-
-        ##################
-        # 7. Select inputs
+        # Select inputs
 
         args = self.get('flowgraph', flow, step, index, 'args')
         inputs = self.get('flowgraph', flow, step, index, 'input')
@@ -3772,9 +3812,12 @@ class Chip:
         self.set('flowgraph', flow, step, index, 'select', sel_inputs)
 
         ##################
-        # 8. Copy (link) output data from previous steps
+        # Copy (link) output data from previous steps
 
-        if step == 'import':
+        if step == 'import' and self.get('option', 'remote'):
+            # Collect inputs into import directory only for remote runs, since
+            # we need to send inputs up to the server. Otherwise, it's simpler
+            # for debugging to leave inputs in place.
             self._collect(step, index)
 
         if not self.get('flowgraph', flow, step, index,'input'):
@@ -3794,7 +3837,7 @@ class Chip:
                 ignore=[f'{design}.pkg.json'], link=True)
 
         ##################
-        # 9. Check manifest
+        # Check manifest
         self.set('arg', 'step', step, clobber=True)
         self.set('arg', 'index', index, clobber=True)
 
@@ -3804,7 +3847,7 @@ class Chip:
                 self._haltstep(step, index)
 
         ##################
-        # 10. Run preprocess step for tool
+        # Run preprocess step for tool
         if tool not in self.builtin:
             func = self.find_function(tool, "pre_process", 'tools')
             if func:
@@ -3814,7 +3857,7 @@ class Chip:
                     self._haltstep(step, index)
 
         ##################
-        # 11. Set environment variables
+        # Set environment variables
 
         # License file configuration.
         for item in self.getkeys('tool', tool, 'licenseserver'):
@@ -3828,8 +3871,12 @@ class Chip:
             for item in self.getkeys('tool', tool, 'env', step, index):
                 os.environ[item] = self.get('tool', tool, 'env', step, index, item)
 
+        run_func = None
+        if tool not in self.builtin:
+            run_func = self.find_function(tool, 'run', 'tools')
+
         ##################
-        # 12. Check exe version
+        # Check exe version
 
         vercheck = not self.get('option', 'novercheck')
         veropt = self.get('tool', tool, 'vswitch')
@@ -3853,31 +3900,34 @@ class Chip:
                     self._haltstep(step, index)
             else:
                 self.logger.info(f"Tool '{exe_base}' found in directory '{exe_path}'")
-        elif tool not in self.builtin:
+        elif tool not in self.builtin and run_func is None:
             exe_base = self.get('tool', tool, 'exe')
             self.logger.error(f'Executable {exe_base} not found')
             self._haltstep(step, index)
 
         ##################
-        # 13. Write manifest (tool interface) (Don't move this!)
+        # Write manifest (tool interface) (Don't move this!)
         suffix = self.get('tool', tool, 'format')
         if suffix:
             pruneopt = bool(suffix!='tcl')
             self.write_manifest(f"sc_manifest.{suffix}", prune=pruneopt, abspath=True)
 
         ##################
-        # 14. Start CPU Timer
+        # Start CPU Timer
         self.logger.debug(f"Starting executable")
         cpu_start = time.time()
 
         ##################
-        # 15. Run executable (or copy inputs to outputs for builtin functions)
+        # Run executable (or copy inputs to outputs for builtin functions)
 
         # TODO: Currently no memory usage tracking in breakpoints, builtins, or unexpected errors.
         max_mem_bytes = 0
 
+        retcode = 0
         if tool in self.builtin:
             utils.copytree(f"inputs", 'outputs', dirs_exist_ok=True, link=True)
+        elif run_func and not self.get('option', 'skipall'):
+            retcode = run_func(self)
         elif not self.get('option', 'skipall'):
             cmdlist = self._makecmd(tool, step, index)
             exe_base = os.path.basename(cmdlist[0])
@@ -3909,7 +3959,7 @@ class Chip:
                 if self.get('tool', tool, 'stdout', step, index, 'destination') == 'log':
                     stdout_file = step + "." + stdout_suffix
                 elif self.get('tool', tool, 'stdout', step, index, 'destination') == 'output':
-                    stdout_file =  os.path.join('outputs', self.get('design')) + "." + stdout_suffix
+                    stdout_file =  os.path.join('outputs', top + "." + stdout_suffix)
                 elif self.get('tool', tool, 'stdout', step, index, 'destination') == 'none':
                     stdout_file =  os.devnull
                 else:
@@ -3921,7 +3971,7 @@ class Chip:
                 if self.get('tool', tool, 'stderr', step, index, 'destination') == 'log':
                     stderr_file = step + "." + stderr_suffix
                 elif self.get('tool', tool, 'stderr', step, index, 'destination') == 'output':
-                    stderr_file =  os.path.join('outputs', self.get('design')) + "." + stderr_suffix
+                    stderr_file =  os.path.join('outputs', top + "." + stderr_suffix)
                 elif self.get('tool', tool, 'stderr', step, index, 'destination') == 'none':
                     stderr_file =  os.devnull
                 else:
@@ -3929,7 +3979,10 @@ class Chip:
                     self.logger.error(f'stderr/destination has no support for {destination}. Use [log|output|none].')
                     self._haltstep(step, index)
 
-                with open(stdout_file, 'w') as stdout_writer, open(stdout_file, 'r') as stdout_reader, open(stderr_file, 'w') as stderr_writer, open(stderr_file, 'r') as stderr_reader:
+                with open(stdout_file, 'w') as stdout_writer, \
+                    open(stdout_file, 'r', errors='replace_with_warning') as stdout_reader,  \
+                    open(stderr_file, 'w') as stderr_writer,  \
+                    open(stderr_file, 'r', errors='replace_with_warning') as stderr_reader:
                     # Use separate reader/writer file objects as hack to display
                     # live output in non-blocking way, so we can monitor the
                     # timeout. Based on https://stackoverflow.com/a/18422264.
@@ -3977,39 +4030,43 @@ class Chip:
                             sys.stdout.write(stderr_reader.read())
                     retcode = proc.returncode
 
-            if retcode != 0:
-                self.logger.warning('Command failed with code %d. See log file %s', retcode, os.path.abspath(logfile))
-                self._haltstep(step, index)
+        if retcode != 0:
+            self.logger.warning('Command failed with code %d. See log file %s', retcode, os.path.abspath(logfile))
+            self._haltstep(step, index)
 
         ##################
-        # 16. Capture cpu runtime and memory footprint.
+        # Capture cpu runtime and memory footprint.
         cpu_end = time.time()
         cputime = round((cpu_end - cpu_start),2)
         self.set('metric', step, index, 'exetime', cputime)
         self.set('metric', step, index, 'memory', max_mem_bytes)
 
         ##################
-        # 17. Post process
+        # Post process
         if (tool not in self.builtin) and (not self.get('option', 'skipall')) :
             func = self.find_function(tool, 'post_process', 'tools')
             if func:
                 func(self)
 
         ##################
-        # 18. Check log file (must be after post-process)
-        if (tool not in self.builtin) and (not self.get('option', 'skipall')) :
+        # Check log file (must be after post-process)
+        if (tool not in self.builtin) and (not self.get('option', 'skipall')) and (run_func is None):
             matches = self.check_logfile(step=step, index=index, display=not quiet)
             if 'errors' in matches:
                 errors = self.get('metric', step, index, 'errors')
+                if errors is None:
+                    errors = 0
                 errors += matches['errors']
                 self.set('metric', step, index, 'errors', errors)
             if 'warnings' in matches:
                 warnings = self.get('metric', step, index, 'warnings')
+                if warnings is None:
+                    warnings = 0
                 warnings += matches['warnings']
                 self.set('metric', step, index, 'warnings', warnings)
 
         ##################
-        # 19. Hash files
+        # Hash files
         if self.get('option', 'hash') and (tool not in self.builtin):
             # hash all outputs
             self.hash_files('tool', tool, 'output', step, index)
@@ -4021,19 +4078,19 @@ class Chip:
                         self.hash_files(*args)
 
         ##################
-        # 20. Capture wall runtime and cpu cores
+        # Capture wall runtime and cpu cores
         wall_end = time.time()
         walltime = round((wall_end - wall_start),2)
         self.set('metric',step, index, 'tasktime', walltime)
         self.logger.info(f"Finished task in {walltime}s")
 
         ##################
-        # 21. Make a record if tracking is enabled
+        # Make a record if tracking is enabled
         if self.get('option', 'track'):
             self._make_record(step, index, wall_start, wall_end, version, toolpath, cmdlist[1:])
 
         ##################
-        # 22. Save a successful manifest
+        # Save a successful manifest
         self.set('flowgraph', flow, step, index, 'status', TaskStatus.SUCCESS)
         self.set('arg', 'step', None, clobber=True)
         self.set('arg', 'index', None, clobber=True)
@@ -4041,19 +4098,20 @@ class Chip:
         self.write_manifest(os.path.join("outputs", f"{design}.pkg.json"))
 
         ##################
-        # 23. Stop if there are errors
+        # Stop if there are errors
         errors = self.get('metric', step, index, 'errors')
-        if errors > 0 and not self.get('option', 'flowcontinue'):
+        if errors and not self.get('option', 'flowcontinue'):
+            # TODO: should we warn if errors is not set?
             self.logger.error(f'{tool} reported {errors} errors during {step}{index}')
             self._haltstep(step, index)
 
         ##################
-        # 24. Clean up non-essential files
+        # Clean up non-essential files
         if self.get('option', 'clean'):
             self._eda_clean(tool, step, index)
 
         ##################
-        # 25. return to original directory
+        # return to original directory
         os.chdir(cwd)
 
     ###########################################################################
@@ -4157,6 +4215,25 @@ class Chip:
         '''
 
         flow = self.get('option', 'flow')
+        if flow is None:
+            self.error("['option', 'flow'] must be set before calling run()",
+                       fatal=True)
+
+        # Auto-update jobname if ['option', 'jobincr'] is True
+        # Do this before initializing logger so that it picks up correct jobname
+        if self.get('option', 'jobincr'):
+            workdir = self._getworkdir()
+            if os.path.isdir(workdir):
+                # Strip off digits following jobname, if any
+                stem = self.get('option', 'jobname').rstrip('0123456789')
+
+                designdir = os.path.dirname(workdir)
+                jobid = 0
+                for job in os.listdir(designdir):
+                    m = re.match(stem + r'(\d+)', job)
+                    if m:
+                        jobid = max(jobid, int(m.group(1)))
+                self.set('option', 'jobname', f'{stem}{jobid+1}')
 
         # Re-init logger to include run info after setting up flowgraph.
         self._init_logger(in_run=True)
@@ -4313,19 +4390,6 @@ class Chip:
                     if tool not in self.builtin:
                         self._setup_tool(tool, step, index)
 
-            # Implement auto-update of jobincrement
-            try:
-                alljobs = os.listdir(self.get('option','builddir') + "/" + self.get('design'))
-                if self.get('option','jobincr'):
-                    jobid = 0
-                    for item in alljobs:
-                        m = re.match(self.get('option','jobname')+r'(\d+)', item)
-                        if m:
-                            jobid = max(jobid, int(m.group(1)))
-                    self.set('option', 'jobid', str(jobid + 1))
-            except:
-                pass
-
             # Check validity of setup
             self.logger.info("Checking manifest before running.")
             check_ok = True
@@ -4423,7 +4487,7 @@ class Chip:
                 if not index_succeeded:
                     self.error('Run() failed, see previous errors.', fatal=True)
 
-            # On success, write out status dict to flowgraph status'. We do this
+            # On success, write out status dict to flowgraph status. We do this
             # since certain scenarios won't be caught by reading in manifests (a
             # failing step doesn't dump a manifest). For example, if the
             # steplist's final step has two indices and one fails.
@@ -4434,15 +4498,9 @@ class Chip:
                         self.set('flowgraph', flow, step, index, 'status', status[stepstr])
 
 
-            # Merge cfg back from last executed runsteps.
-            # Note: any information generated in steps that do not merge into the
-            # last step will not be picked up in this chip object.
-            # TODO: we might as well fix this? We can add a helper function to
-            # find all steps in the steplist that don't lead to others.
-
-            laststep = steplist[-1]
-            for index in indexlist[laststep]:
-                lastdir = self._getworkdir(step=laststep, index=index)
+            # Merge cfg back from last executed tasks.
+            for step, index in self._find_leaves(steplist):
+                lastdir = self._getworkdir(step=step, index=index)
 
                 # This no-op listdir operation is important for ensuring we have
                 # a consistent view of the filesystem when dealing with NFS.
@@ -4454,10 +4512,10 @@ class Chip:
                 os.listdir(os.path.dirname(lastdir))
 
                 lastcfg = f"{lastdir}/outputs/{self.get('design')}.pkg.json"
-                if status[laststep+index] == TaskStatus.SUCCESS:
+                if status[step+index] == TaskStatus.SUCCESS:
                     self._read_manifest(lastcfg, clobber=False, partial=True)
                 else:
-                    self.set('flowgraph', flow, laststep, index, 'status', TaskStatus.ERROR)
+                    self.set('flowgraph', flow, step, index, 'status', TaskStatus.ERROR)
 
         # Clear scratchpad args since these are checked on run() entry
         self.set('arg', 'step', None, clobber=True)
@@ -4565,7 +4623,7 @@ class Chip:
         # Finding last layout if no argument specified
         if filename is None:
             self.logger.info('Searching build directory for layout to show.')
-            design = self.get('design')
+            design = self.top()
             # TODO: keeping the below logic for backwards compatibility. Once
             # all flows/examples register their outputs in ['output', ...], we
             # can fully switch over to the generic logic.
@@ -4826,6 +4884,8 @@ class Chip:
                 envvars[item] = ':'.join(license_file)
         if self.get('tool', tool, 'path'):
             envvars['PATH'] = self.get('tool', tool, 'path') + os.pathsep + '$PATH'
+        else:
+            envvars['PATH'] = os.environ['PATH']
         if (step in self.getkeys('tool', tool, 'env') and
             index in self.getkeys('tool', tool, 'env', step)):
             for key in self.getkeys('tool', tool, 'env', step, index):
