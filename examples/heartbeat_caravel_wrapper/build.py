@@ -74,6 +74,26 @@ def build_core():
     libtype = 'unithd'
     core_chip.set('asic', 'maxlayer', 'met3')
 
+    # Configure core-level PDN script.
+    pdk = core_chip.get('option', 'pdk')
+    with open('pdngen.tcl', 'w') as pdnf:
+        pdnf.write('''
+# Add PDN connections for each voltage domain.
+add_global_connection -net vccd1 -pin_pattern "^VPWR$" -power
+add_global_connection -net vssd1 -pin_pattern "^VGND$" -ground
+add_global_connection -net vccd1 -pin_pattern "^POWER$" -power
+add_global_connection -net vssd1 -pin_pattern "^GROUND$" -ground
+global_connect
+
+set_voltage_domain -name Core -power vccd1 -ground vssd1
+define_pdn_grid -name core_grid -voltage_domain Core -starts_with POWER -pins {met4 met5}
+
+# TODO: Define core-level PDN grid.
+
+# Done defining commands; generate PDN.
+pdngen''')
+    core_chip.set('pdk', pdk, 'aprtech', 'openroad', stackup, libtype, 'pdngen', 'pdngen.tcl')
+
     # Build the core design.
     core_chip.run()
 
@@ -118,23 +138,25 @@ def build_top():
     heartbeat_lib.set('asic', 'stackup', stackup)
     chip.import_library(heartbeat_lib)
 
-    # Use pre-defined floorplan for the wrapper..
-    chip.set('input', 'floorplan.def', f'{CARAVEL_ROOT}/def/user_project_wrapper.def')
+    # Use pre-defined floorplan for the wrapper.
+    #chip.set('input', 'floorplan.def', f'{CARAVEL_ROOT}/def/user_project_wrapper.def')
+    # (Modified floorplan with no top-level PDN grid, to allow for core-level blockages and macros)
+    chip.set('input', 'floorplan.def', 'user_project_wrapper_nogrid.def')
 
     # (No?) filler cells in the top-level wrapper.
-    #chip.set('library', 'sky130hd', 'cells', 'filler', [])
-    #chip.add('library', 'sky130hd', 'cells', 'ignore', 'sky130_fd_sc_hd__conb_1')
+    chip.set('library', 'sky130hd', 'asic', 'cells', 'filler', [])
+    chip.add('library', 'sky130hd', 'asic', 'cells', 'ignore', 'sky130_fd_sc_hd__conb_1')
 
     # (No?) tapcells in the top-level wrapper.
+    pdk = chip.get('option', 'pdk')
     libtype = 'unithd'
-    #chip.cfg['pdk']['aprtech']['openroad'][stackup][libtype].pop('tapcells')
+    chip.cfg['pdk'][pdk]['aprtech']['openroad'][stackup][libtype].pop('tapcells')
 
     # No I/O buffers in the top-level wrapper, but keep tie-hi/lo cells.
     #chip.set('library', 'sky130hd', 'cells', 'tie', [])
     chip.set('asic', 'cells', 'buf', [])
 
     # Create PDN-generation script.
-    pdk = chip.get('option', 'pdk')
     with open('pdngen_top.tcl', 'w') as pdnf:
         # TODO: Jinja template?
         pdnf.write('''
@@ -146,10 +168,14 @@ add_global_connection -net vssd1 -pin_pattern "^GROUND$" -ground
 global_connect
 
 set_voltage_domain -name Core -power vccd1 -ground vssd1
+define_pdn_grid -name core_grid -voltage_domain Core -starts_with POWER -pins {met4 met5}
 
-define_pdn_grid -name core_grid -macro -grid_over_pg_pins -default -voltage_domain Core -starts_with POWER
-add_pdn_stripe -grid core_grid -layer met1 -width 0.48 -starts_with POWER -followpins
-add_pdn_connect -grid core_grid -layers {met1 met4}
+# (Old macro-grid commands, remove after new PDN logic is in place)
+#define_pdn_grid -name core_grid -macro -grid_over_pg_pins -default -voltage_domain Core -starts_with POWER
+#add_pdn_stripe -grid core_grid -layer met1 -width 0.48 -starts_with POWER -followpins
+#add_pdn_connect -grid core_grid -layers {met1 met4}
+
+# TODO: Define top-level PDN grid.
 
 # Done defining commands; generate PDN.
 pdngen''')
@@ -166,6 +192,7 @@ place_cell -inst_name mprj -origin {1188.64 1689.12} -orient R0 -status FIRM
 
     # Run the top-level build.
     chip.run()
+    chip.summary()
 
     # Add via definitions to the gate-level netlist.
     shutil.copy(chip.find_result('vg', step='addvias'), f'{design}.vg')
