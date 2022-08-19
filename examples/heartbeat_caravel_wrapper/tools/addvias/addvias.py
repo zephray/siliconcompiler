@@ -40,6 +40,8 @@ def run(chip):
  VIA_M3M4_PR(vccd1);
  VIA_M3M4_PR_MR(vssd1);
  VIA_M3M4_PR_MR(vccd1);
+ VIA_M4M5_PR(vssd1);
+ VIA_M4M5_PR(vccd1);
  VIA_via2_3_3100_480_1_9_320_320(vssd1);
  VIA_via2_3_3100_480_1_9_320_320(vccd1);
  VIA_via3_4_3100_480_1_7_400_400(vssd1);
@@ -47,7 +49,11 @@ def run(chip):
  VIA_via4_3100x3100(vssd1);
  VIA_via4_3100x3100(vccd1);
  VIA_via4_5_3100_480_1_7_400_400(vssd1);
- VIA_via4_5_3100_480_1_7_400_400(vccd1);\n''')
+ VIA_via4_5_3100_480_1_7_400_400(vccd1);
+ VIA_via5_6_1740_3100_2_1_1600_1600(vssd1);
+ VIA_via5_6_1740_3100_2_1_1600_1600(vccd1);
+ VIA_via5_6_3100_3100_2_2_1600_1600(vssd1);
+ VIA_via5_6_3100_3100_2_2_1600_1600(vccd1);\n''')
           elif not done_mod:
             if line.strip().startswith(f'module {design}'):
               in_mod = True

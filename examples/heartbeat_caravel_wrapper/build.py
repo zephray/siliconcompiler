@@ -44,6 +44,7 @@ def configure_chip(design):
     chip.load_target('skywater130_demo')
     chip.load_flow('mpwflow')
     chip.set('option', 'flow', 'mpwflow')
+    chip.add('option', 'define', 'USE_POWER_PINS')
     return chip
 
 def build_core():
@@ -86,9 +87,10 @@ add_global_connection -net vssd1 -pin_pattern "^GROUND$" -ground
 global_connect
 
 set_voltage_domain -name Core -power vccd1 -ground vssd1
-define_pdn_grid -name core_grid -voltage_domain Core -starts_with POWER -pins {met4 met5}
-
-# TODO: Define core-level PDN grid.
+define_pdn_grid -name core_grid -voltage_domain Core -starts_with POWER -pins met4
+add_pdn_stripe -grid core_grid -layer met1 -width 0.48 -starts_with POWER -followpins
+add_pdn_stripe -grid core_grid -layer met4 -width 3.1 -pitch 50 -offset 2 -starts_with POWER
+add_pdn_connect -grid core_grid -layers {met1 met4}
 
 # Done defining commands; generate PDN.
 pdngen''')
@@ -167,15 +169,17 @@ add_global_connection -net vccd1 -pin_pattern "^POWER$" -power
 add_global_connection -net vssd1 -pin_pattern "^GROUND$" -ground
 global_connect
 
-set_voltage_domain -name Core -power vccd1 -ground vssd1
-define_pdn_grid -name core_grid -voltage_domain Core -starts_with POWER -pins {met4 met5}
+set_voltage_domain -name Core -power vccd1 -ground vssd1 -secondary_power {vccd2 vssd2 vdda1 vssa1 vdda2 vssa2}
+define_pdn_grid -name top_grid -voltage_domain Core -starts_with POWER -pins {met4 met5}
 
-# (Old macro-grid commands, remove after new PDN logic is in place)
-#define_pdn_grid -name core_grid -macro -grid_over_pg_pins -default -voltage_domain Core -starts_with POWER
-#add_pdn_stripe -grid core_grid -layer met1 -width 0.48 -starts_with POWER -followpins
-#add_pdn_connect -grid core_grid -layers {met1 met4}
+add_pdn_stripe -grid top_grid -layer met4 -width 3.1 -pitch 90 -spacing 41.9 -offset 5 -starts_with POWER -extend_to_core_ring -nets {vccd1 vssd1}
+add_pdn_stripe -grid top_grid -layer met5 -width 3.1 -pitch 90 -spacing 41.9 -offset 5 -starts_with POWER -extend_to_core_ring -nets {vccd1 vssd1}
+add_pdn_connect -grid top_grid -layers {met4 met5}
 
-# TODO: Define top-level PDN grid.
+add_pdn_ring -grid top_grid -layers {met4 met5} -widths {3.1 3.1} -spacings {1.7 1.7} -core_offset {12.45 12.45}
+
+define_pdn_grid -macro -default -name macro -voltage_domain Core -halo 5.0 -starts_with POWER -grid_over_boundary
+add_pdn_connect -grid macro -layers {met4 met5}
 
 # Done defining commands; generate PDN.
 pdngen''')
